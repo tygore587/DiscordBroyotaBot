@@ -1,4 +1,6 @@
-﻿namespace DiscordBot.Core.Commands.Dragonball
+﻿using System.Collections.Generic;
+
+namespace DiscordBot.Core.Commands.Dragonball
 {
     public class DragonballCharacter
     {

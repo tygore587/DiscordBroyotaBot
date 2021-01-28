@@ -1,7 +1,9 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
+﻿using DiscordBot.Commands;
+using DiscordBot.Commands.Dragonball.UseCases;
 using DSharpPlus.CommandsNext;
 using DSharpPlus.CommandsNext.Attributes;
+using System.Linq;
+using System.Threading.Tasks;
 
 // ReSharper disable UnusedMember.Global
 // ReSharper disable ClassNeverInstantiated.Global
@@ -25,18 +27,21 @@ namespace DiscordBot.Core.Commands.Dragonball
             };
 
             var author = context.Message.Author.Mention;
-            
+
             if (!string.IsNullOrWhiteSpace(argument) && !withColor)
             {
                 await context.RespondAsync(
                     $"You ({author}) used a wrong argument. Use --color or --colors to get a randomized color.");
                 return;
             }
-                
-            var characters = DragonballCharacters.GetRandomCharacters();
+
+            var getRandomCharacter = new GetRandomCharacters();
+
+            var characters = getRandomCharacter.Execute(new NoParameters());
+
             var characterStrings =
                 characters.Select(character => withColor ? character.ToStringWithColor() : character.ToString());
-            
+
             var chosenCharacters = string.Join("\n", characterStrings);
             await context.RespondAsync($"{author} the bot has chosen:\n{chosenCharacters}");
         }

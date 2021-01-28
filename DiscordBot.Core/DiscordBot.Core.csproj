@@ -3,12 +3,17 @@
     <PropertyGroup>
         <OutputType>Exe</OutputType>
         <TargetFramework>net5.0</TargetFramework>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     </PropertyGroup>
 
     <ItemGroup>
       <PackageReference Include="DotNetEnv" Version="2.0.0" />
       <PackageReference Include="DSharpPlus" Version="4.0.0-rc1" />
-      <PackageReference Include="DSharpPlus.CommandsNext" Version="4.0.0-rc1" />
+      <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\DiscordBot.Commands.Dragonball\DiscordBot.Commands.Dragonball.csproj" />
     </ItemGroup>
 
 </Project>

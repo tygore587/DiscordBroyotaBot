@@ -1,4 +1,4 @@
-﻿namespace DiscordBot.Core.Commands
+﻿namespace DiscordBot.Commands
 {
     public static class CommandPrefix
     {

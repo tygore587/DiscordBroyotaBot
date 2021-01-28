@@ -1,7 +1,7 @@
-﻿using System;
-using System.Threading.Tasks;
-using DiscordBot.Core.Commands;
+﻿using System.Threading.Tasks;
+using DiscordBot.Commands;
 using DiscordBot.Core.Commands.Dragonball;
+using DotNetEnv;
 using DSharpPlus;
 using DSharpPlus.CommandsNext;
 
@@ -11,7 +11,6 @@ namespace DiscordBot.Core
     {
         static void Main(string[] args)
         {
-            
             MainAsync(args).GetAwaiter().GetResult();
         }
 
@@ -24,9 +23,7 @@ namespace DiscordBot.Core
                 Token = EnvironmentVariables.Token,
                 TokenType = TokenType.Bot,
             };
-            
-            
-            
+
             var discord = new DiscordClient(discordConfiguration);
 
             var commandsConfiguration = new CommandsNextConfiguration
@@ -37,20 +34,19 @@ namespace DiscordBot.Core
             var commands = discord.UseCommandsNext(commandsConfiguration);
 
             commands.RegisterCommands<DragonballRandomizer>();
-            
+
             await discord.ConnectAsync();
             await Task.Delay(-1);
-
         }
+
         private static void SetupConfigurations()
         {
             LoadEnvironmentVariables();
         }
 
-        
         private static void LoadEnvironmentVariables()
         {
-            DotNetEnv.Env.TraversePath().Load();
+            Env.TraversePath().Load();
         }
     }
 }
