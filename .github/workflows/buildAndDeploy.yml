@@ -12,7 +12,7 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
-  build:
+  build&deploy:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
     env:
@@ -37,9 +37,8 @@ jobs:
           tags: dokku/${{ secrets.APP_NAME }}:${{ env.VERSION }}
           file: ./DiscordBot.Core/Dockerfile
           context: .
-      
-      - name: Show docker images
-        run: docker images
+          cache-from: type=local,src=/tmp/.buildx-cache
+          cache-to: type=local,dest=/tmp/.buildx-cache,mode=max
       
       - name: Save docker image to tar file
         run: docker save dokku/${{ secrets.APP_NAME }}:${{ env.VERSION }} > ${{ secrets.APP_NAME }}.tar
