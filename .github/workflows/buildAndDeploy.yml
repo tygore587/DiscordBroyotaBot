@@ -15,11 +15,12 @@ jobs:
   build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
-
+    env:
+      VERSION: 1.0
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       - uses: actions/checkout@v2
-
+      
       # Runs a single command using the runners shell
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v1
@@ -33,7 +34,7 @@ jobs:
         with:
           push: false
           load: true
-          tags: dokku/${{ secrets.APP_NAME }}:latest
+          tags: dokku/${{ secrets.APP_NAME }}:env.VERSION
           file: ./DiscordBot.Core/Dockerfile
           context: .
       
@@ -41,7 +42,7 @@ jobs:
         run: docker images
       
       - name: Save docker image to tar file
-        run: docker save dokku/${{ secrets.APP_NAME }}:v1.0 > ${{ secrets.APP_NAME }}.tar
+        run: docker save dokku/${{ secrets.APP_NAME }}:env.VERSION > ${{ secrets.APP_NAME }}.tar
       
       - name: Copy docker image to dokku server
         uses: appleboy/scp-action@master
@@ -60,6 +61,7 @@ jobs:
           key: ${{ secrets.DOKKU_SSH_PRIVATE_KEY_DOCKER_UPLOAD }}
           script: |
             docker load ${{ secrets.APP_NAME }}.tar
+            rm ${{ secrets.APP_NAME }}.tar
 
       - name: Deploy to dokku
         uses: appleboy/ssh-action@master
@@ -67,4 +69,4 @@ jobs:
           host: ${{ secrets.DOKKU_SSH_HOST }}
           username: ${{ secrets.DOKKU_SSH_USERNAME }}
           key: ${{ secrets.DOKKU_SSH_PRIVATE_KEY }}
-          script: dokku tags:deploy ${{ secrets.APP_NAME }} v1.0
+          script: dokku tags:deploy ${{ secrets.APP_NAME }} env.VERSION
