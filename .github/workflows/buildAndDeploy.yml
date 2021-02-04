@@ -60,7 +60,7 @@ jobs:
           username: ${{ secrets.DOKKU_SSH_PRIVATE_KEY_DOCKER_USERNAME }}
           key: ${{ secrets.DOKKU_SSH_PRIVATE_KEY_DOCKER_UPLOAD }}
           script: |
-            docker load ${{ secrets.APP_NAME }}.tar
+            docker load -i ${{ secrets.APP_NAME }}.tar
             rm ${{ secrets.APP_NAME }}.tar
 
       - name: Deploy to dokku
@@ -69,4 +69,4 @@ jobs:
           host: ${{ secrets.DOKKU_SSH_HOST }}
           username: ${{ secrets.DOKKU_SSH_USERNAME }}
           key: ${{ secrets.DOKKU_SSH_PRIVATE_KEY }}
-          script: dokku tags:deploy ${{ secrets.APP_NAME }} ${{ env.VERSION }}
+          script: tags:deploy ${{ secrets.APP_NAME }} ${{ env.VERSION }}
