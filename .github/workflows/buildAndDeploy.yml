@@ -34,7 +34,7 @@ jobs:
         with:
           push: false
           load: true
-          tags: dokku/${{ secrets.APP_NAME }}:$VERSION
+          tags: dokku/${{ secrets.APP_NAME }}:${{ env.VERSION }}
           file: ./DiscordBot.Core/Dockerfile
           context: .
       
@@ -42,7 +42,7 @@ jobs:
         run: docker images
       
       - name: Save docker image to tar file
-        run: docker save dokku/${{ secrets.APP_NAME }}:$VERSION > ${{ secrets.APP_NAME }}.tar
+        run: docker save dokku/${{ secrets.APP_NAME }}:${{ env.VERSION }} > ${{ secrets.APP_NAME }}.tar
       
       - name: Copy docker image to dokku server
         uses: appleboy/scp-action@master
@@ -69,4 +69,4 @@ jobs:
           host: ${{ secrets.DOKKU_SSH_HOST }}
           username: ${{ secrets.DOKKU_SSH_USERNAME }}
           key: ${{ secrets.DOKKU_SSH_PRIVATE_KEY }}
-          script: dokku tags:deploy ${{ secrets.APP_NAME }} $VERSION
+          script: dokku tags:deploy ${{ secrets.APP_NAME }} ${{ env.VERSION }}
