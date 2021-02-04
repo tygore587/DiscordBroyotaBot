@@ -33,6 +33,8 @@ jobs:
         with:
           push: false
           tags: dokku/${{ secrets.APP_NAME }}:latest
+          file: ./DiscordBot.Core/Dockerfile
+          context: .
       
       - name: Deploy to dokku
         uses: appleboy/ssh-action@master
@@ -41,5 +43,3 @@ jobs:
           username: ${{ secrets.DOKKU_SSH_USERNAME }}
           key: ${{ secrets.DOKKU_SSH_PRIVATE_KEY }}
           script: whoami
-      #- run: |
-          
