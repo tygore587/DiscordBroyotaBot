@@ -36,6 +36,9 @@ jobs:
           file: ./DiscordBot.Core/Dockerfile
           context: .
       
+      - name: Show docker images
+        run: docker images
+      
       - name: Save docker image to tar file
         run: docker save dokku/${{ secrets.APP_NAME }}:v1.0 > ${{ secrets.APP_NAME }}.tar
       
