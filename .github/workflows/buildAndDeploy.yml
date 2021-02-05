@@ -67,16 +67,3 @@ jobs:
           username: ${{ secrets.DOKKU_SSH_USERNAME }}
           key: ${{ secrets.DOKKU_SSH_PRIVATE_KEY }}
           script: tags:deploy ${{ secrets.APP_NAME }} ${{ env.VERSION }}
-      
-      - name: Wait for old dokku container to be stopped
-        uses: jakejarvis/wait-action@master
-        with:
-          time: '15s'
-      
-      - name: Deploy to dokku
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.DOKKU_SSH_HOST }}
-          username: ${{ secrets.DOKKU_SSH_USERNAME }}
-          key: ${{ secrets.DOKKU_SSH_PRIVATE_KEY }}
-          script: cleanup
