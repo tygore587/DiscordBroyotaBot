@@ -1,4 +1,4 @@
-﻿namespace Discordbot.Dragonball.Core
+﻿namespace Discordbot.Core
 {
     public interface IUseCase<TResult, TParameters>
     {

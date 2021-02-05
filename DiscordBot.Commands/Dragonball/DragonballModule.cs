@@ -1,16 +1,16 @@
-﻿using Discordbot.Dragonball.Core;
-using DiscordBot.Commands.Dragonball.UseCases;
+﻿using System.Linq;
+using System.Threading.Tasks;
+using Discordbot.Core;
+using DiscordBot.Dragonball.Domain.UseCases;
 using DSharpPlus.CommandsNext;
 using DSharpPlus.CommandsNext.Attributes;
-using System.Linq;
-using System.Threading.Tasks;
 
 // ReSharper disable UnusedMember.Global
 // ReSharper disable ClassNeverInstantiated.Global
 
 namespace DiscordBot.Core.Commands.Dragonball
 {
-    public class DragonballRandomizer : BaseCommandModule
+    public class DragonballModule : BaseCommandModule
     {
         [Command("dbzRandom")]
         [Description(
@@ -23,7 +23,7 @@ namespace DiscordBot.Core.Commands.Dragonball
             {
                 "--color" => true,
                 "--colors" => true,
-                _ => false,
+                _ => false
             };
 
             var author = context.Message.Author.Mention;

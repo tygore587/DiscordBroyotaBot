@@ -1,8 +1,8 @@
-﻿using DiscordBot.Domain.Dragonball.Models;
-using System;
+﻿using System;
 using System.Linq;
+using DiscordBot.Dragonball.Domain.Models;
 
-namespace DiscordBot.Domain.Dragonball.Helper
+namespace DiscordBot.Dragonball.Domain.Helper
 {
     public static class DragonballCharacterHelper
     {

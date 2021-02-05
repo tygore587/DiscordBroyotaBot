@@ -7,6 +7,9 @@ FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
 COPY ["DiscordBot.Service/DiscordBot.Service.csproj", "DiscordBot.Service/"]
 COPY ["DiscordBot.Commands/DiscordBot.Commands.csproj", "DiscordBot.Commands/"]
+COPY ["DiscordBot.Dragonball.Domain/DiscordBot.Dragonball.Domain.csproj", "DiscordBot.Dragonball.Domain/"]
+COPY ["Discordbot.Core/Discordbot.Core.csproj", "Discordbot.Core/"]
+COPY ["DiscordBot.Dice.Domain/DiscordBot.Dice.Domain.csproj", "DiscordBot.Dice.Domain/"]
 RUN dotnet restore "DiscordBot.Service/DiscordBot.Service.csproj"
 COPY . .
 WORKDIR "/src/DiscordBot.Service"

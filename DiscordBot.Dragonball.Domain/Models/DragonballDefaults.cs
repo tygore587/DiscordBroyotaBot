@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace DiscordBot.Domain.Dragonball.Models
+namespace DiscordBot.Dragonball.Domain.Models
 {
     public static class DragonballDefaults
     {
