@@ -2,10 +2,6 @@
 {
     public class DragonballCharacter
     {
-        public string Name { get; }
-        public string Assist { get; }
-        public int Color { get; }
-
         public DragonballCharacter(string name, string assist, int color)
         {
             Name = name;
@@ -13,11 +9,18 @@
             Color = color;
         }
 
+        public string Name { get; }
+        public string Assist { get; }
+        public int Color { get; }
+
         public override string ToString()
         {
             return $"{Name} : {Assist}";
         }
 
-        public string ToStringWithColor() => $"{ToString()} : {Color}";
+        public string ToStringWithColor()
+        {
+            return $"{ToString()} : {Color}";
+        }
     }
 }

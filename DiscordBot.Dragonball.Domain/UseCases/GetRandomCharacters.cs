@@ -1,9 +1,9 @@
-﻿using Discordbot.Core;
-using DiscordBot.Dragonball.Domain.Helper;
-using DiscordBot.Dragonball.Domain.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Discordbot.Core;
+using DiscordBot.Dragonball.Domain.Helper;
+using DiscordBot.Dragonball.Domain.Models;
 
 namespace DiscordBot.Dragonball.Domain.UseCases
 {
@@ -16,7 +16,8 @@ namespace DiscordBot.Dragonball.Domain.UseCases
             while (characters.Count != 3)
             {
                 var newCharacter = DragonballCharacterHelper.GetDragonBallCharacter();
-                if (!characters.Any(character => string.Equals(character.Name, newCharacter.Name, StringComparison.OrdinalIgnoreCase)))
+                if (!characters.Any(character =>
+                    string.Equals(character.Name, newCharacter.Name, StringComparison.OrdinalIgnoreCase)))
                     characters.Add(newCharacter);
             }
 

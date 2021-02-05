@@ -1,6 +1,6 @@
-﻿using DiscordBot.Dragonball.Domain.Models;
-using System;
+﻿using System;
 using System.Linq;
+using DiscordBot.Dragonball.Domain.Models;
 
 namespace DiscordBot.Dragonball.Domain.Helper
 {

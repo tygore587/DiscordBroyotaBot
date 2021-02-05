@@ -1,9 +1,10 @@
-﻿using DiscordBot.Commands;
+﻿using System.Threading.Tasks;
+using DiscordBot.Commands;
+using DiscordBot.Commands.Die;
 using DiscordBot.Core.Commands.Dragonball;
 using DotNetEnv;
 using DSharpPlus;
 using DSharpPlus.CommandsNext;
-using System.Threading.Tasks;
 
 namespace DiscordBot.Service
 {
@@ -21,19 +22,20 @@ namespace DiscordBot.Service
             var discordConfiguration = new DiscordConfiguration
             {
                 Token = EnvironmentVariables.Token,
-                TokenType = TokenType.Bot,
+                TokenType = TokenType.Bot
             };
 
             var discord = new DiscordClient(discordConfiguration);
 
             var commandsConfiguration = new CommandsNextConfiguration
             {
-                StringPrefixes = new[] { CommandPrefix.StandardPrefix },
+                StringPrefixes = new[] {CommandPrefix.StandardPrefix}
             };
 
             var commands = discord.UseCommandsNext(commandsConfiguration);
 
-            commands.RegisterCommands<DragonballRandomizer>();
+            commands.RegisterCommands<DragonballModule>();
+            commands.RegisterCommands<DieModule>();
 
             await discord.ConnectAsync();
             await Task.Delay(-1);
