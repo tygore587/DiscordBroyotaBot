@@ -33,7 +33,7 @@ jobs:
           push: false
           load: true
           tags: dokku/${{ secrets.APP_NAME }}:${{ env.VERSION }}
-          file: ./DiscordBot.Core/Dockerfile
+          file: ./DiscordBot.Service/Dockerfile
           context: .
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache,mode=max
