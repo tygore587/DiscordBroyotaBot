@@ -4,19 +4,16 @@ namespace DiscordBot.Dice.Domain.Models
 {
     public class Die
     {
-        public Die(int sides, Random random)
+        public Die(Random random)
         {
-            Sides = sides;
             Random = random;
         }
 
-        private int Sides { get; }
-
         private Random Random { get; }
 
-        public int Roll()
+        public int Roll(int sides)
         {
-            return Random.Next(1, Sides + 1);
+            return Random.Next(1, sides + 1);
         }
     }
 }

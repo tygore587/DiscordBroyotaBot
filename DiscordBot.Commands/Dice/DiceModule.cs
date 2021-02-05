@@ -1,17 +1,19 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
+using DiscordBot.Dice.Domain.Models;
 using DiscordBot.Dice.Domain.UseCases;
 using DSharpPlus.CommandsNext;
 using DSharpPlus.CommandsNext.Attributes;
 
-namespace DiscordBot.Commands.Die
+namespace DiscordBot.Commands.Dice
 {
-    public class DieModule : BaseCommandModule
+    [Description("All dices commands.")]
+    public class DiceModule : BaseCommandModule
     {
         [Command("roll")]
-        [Description(
-            "This rolls a die with sides. Use roll <numberOfSides>.")]
+        [Description("This rolls a die with sides.")]
         [RequireGuild]
-        public async Task RollDie(CommandContext context, int sides)
+        public async Task RollDie(CommandContext context, [Description("Number of sides")] int sides = 20)
         {
             if (sides <= 0 || sides > 100)
             {
@@ -20,7 +22,9 @@ namespace DiscordBot.Commands.Die
                 return;
             }
 
-            var rollDice = new RollDice();
+            var die = new Die(new Random());
+
+            var rollDice = new RollDice(die);
 
             var parameters = new DieParameter
             {

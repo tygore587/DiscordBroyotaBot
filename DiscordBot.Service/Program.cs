@@ -1,7 +1,8 @@
 ﻿using System.Threading.Tasks;
 using DiscordBot.Commands;
-using DiscordBot.Commands.Die;
-using DiscordBot.Core.Commands.Dragonball;
+using DiscordBot.Commands.Dice;
+using DiscordBot.Commands.Dragonball;
+using DiscordBot.Commands.Helper;
 using DotNetEnv;
 using DSharpPlus;
 using DSharpPlus.CommandsNext;
@@ -35,7 +36,9 @@ namespace DiscordBot.Service
             var commands = discord.UseCommandsNext(commandsConfiguration);
 
             commands.RegisterCommands<DragonballModule>();
-            commands.RegisterCommands<DieModule>();
+            commands.RegisterCommands<DiceModule>();
+
+            commands.SetHelpFormatter<CustomHelpFormatter>();
 
             await discord.ConnectAsync();
             await Task.Delay(-1);
