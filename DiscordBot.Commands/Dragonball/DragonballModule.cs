@@ -12,6 +12,14 @@ namespace DiscordBot.Commands.Dragonball
 {
     public class DragonballModule : BaseCommandModule
     {
+        public DragonballModule(GetRandomCharacters getRandomCharacters)
+        {
+            GetRandomCharacters = getRandomCharacters;
+        }
+
+        private GetRandomCharacters GetRandomCharacters { get; }
+
+
         [Command("dbzRandom")]
         [Description(
             "This returns 3 random characters with assists for the game Dragonball FighterZ. If you want to have random colors, please add --colors as an argument.")]
@@ -36,9 +44,7 @@ namespace DiscordBot.Commands.Dragonball
                 return;
             }
 
-            var getRandomCharacter = new GetRandomCharacters();
-
-            var characters = getRandomCharacter.Execute(new NoParameters());
+            var characters = GetRandomCharacters.Execute(new NoParameters());
 
             var characterStrings =
                 characters.Select(character => withColor ? character.ToStringWithColor() : character.ToString());

@@ -25,7 +25,7 @@ namespace DiscordBot.Dragonball.Domain.Models
             "Majin Buu",
             "Nappa",
             "Piccolo",
-            "Tien Shinhan A",
+            "Tien Shinhan",
             "Trunks",
             "Vegeta (Super Saiyan)",
             "Vegeta (SSGSS) Z",

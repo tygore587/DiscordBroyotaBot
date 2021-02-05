@@ -6,6 +6,7 @@ using DiscordBot.Commands.Helper;
 using DotNetEnv;
 using DSharpPlus;
 using DSharpPlus.CommandsNext;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace DiscordBot.Service
 {
@@ -30,7 +31,8 @@ namespace DiscordBot.Service
 
             var commandsConfiguration = new CommandsNextConfiguration
             {
-                StringPrefixes = new[] {CommandPrefix.StandardPrefix}
+                StringPrefixes = new[] {CommandPrefix.StandardPrefix},
+                Services = CreateServices()
             };
 
             var commands = discord.UseCommandsNext(commandsConfiguration);
@@ -47,6 +49,14 @@ namespace DiscordBot.Service
         private static void SetupConfigurations()
         {
             LoadEnvironmentVariables();
+        }
+
+        private static ServiceProvider CreateServices()
+        {
+            return new ServiceCollection()
+                .AddDragonBallServices()
+                .AddDiceServices()
+                .BuildServiceProvider();
         }
 
         private static void LoadEnvironmentVariables()

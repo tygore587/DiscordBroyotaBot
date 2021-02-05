@@ -11,6 +11,7 @@ namespace DiscordBot.Dice.Domain.Models
 
         private Random Random { get; }
 
+
         public int Roll(int sides)
         {
             return Random.Next(1, sides + 1);

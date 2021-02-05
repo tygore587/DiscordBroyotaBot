@@ -9,6 +9,13 @@ namespace DiscordBot.Dragonball.Domain.UseCases
 {
     public class GetRandomCharacters : IUseCase<List<DragonballCharacter>, NoParameters>
     {
+        public GetRandomCharacters(DragonballCharacterHelper dragonballCharacterHelper)
+        {
+            DragonballCharacterHelper = dragonballCharacterHelper;
+        }
+
+        private DragonballCharacterHelper DragonballCharacterHelper { get; }
+
         public List<DragonballCharacter> Execute(NoParameters parameters)
         {
             var characters = new List<DragonballCharacter>();

@@ -82,7 +82,7 @@ namespace DiscordBot.Commands.Helper
         {
             if (Command == null)
                 EmbedBuilder.WithDescription(
-                    "Listing all top-level commands and groups. Specify a command with !help <command> to see more information.");
+                    "Listing all top-level commands and groups.\n Specify a command with **!help <command>** to see more information.");
             return new CommandHelpMessage(embed: EmbedBuilder.Build());
         }
     }
