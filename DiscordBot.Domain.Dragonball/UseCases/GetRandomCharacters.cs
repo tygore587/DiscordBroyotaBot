@@ -1,16 +1,16 @@
-﻿using DiscordBot.Commands.Dragonball.Models;
-using DiscordBot.Core.Commands.Dragonball;
+﻿using Discordbot.Dragonball.Core;
+using DiscordBot.Domain.Dragonball.Helper;
+using DiscordBot.Domain.Dragonball.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace DiscordBot.Commands.Dragonball.UseCases
 {
-    public class GetRandomCharacters : IUseCase<List<DragonballCharacter>,NoParameters>
+    public class GetRandomCharacters : IUseCase<List<DragonballCharacter>, NoParameters>
     {
         public List<DragonballCharacter> Execute(NoParameters parameters)
         {
-
             var characters = new List<DragonballCharacter>();
 
             while (characters.Count != 3)
@@ -21,7 +21,6 @@ namespace DiscordBot.Commands.Dragonball.UseCases
             }
 
             return characters;
-
         }
     }
 }

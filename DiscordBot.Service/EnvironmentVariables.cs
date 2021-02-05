@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DiscordBot.Core
+namespace DiscordBot.Service
 {
     public static class EnvironmentVariables
     {

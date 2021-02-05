@@ -1,12 +1,8 @@
-﻿using DiscordBot.Commands.Dragonball.Models;
-using DiscordBot.Core.Commands.Dragonball;
+﻿using DiscordBot.Domain.Dragonball.Models;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace DiscordBot.Commands.Dragonball.UseCases
+namespace DiscordBot.Domain.Dragonball.Helper
 {
     public static class DragonballCharacterHelper
     {

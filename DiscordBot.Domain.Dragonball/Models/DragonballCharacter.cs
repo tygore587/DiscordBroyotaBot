@@ -1,10 +1,8 @@
-﻿using System.Collections.Generic;
-
-namespace DiscordBot.Core.Commands.Dragonball
+﻿namespace DiscordBot.Domain.Dragonball.Models
 {
     public class DragonballCharacter
     {
-        public string Name { get;  }
+        public string Name { get; }
         public string Assist { get; }
         public int Color { get; }
 

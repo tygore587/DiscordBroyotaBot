@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
-namespace DiscordBot.Commands.Dragonball.Models
+namespace DiscordBot.Domain.Dragonball.Models
 {
     public static class DragonballDefaults
     {

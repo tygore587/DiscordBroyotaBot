@@ -1,4 +1,4 @@
-﻿using DiscordBot.Commands;
+﻿using Discordbot.Dragonball.Core;
 using DiscordBot.Commands.Dragonball.UseCases;
 using DSharpPlus.CommandsNext;
 using DSharpPlus.CommandsNext.Attributes;

@@ -1,15 +1,15 @@
-﻿using System.Threading.Tasks;
-using DiscordBot.Commands;
+﻿using DiscordBot.Commands;
 using DiscordBot.Core.Commands.Dragonball;
 using DotNetEnv;
 using DSharpPlus;
 using DSharpPlus.CommandsNext;
+using System.Threading.Tasks;
 
-namespace DiscordBot.Core
+namespace DiscordBot.Service
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             MainAsync(args).GetAwaiter().GetResult();
         }
@@ -28,7 +28,7 @@ namespace DiscordBot.Core
 
             var commandsConfiguration = new CommandsNextConfiguration
             {
-                StringPrefixes = new[] {CommandPrefix.StandardPrefix},
+                StringPrefixes = new[] { CommandPrefix.StandardPrefix },
             };
 
             var commands = discord.UseCommandsNext(commandsConfiguration);
