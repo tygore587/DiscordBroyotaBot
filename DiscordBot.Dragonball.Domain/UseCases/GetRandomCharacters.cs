@@ -1,11 +1,11 @@
-﻿using Discordbot.Dragonball.Core;
-using DiscordBot.Domain.Dragonball.Helper;
-using DiscordBot.Domain.Dragonball.Models;
+﻿using Discordbot.Core;
+using DiscordBot.Dragonball.Domain.Helper;
+using DiscordBot.Dragonball.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace DiscordBot.Commands.Dragonball.UseCases
+namespace DiscordBot.Dragonball.Domain.UseCases
 {
     public class GetRandomCharacters : IUseCase<List<DragonballCharacter>, NoParameters>
     {

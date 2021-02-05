@@ -1,5 +1,5 @@
-﻿using Discordbot.Dragonball.Core;
-using DiscordBot.Commands.Dragonball.UseCases;
+﻿using Discordbot.Core;
+using DiscordBot.Dragonball.Domain.UseCases;
 using DSharpPlus.CommandsNext;
 using DSharpPlus.CommandsNext.Attributes;
 using System.Linq;

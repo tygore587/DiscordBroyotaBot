@@ -7,9 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiscordBot.Service", "Disco
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiscordBot.Commands", "DiscordBot.Commands\DiscordBot.Commands.csproj", "{FCEE40B2-0EC6-43FF-B3FF-567A7E2AB9B8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiscordBot.Domain.Dragonball", "DiscordBot.Domain.Dragonball\DiscordBot.Domain.Dragonball.csproj", "{48396B57-FC6E-409A-B0CD-9BB35B8CAD3A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiscordBot.Dragonball.Domain", "DiscordBot.Dragonball.Domain\DiscordBot.Dragonball.Domain.csproj", "{48396B57-FC6E-409A-B0CD-9BB35B8CAD3A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Discordbot.Dragonball.Core", "Discordbot.Dragonball.Core\Discordbot.Dragonball.Core.csproj", "{00BC7AB9-2015-453F-BBF2-FED01335FDFD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Discordbot.Core", "Discordbot.Core\Discordbot.Core.csproj", "{00BC7AB9-2015-453F-BBF2-FED01335FDFD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
