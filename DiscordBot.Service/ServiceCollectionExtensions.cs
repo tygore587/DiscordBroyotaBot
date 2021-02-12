@@ -1,6 +1,5 @@
 ﻿using System;
 using DiscordBot.Dice.Domain.Models;
-using DiscordBot.Dragonball.Domain.Helper;
 using DiscordBot.Dragonball.Domain.UseCases;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -12,7 +11,6 @@ namespace DiscordBot.Service
         {
             return services?
                 .AddSingleton<Random>()
-                .AddSingleton<DragonballCharacterHelper>()
                 .AddSingleton<GetRandomCharacters>();
         }
 

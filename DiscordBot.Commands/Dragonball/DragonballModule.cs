@@ -1,9 +1,8 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
-using Discordbot.Core;
-using DiscordBot.Dragonball.Domain.UseCases;
+﻿using DiscordBot.Dragonball.Domain.UseCases;
 using DSharpPlus.CommandsNext;
 using DSharpPlus.CommandsNext.Attributes;
+using System.Linq;
+using System.Threading.Tasks;
 
 // ReSharper disable UnusedMember.Global
 // ReSharper disable ClassNeverInstantiated.Global
@@ -18,7 +17,6 @@ namespace DiscordBot.Commands.Dragonball
         }
 
         private GetRandomCharacters GetRandomCharacters { get; }
-
 
         [Command("dbzRandom")]
         [Description(
@@ -44,10 +42,15 @@ namespace DiscordBot.Commands.Dragonball
                 return;
             }
 
-            var characters = GetRandomCharacters.Execute(new NoParameters());
+            var characterParams = new RandomCharacterParams()
+            {
+                Count = 3,
+            };
+
+            var characters = GetRandomCharacters.Execute(characterParams);
 
             var characterStrings =
-                characters.Select(character => withColor ? character.ToStringWithColor() : character.ToString());
+                characters.Select(character => !withColor ? character.ToString() : character.ToStringWithColor());
 
             var chosenCharacters = string.Join("\n", characterStrings);
             await context.RespondAsync($"{author} the bot has chosen:\n{chosenCharacters}");
