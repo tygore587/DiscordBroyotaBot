@@ -43,9 +43,11 @@ namespace DiscordBot.Commands.Memes
 
                 var embed = new DiscordEmbedBuilder()
                     .WithTitle(randomMeme.Title)
+                    .WithUrl(randomMeme.PostLink)
                     .WithImageUrl(randomMeme.Url);
+                
 
-                await context.RespondAsync(content: $"{author} From: {randomMeme.PostLink}", embed: embed);
+                await context.RespondAsync(content: $"{author}", embed: embed);
             }
             catch (ArgumentValidationException ex)
             {
