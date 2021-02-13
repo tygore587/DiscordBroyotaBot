@@ -5,12 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="DSharpPlus.CommandsNext" Version="4.0.0-rc1" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DiscordBot.Dice.Domain\DiscordBot.Dice.Domain.csproj" />
-    <ProjectReference Include="..\DiscordBot.Dragonball.Domain\DiscordBot.Dragonball.Domain.csproj" />
+    <ProjectReference Include="..\DiscordBot.Core.Requests\DiscordBot.Core.Data.csproj" />
     <ProjectReference Include="..\Discordbot.Memes.Domain\Discordbot.Memes.Domain.csproj" />
   </ItemGroup>
 

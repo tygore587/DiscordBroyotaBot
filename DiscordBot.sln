@@ -11,7 +11,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiscordBot.Dragonball.Domai
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Discordbot.Core", "Discordbot.Core\Discordbot.Core.csproj", "{00BC7AB9-2015-453F-BBF2-FED01335FDFD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiscordBot.Dice.Domain", "DiscordBot.Dice.Domain\DiscordBot.Dice.Domain.csproj", "{4484607A-4CD7-42DC-9302-49D01F6B6DAD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiscordBot.Dice.Domain", "DiscordBot.Dice.Domain\DiscordBot.Dice.Domain.csproj", "{4484607A-4CD7-42DC-9302-49D01F6B6DAD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Discordbot.Memes.Domain", "Discordbot.Memes.Domain\Discordbot.Memes.Domain.csproj", "{D3012989-4C9F-4CD8-96FC-27AF5A26D9A5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiscordBot.Core.Data", "DiscordBot.Core.Requests\DiscordBot.Core.Data.csproj", "{D1C50750-EEAC-4270-B906-5C94163F0C24}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiscordBot.Memes.Data", "DiscordBot.Memes.Data\DiscordBot.Memes.Data.csproj", "{AFF741F6-767E-4C7D-A1CE-4519472FE38B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +45,18 @@ Global
 		{4484607A-4CD7-42DC-9302-49D01F6B6DAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4484607A-4CD7-42DC-9302-49D01F6B6DAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4484607A-4CD7-42DC-9302-49D01F6B6DAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3012989-4C9F-4CD8-96FC-27AF5A26D9A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3012989-4C9F-4CD8-96FC-27AF5A26D9A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3012989-4C9F-4CD8-96FC-27AF5A26D9A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3012989-4C9F-4CD8-96FC-27AF5A26D9A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1C50750-EEAC-4270-B906-5C94163F0C24}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1C50750-EEAC-4270-B906-5C94163F0C24}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1C50750-EEAC-4270-B906-5C94163F0C24}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1C50750-EEAC-4270-B906-5C94163F0C24}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AFF741F6-767E-4C7D-A1CE-4519472FE38B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFF741F6-767E-4C7D-A1CE-4519472FE38B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFF741F6-767E-4C7D-A1CE-4519472FE38B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFF741F6-767E-4C7D-A1CE-4519472FE38B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

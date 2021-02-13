@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Discordbot.Core;
-using DiscordBot.Dragonball.Domain.Models;
+using DiscordBot.Dragonball.Domain.Entities;
 
 namespace DiscordBot.Dragonball.Domain.UseCases
 {

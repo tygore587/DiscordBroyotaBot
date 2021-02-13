@@ -3,6 +3,8 @@ using DiscordBot.Commands;
 using DiscordBot.Commands.Dice;
 using DiscordBot.Commands.Dragonball;
 using DiscordBot.Commands.Helper;
+using DiscordBot.Commands.Memes;
+using DiscordBot.Memes.Data;
 using DotNetEnv;
 using DSharpPlus;
 using DSharpPlus.CommandsNext;
@@ -37,8 +39,9 @@ namespace DiscordBot.Service
 
             var commands = discord.UseCommandsNext(commandsConfiguration);
 
-            commands.RegisterCommands<DragonballModule>();
+            commands.RegisterCommands<RandomDragonballCharacterModule>();
             commands.RegisterCommands<DiceModule>();
+            commands.RegisterCommands<RandomMemeModule>();
 
             commands.SetHelpFormatter<CustomHelpFormatter>();
 
@@ -56,6 +59,7 @@ namespace DiscordBot.Service
             return new ServiceCollection()
                 .AddDragonBallServices()
                 .AddDiceServices()
+                .AddMemesToServices()
                 .BuildServiceProvider();
         }
 

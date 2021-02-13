@@ -1,15 +1,20 @@
-﻿using System;
-using System.Threading.Tasks;
-using DiscordBot.Dice.Domain.Models;
-using DiscordBot.Dice.Domain.UseCases;
+﻿using DiscordBot.Dice.Domain.UseCases;
 using DSharpPlus.CommandsNext;
 using DSharpPlus.CommandsNext.Attributes;
+using System.Threading.Tasks;
 
 namespace DiscordBot.Commands.Dice
 {
     [Description("All dices commands.")]
     public class DiceModule : BaseCommandModule
     {
+        private RollDice RollDice;
+
+        public DiceModule(RollDice rollDice)
+        {
+            RollDice = rollDice;
+        }
+
         [Command("roll")]
         [Description("This rolls a die with sides.")]
         [RequireGuild]
@@ -22,16 +27,12 @@ namespace DiscordBot.Commands.Dice
                 return;
             }
 
-            var die = new Die(new Random());
-
-            var rollDice = new RollDice(die);
-
             var parameters = new DieParameter
             {
                 Sides = sides
             };
 
-            var side = rollDice.Execute(parameters);
+            var side = RollDice.Execute(parameters);
 
             await context.RespondAsync($"{context.Message.Author.Mention} you rolled **{side}**.");
         }

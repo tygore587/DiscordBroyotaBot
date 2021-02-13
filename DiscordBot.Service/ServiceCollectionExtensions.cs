@@ -1,5 +1,6 @@
 ﻿using System;
-using DiscordBot.Dice.Domain.Models;
+using DiscordBot.Dice.Domain.Entities;
+using DiscordBot.Dice.Domain.UseCases;
 using DiscordBot.Dragonball.Domain.UseCases;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -18,7 +19,8 @@ namespace DiscordBot.Service
         {
             return services?
                 .AddSingleton<Random>()
-                .AddSingleton<Die>();
+                .AddSingleton<Die>()
+                .AddSingleton<RollDice>();
         }
     }
 }

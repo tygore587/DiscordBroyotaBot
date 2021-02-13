@@ -1,5 +1,5 @@
 ﻿using Discordbot.Core;
-using DiscordBot.Dice.Domain.Models;
+using DiscordBot.Dice.Domain.Entities;
 
 namespace DiscordBot.Dice.Domain.UseCases
 {

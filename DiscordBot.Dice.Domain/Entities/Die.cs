@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DiscordBot.Dice.Domain.Models
+namespace DiscordBot.Dice.Domain.Entities
 {
     public class Die
     {

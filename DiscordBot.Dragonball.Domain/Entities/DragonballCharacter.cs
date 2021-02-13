@@ -1,4 +1,4 @@
-﻿namespace DiscordBot.Dragonball.Domain.Models
+﻿namespace DiscordBot.Dragonball.Domain.Entities
 {
     public class DragonballCharacter
     {
