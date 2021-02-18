@@ -14,7 +14,9 @@
 
     <ItemGroup>
         <ProjectReference Include="..\DiscordBot.Commands\DiscordBot.Commands.csproj" />
+        <ProjectReference Include="..\DiscordBot.Core.Constants\DiscordBot.Core.Constants.csproj" />
         <ProjectReference Include="..\DiscordBot.Memes.Data\DiscordBot.Memes.Data.csproj" />
+        <ProjectReference Include="..\Discordbot.WatchTogether.Data\Discordbot.WatchTogether.Data.csproj" />
     </ItemGroup>
 
     <ItemGroup>

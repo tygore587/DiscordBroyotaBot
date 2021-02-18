@@ -9,7 +9,7 @@ namespace DiscordBot.Memes.Data
 {
     public static class MemesDependencyInjection
     {
-        public static IServiceCollection AddMemesToServices(this IServiceCollection services)
+        public static IServiceCollection AddMemesServices(this IServiceCollection services)
         {
             return services?
                 .AddSingleton<IMemesRemoteDataSource, MemesRemoteDataSource>()

@@ -12,6 +12,7 @@
     <ProjectReference Include="..\DiscordBot.Dice.Domain\DiscordBot.Dice.Domain.csproj" />
     <ProjectReference Include="..\DiscordBot.Dragonball.Domain\DiscordBot.Dragonball.Domain.csproj" />
     <ProjectReference Include="..\Discordbot.Memes.Domain\Discordbot.Memes.Domain.csproj" />
+    <ProjectReference Include="..\DiscordBot.WatchTogether.Domain\DiscordBot.WatchTogether.Domain.csproj" />
   </ItemGroup>
 
 </Project>

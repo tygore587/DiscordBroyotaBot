@@ -1,9 +1,12 @@
 ﻿using System.Threading.Tasks;
+using Discordbot.WatchTogether.Data;
 using DiscordBot.Commands;
 using DiscordBot.Commands.Dice;
 using DiscordBot.Commands.Dragonball;
 using DiscordBot.Commands.Helper;
 using DiscordBot.Commands.Memes;
+using DiscordBot.Commands.WatchTogether;
+using DiscordBot.Core.Constants;
 using DiscordBot.Memes.Data;
 using DotNetEnv;
 using DSharpPlus;
@@ -42,6 +45,7 @@ namespace DiscordBot.Service
             commands.RegisterCommands<RandomDragonballCharacterModule>();
             commands.RegisterCommands<DiceModule>();
             commands.RegisterCommands<RandomMemeModule>();
+            commands.RegisterCommands<WatchTogetherModule>();
 
             commands.SetHelpFormatter<CustomHelpFormatter>();
 
@@ -59,7 +63,8 @@ namespace DiscordBot.Service
             return new ServiceCollection()
                 .AddDragonBallServices()
                 .AddDiceServices()
-                .AddMemesToServices()
+                .AddMemesServices()
+                .AddWatchTogetherServices()
                 .BuildServiceProvider();
         }
 

@@ -27,6 +27,6 @@ namespace Discordbot.Memes.Domain.Usecases
 
     public class RandomMemeParameters
     {
-        public bool IncludeNSFW { get; set; }
+        public bool IncludeNSFW { get; init; }
     }
 }

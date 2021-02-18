@@ -17,6 +17,6 @@ namespace DiscordBot.Memes.Data.DataSources
         }
 
         public Task<MemeRemote> GetRandomMeme(CancellationToken cancellationToken = default) =>
-                 RequestClient.GetJsonAsync<MemeRemote>(BaseUrl, new() { "gimme" }, cancellationToken);
+                 RequestClient.GetJsonAsync<MemeRemote>(BaseUrl, paths: new() { "gimme" }, cancellationToken: cancellationToken);
     }
 }

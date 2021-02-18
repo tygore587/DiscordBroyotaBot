@@ -3,9 +3,6 @@ using Discordbot.Memes.Domain.Repositories;
 using DiscordBot.Memes.Data.DataSources;
 using DiscordBot.Memes.Data.Extensions;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace DiscordBot.Memes.Data.Repositories
