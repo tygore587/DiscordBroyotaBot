@@ -6,7 +6,7 @@
 # User defined ignores
 .env
 .idea
-
+.DS_Store
 
 # User-specific files
 *.rsuser
