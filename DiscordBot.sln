@@ -3,27 +3,27 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiscordBot.Service", "DiscordBot.Service\DiscordBot.Service.csproj", "{F4092B88-FB65-4AA1-8EA8-C61DD1C40B6B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiscordBot.Service", "src\DiscordBot.Service\DiscordBot.Service.csproj", "{F4092B88-FB65-4AA1-8EA8-C61DD1C40B6B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiscordBot.Commands", "DiscordBot.Commands\DiscordBot.Commands.csproj", "{FCEE40B2-0EC6-43FF-B3FF-567A7E2AB9B8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiscordBot.Commands", "src\DiscordBot.Commands\DiscordBot.Commands.csproj", "{FCEE40B2-0EC6-43FF-B3FF-567A7E2AB9B8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiscordBot.Dragonball.Domain", "DiscordBot.Dragonball.Domain\DiscordBot.Dragonball.Domain.csproj", "{48396B57-FC6E-409A-B0CD-9BB35B8CAD3A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiscordBot.Dragonball.Domain", "src\DiscordBot.Dragonball.Domain\DiscordBot.Dragonball.Domain.csproj", "{48396B57-FC6E-409A-B0CD-9BB35B8CAD3A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Discordbot.Core", "Discordbot.Core\Discordbot.Core.csproj", "{00BC7AB9-2015-453F-BBF2-FED01335FDFD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Discordbot.Core", "src\Discordbot.Core\Discordbot.Core.csproj", "{00BC7AB9-2015-453F-BBF2-FED01335FDFD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiscordBot.Dice.Domain", "DiscordBot.Dice.Domain\DiscordBot.Dice.Domain.csproj", "{4484607A-4CD7-42DC-9302-49D01F6B6DAD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiscordBot.Dice.Domain", "src\DiscordBot.Dice.Domain\DiscordBot.Dice.Domain.csproj", "{4484607A-4CD7-42DC-9302-49D01F6B6DAD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Discordbot.Memes.Domain", "Discordbot.Memes.Domain\Discordbot.Memes.Domain.csproj", "{D3012989-4C9F-4CD8-96FC-27AF5A26D9A5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Discordbot.Memes.Domain", "src\Discordbot.Memes.Domain\Discordbot.Memes.Domain.csproj", "{D3012989-4C9F-4CD8-96FC-27AF5A26D9A5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiscordBot.Core.Data", "DiscordBot.Core.Requests\DiscordBot.Core.Data.csproj", "{D1C50750-EEAC-4270-B906-5C94163F0C24}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiscordBot.Core.Data", "src\DiscordBot.Core.Requests\DiscordBot.Core.Data.csproj", "{D1C50750-EEAC-4270-B906-5C94163F0C24}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiscordBot.Memes.Data", "DiscordBot.Memes.Data\DiscordBot.Memes.Data.csproj", "{AFF741F6-767E-4C7D-A1CE-4519472FE38B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiscordBot.Memes.Data", "src\DiscordBot.Memes.Data\DiscordBot.Memes.Data.csproj", "{AFF741F6-767E-4C7D-A1CE-4519472FE38B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Discordbot.WatchTogether.Data", "Discordbot.WatchTogether.Data\Discordbot.WatchTogether.Data.csproj", "{64316671-1EA4-45E7-A3C2-912A4FBC642E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Discordbot.WatchTogether.Data", "src\Discordbot.WatchTogether.Data\Discordbot.WatchTogether.Data.csproj", "{64316671-1EA4-45E7-A3C2-912A4FBC642E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiscordBot.WatchTogether.Domain", "DiscordBot.WatchTogether.Domain\DiscordBot.WatchTogether.Domain.csproj", "{62E1C840-F568-4E61-AAE0-7B02F3F4B356}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiscordBot.WatchTogether.Domain", "src\DiscordBot.WatchTogether.Domain\DiscordBot.WatchTogether.Domain.csproj", "{62E1C840-F568-4E61-AAE0-7B02F3F4B356}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiscordBot.Core.Constants", "DiscordBot.Core.Constants\DiscordBot.Core.Constants.csproj", "{B0529552-2FA9-4CD6-8620-0406C33F6BB3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiscordBot.Core.Constants", "src\DiscordBot.Core.Constants\DiscordBot.Core.Constants.csproj", "{B0529552-2FA9-4CD6-8620-0406C33F6BB3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{C857C2D0-A4F3-4502-BE6A-1E777DA63941}"
 EndProject
@@ -34,6 +34,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Memes", "Memes", "{02DFFACA-55AC-4725-9B4E-A0A59F525E50}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WatchTogether", "WatchTogether", "{C5DBC4E7-3347-487D-BAEA-855A52A44674}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{4A1C52AE-C2B3-45A8-A518-CB9D157B2F7D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -89,18 +91,25 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {39A265F0-5D9E-4384-85EB-7651A44704DA}
-	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{00BC7AB9-2015-453F-BBF2-FED01335FDFD} = {C857C2D0-A4F3-4502-BE6A-1E777DA63941}
-		{B0529552-2FA9-4CD6-8620-0406C33F6BB3} = {C857C2D0-A4F3-4502-BE6A-1E777DA63941}
-		{D1C50750-EEAC-4270-B906-5C94163F0C24} = {C857C2D0-A4F3-4502-BE6A-1E777DA63941}
+		{F4092B88-FB65-4AA1-8EA8-C61DD1C40B6B} = {4A1C52AE-C2B3-45A8-A518-CB9D157B2F7D}
+		{FCEE40B2-0EC6-43FF-B3FF-567A7E2AB9B8} = {4A1C52AE-C2B3-45A8-A518-CB9D157B2F7D}
 		{48396B57-FC6E-409A-B0CD-9BB35B8CAD3A} = {F1488B8D-D5D7-4F08-BF75-A069113045E2}
+		{00BC7AB9-2015-453F-BBF2-FED01335FDFD} = {C857C2D0-A4F3-4502-BE6A-1E777DA63941}
 		{4484607A-4CD7-42DC-9302-49D01F6B6DAD} = {18109E00-60F6-4609-ABAB-1E8F9E0B1BDC}
-		{AFF741F6-767E-4C7D-A1CE-4519472FE38B} = {02DFFACA-55AC-4725-9B4E-A0A59F525E50}
 		{D3012989-4C9F-4CD8-96FC-27AF5A26D9A5} = {02DFFACA-55AC-4725-9B4E-A0A59F525E50}
+		{D1C50750-EEAC-4270-B906-5C94163F0C24} = {C857C2D0-A4F3-4502-BE6A-1E777DA63941}
+		{AFF741F6-767E-4C7D-A1CE-4519472FE38B} = {02DFFACA-55AC-4725-9B4E-A0A59F525E50}
 		{64316671-1EA4-45E7-A3C2-912A4FBC642E} = {C5DBC4E7-3347-487D-BAEA-855A52A44674}
 		{62E1C840-F568-4E61-AAE0-7B02F3F4B356} = {C5DBC4E7-3347-487D-BAEA-855A52A44674}
+		{B0529552-2FA9-4CD6-8620-0406C33F6BB3} = {C857C2D0-A4F3-4502-BE6A-1E777DA63941}
+		{C857C2D0-A4F3-4502-BE6A-1E777DA63941} = {4A1C52AE-C2B3-45A8-A518-CB9D157B2F7D}
+		{F1488B8D-D5D7-4F08-BF75-A069113045E2} = {4A1C52AE-C2B3-45A8-A518-CB9D157B2F7D}
+		{18109E00-60F6-4609-ABAB-1E8F9E0B1BDC} = {4A1C52AE-C2B3-45A8-A518-CB9D157B2F7D}
+		{02DFFACA-55AC-4725-9B4E-A0A59F525E50} = {4A1C52AE-C2B3-45A8-A518-CB9D157B2F7D}
+		{C5DBC4E7-3347-487D-BAEA-855A52A44674} = {4A1C52AE-C2B3-45A8-A518-CB9D157B2F7D}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {39A265F0-5D9E-4384-85EB-7651A44704DA}
 	EndGlobalSection
 EndGlobal
