@@ -7,15 +7,10 @@ FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
 WORKDIR /src
 COPY ["src/DiscordBot.Service/DiscordBot.Service.csproj", "src/DiscordBot.Service/"]
 COPY ["src/DiscordBot.Core.Constants/DiscordBot.Core.Constants.csproj", "src/DiscordBot.Core.Constants/"]
+COPY ["DiscordBot.Data/DiscordBot.Data.csproj", "DiscordBot.Data/"]
+COPY ["src/DiscordBot.Domain/DiscordBot.Domain.csproj", "src/DiscordBot.Domain/"]
+COPY ["src/Discordbot.Core.Domain/Discordbot.Core.Domain.csproj", "src/Discordbot.Core.Domain/"]
 COPY ["src/DiscordBot.Commands/DiscordBot.Commands.csproj", "src/DiscordBot.Commands/"]
-COPY ["src/DiscordBot.Dragonball.Domain/DiscordBot.Dragonball.Domain.csproj", "src/DiscordBot.Dragonball.Domain/"]
-COPY ["src/Discordbot.Core/Discordbot.Core.csproj", "src/Discordbot.Core/"]
-COPY ["src/DiscordBot.WatchTogether.Domain/DiscordBot.WatchTogether.Domain.csproj", "src/DiscordBot.WatchTogether.Domain/"]
-COPY ["src/DiscordBot.Dice.Domain/DiscordBot.Dice.Domain.csproj", "src/DiscordBot.Dice.Domain/"]
-COPY ["src/Discordbot.Memes.Domain/Discordbot.Memes.Domain.csproj", "src/Discordbot.Memes.Domain/"]
-COPY ["src/Discordbot.WatchTogether.Data/Discordbot.WatchTogether.Data.csproj", "src/Discordbot.WatchTogether.Data/"]
-COPY ["src/DiscordBot.Core.Requests/DiscordBot.Core.Data.csproj", "src/DiscordBot.Core.Requests/"]
-COPY ["src/DiscordBot.Memes.Data/DiscordBot.Memes.Data.csproj", "src/DiscordBot.Memes.Data/"]
 RUN dotnet restore "src/DiscordBot.Service/DiscordBot.Service.csproj"
 COPY . .
 WORKDIR "/src/src/DiscordBot.Service"

@@ -1,9 +1,9 @@
-﻿using Discordbot.Core;
-using DiscordBot.Dragonball.Domain.UseCases;
+﻿using System.Linq;
+using System.Threading.Tasks;
+using Discordbot.Core;
+using DiscordBot.Domain.Dragonball.UseCases;
 using DSharpPlus.CommandsNext;
 using DSharpPlus.CommandsNext.Attributes;
-using System.Linq;
-using System.Threading.Tasks;
 
 // ReSharper disable UnusedMember.Global
 // ReSharper disable ClassNeverInstantiated.Global
@@ -36,12 +36,12 @@ namespace DiscordBot.Commands.Dragonball
                     "--color" => true,
                     "--colors" => true,
                     "" => false,
-                    _ => throw new ArgumentValidationException("Argument is wrong, please use --color or no argument."),
+                    _ => throw new ArgumentValidationException("Argument is wrong, please use --color or no argument.")
                 };
 
-                var characterParams = new RandomCharacterParams()
+                var characterParams = new RandomCharacterParams
                 {
-                    Count = 3,
+                    Count = 3
                 };
 
                 var characters = GetRandomCharacters.Execute(characterParams);

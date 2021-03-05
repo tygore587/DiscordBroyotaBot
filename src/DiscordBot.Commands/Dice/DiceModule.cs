@@ -1,18 +1,18 @@
-﻿using DiscordBot.Dice.Domain.UseCases;
+﻿using System.Threading.Tasks;
+using DiscordBot.Domain.Dice.UseCases;
 using DSharpPlus.CommandsNext;
 using DSharpPlus.CommandsNext.Attributes;
-using System.Threading.Tasks;
 
 namespace DiscordBot.Commands.Dice
 {
     [Description("All dices commands.")]
     public class DiceModule : BaseCommandModule
     {
-        private RollDice RollDice;
+        private readonly RollDice _rollDice;
 
         public DiceModule(RollDice rollDice)
         {
-            RollDice = rollDice;
+            _rollDice = rollDice;
         }
 
         [Command("roll")]
@@ -32,9 +32,9 @@ namespace DiscordBot.Commands.Dice
                 Sides = sides
             };
 
-            var side = RollDice.Execute(parameters);
+            var side = _rollDice.Execute(parameters);
 
-            await context.RespondAsync($"{context.Message.Author.Mention} you rolled **{side}**.");
+            await context.RespondAsync($"{context.Message.Author.Mention} you rolled **{side}**. (d{sides})");
         }
     }
 }

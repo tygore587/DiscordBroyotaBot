@@ -1,5 +1,4 @@
 ﻿using System.Threading.Tasks;
-using Discordbot.WatchTogether.Data;
 using DiscordBot.Commands;
 using DiscordBot.Commands.Dice;
 using DiscordBot.Commands.Dragonball;
@@ -7,7 +6,7 @@ using DiscordBot.Commands.Helper;
 using DiscordBot.Commands.Memes;
 using DiscordBot.Commands.WatchTogether;
 using DiscordBot.Core.Constants;
-using DiscordBot.Memes.Data;
+using DiscordBot.Data;
 using DotNetEnv;
 using DSharpPlus;
 using DSharpPlus.CommandsNext;
@@ -61,10 +60,7 @@ namespace DiscordBot.Service
         private static ServiceProvider CreateServices()
         {
             return new ServiceCollection()
-                .AddDragonBallServices()
-                .AddDiceServices()
-                .AddMemesServices()
-                .AddWatchTogetherServices()
+                .AddDomainAndDataServices()
                 .BuildServiceProvider();
         }
 

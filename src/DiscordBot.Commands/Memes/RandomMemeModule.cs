@@ -1,20 +1,20 @@
-﻿using Discordbot.Core;
-using Discordbot.Memes.Domain.Usecases;
+﻿using System;
+using System.Threading.Tasks;
+using Discordbot.Core;
+using DiscordBot.Domain.Memes.UseCases;
 using DSharpPlus.CommandsNext;
 using DSharpPlus.CommandsNext.Attributes;
 using DSharpPlus.Entities;
-using System;
-using System.Threading.Tasks;
 
 namespace DiscordBot.Commands.Memes
 {
     public class RandomMemeModule : BaseCommandModule
     {
-        private GetRandomMeme GetRandomMeme;
+        private readonly GetRandomMeme _getRandomMeme;
 
         public RandomMemeModule(GetRandomMeme getRandomMeme)
         {
-            GetRandomMeme = getRandomMeme;
+            _getRandomMeme = getRandomMeme;
         }
 
         [Command("meme")]
@@ -31,12 +31,12 @@ namespace DiscordBot.Commands.Memes
                     _ => throw new ArgumentValidationException("Argument is wrong, please use --nfsw or no argument.")
                 };
 
-                var randomMemeParams = new RandomMemeParameters()
+                var randomMemeParams = new RandomMemeParameters
                 {
-                    IncludeNSFW = withNFSW,
+                    IncludeNSFW = withNFSW
                 };
 
-                var randomMeme = await GetRandomMeme.Execute(randomMemeParams);
+                var randomMeme = await _getRandomMeme.Execute(randomMemeParams);
 
                 if (randomMeme == null)
                     throw new Exception("No random meme was found on api.");
@@ -45,9 +45,9 @@ namespace DiscordBot.Commands.Memes
                     .WithTitle(randomMeme.Title)
                     .WithUrl(randomMeme.PostLink)
                     .WithImageUrl(randomMeme.Url);
-                
 
-                await context.RespondAsync(content: $"{author}", embed: embed);
+
+                await context.RespondAsync($"{author}", embed: embed);
             }
             catch (ArgumentValidationException ex)
             {

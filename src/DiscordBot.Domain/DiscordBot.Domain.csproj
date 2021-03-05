@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net5.0</TargetFramework>
+        <RootNamespace>DiscordBot.Domain</RootNamespace>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Folder Include="Dice"/>
+        <Folder Include="Dragonball"/>
+        <Folder Include="Memes"/>
+        <Folder Include="WatchTogether"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\Discordbot.Core.Domain\Discordbot.Core.Domain.csproj"/>
+    </ItemGroup>
+
+</Project>

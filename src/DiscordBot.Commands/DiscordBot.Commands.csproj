@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
@@ -9,10 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DiscordBot.Dice.Domain\DiscordBot.Dice.Domain.csproj" />
-    <ProjectReference Include="..\DiscordBot.Dragonball.Domain\DiscordBot.Dragonball.Domain.csproj" />
-    <ProjectReference Include="..\Discordbot.Memes.Domain\Discordbot.Memes.Domain.csproj" />
-    <ProjectReference Include="..\DiscordBot.WatchTogether.Domain\DiscordBot.WatchTogether.Domain.csproj" />
+      <ProjectReference Include="..\DiscordBot.Domain\DiscordBot.Domain.csproj"/>
   </ItemGroup>
 
 </Project>

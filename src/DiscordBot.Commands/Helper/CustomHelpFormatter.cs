@@ -7,6 +7,8 @@ using DSharpPlus.CommandsNext.Converters;
 using DSharpPlus.CommandsNext.Entities;
 using DSharpPlus.Entities;
 
+// ReSharper disable ClassNeverInstantiated.Global
+
 namespace DiscordBot.Commands.Helper
 {
     // This is the implementation of the DefaultHelpFormatter. All credits goes to DSharpPlus.
@@ -22,7 +24,7 @@ namespace DiscordBot.Commands.Helper
 
         private DiscordEmbedBuilder EmbedBuilder { get; }
 
-        private Command Command { get; set; }
+        private Command? Command { get; set; }
 
         public override BaseHelpFormatter WithCommand(Command command)
         {
@@ -71,7 +73,7 @@ namespace DiscordBot.Commands.Helper
         public override BaseHelpFormatter WithSubcommands(
             IEnumerable<Command> subcommands)
         {
-            EmbedBuilder.AddField(Command != (Command) null ? "Subcommands" : "Commands",
+            EmbedBuilder.AddField(Command != (Command?) null ? "Subcommands" : "Commands",
                 string.Join("\n\n",
                     subcommands.Select(x => $"{Formatter.InlineCode(x.Name)}: {x.Description}")));
 

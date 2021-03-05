@@ -1,53 +1,54 @@
-﻿using Discordbot.Core;
+﻿using System;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+using Discordbot.Core;
 using DiscordBot.WatchTogether.Domain.UseCases;
 using DSharpPlus.CommandsNext;
 using DSharpPlus.CommandsNext.Attributes;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+
+// ReSharper disable ClassNeverInstantiated.Global
 
 namespace DiscordBot.Commands.WatchTogether
 {
     public class WatchTogetherModule : BaseCommandModule
     {
-        private static readonly Regex YoutubeLinkRegex = new(@"(?:https?:\/\/)?(?:www\.)?youtu\.?be(?:\.com)?\/?.*(?:watch|embed)?(?:.*v=|v\/|\/)([\w\-_]+)\&?");
+        private const string WatchTogetherBaseUrl = "https://w2g.tv/rooms/";
 
-        private static readonly string WatchTogehterBaseUrl = "https://w2g.tv/rooms/";
+        private static readonly Regex YoutubeLinkRegex =
+            new(@"(?:https?:\/\/)?(?:www\.)?youtu\.?be(?:\.com)?\/?.*(?:watch|embed)?(?:.*v=|v\/|\/)([\w\-_]+)\&?");
 
-        private readonly CreateWatchTogetherRoom CreateWatchTogetherRoom;
+        private readonly CreateWatchTogetherRoom _createWatchTogetherRoom;
 
         public WatchTogetherModule(CreateWatchTogetherRoom createWatchTogetherRoom)
         {
-            CreateWatchTogetherRoom = createWatchTogetherRoom;
+            _createWatchTogetherRoom = createWatchTogetherRoom;
         }
 
         [Command("watchtogether")]
-        [Aliases("youtube","wt")]
+        [Aliases("youtube", "wt")]
         [Description("This creates a watch together room.")]
         public async Task RandomMemeApi(
             CommandContext context,
-            [Description("Add a youtube link if this video should be loaded at start.")] string youtubeLink = null)
+            [Description("Add a youtube link if this video should be loaded at start.")]
+            string youtubeLink = "")
         {
             var author = context.Message.Author.Mention;
+
             try
             {
                 if (!string.IsNullOrWhiteSpace(youtubeLink) && !YoutubeLinkRegex.IsMatch(youtubeLink))
-                    throw new ArgumentValidationException($"{youtubeLink} this isn't a youtube link. Please initiate with a youtube link or without any link.");
-               
-                var createRoomParameter = new CreateWatchTogehterRoomParameters()
-                {
-                    YoutubeLink = youtubeLink,
-                };
+                    throw new ArgumentValidationException(
+                        $"{youtubeLink} this isn't a youtube link. Please initiate with a youtube link or without any link.");
 
-                var createdRoom = await CreateWatchTogetherRoom.Execute(createRoomParameter);
+                var createRoomParameter = new CreateWatchTogetherRoomParameters(youtubeLink);
+
+                var createdRoom = await _createWatchTogetherRoom.Execute(createRoomParameter);
 
                 if (string.IsNullOrWhiteSpace(createdRoom?.StreamKey))
                     throw new Exception("No room was created.");
 
-                await context.RespondAsync(content: $"{author} Have fun with the room: {WatchTogehterBaseUrl}{createdRoom.StreamKey}");
+                await context.RespondAsync(
+                    $"{author} Have fun with the room: {WatchTogetherBaseUrl}{createdRoom.StreamKey}");
             }
             catch (ArgumentValidationException ex)
             {
@@ -61,5 +62,3 @@ namespace DiscordBot.Commands.WatchTogether
         }
     }
 }
-
-
