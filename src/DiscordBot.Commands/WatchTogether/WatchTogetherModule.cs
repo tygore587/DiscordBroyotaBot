@@ -2,7 +2,7 @@
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Discordbot.Core;
-using DiscordBot.WatchTogether.Domain.UseCases;
+using DiscordBot.Domain.WatchTogether.UseCases;
 using DSharpPlus.CommandsNext;
 using DSharpPlus.CommandsNext.Attributes;
 

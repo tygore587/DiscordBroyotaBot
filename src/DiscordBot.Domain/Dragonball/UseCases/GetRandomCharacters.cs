@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Discordbot.Core;
+using DiscordBot.Core;
 using Discordbot.Domain.Dragonball.Entities;
 using DiscordBot.Domain.Dragonball.Repositories;
 

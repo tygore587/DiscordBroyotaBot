@@ -4,6 +4,7 @@ using DiscordBot.Commands.Dice;
 using DiscordBot.Commands.Dragonball;
 using DiscordBot.Commands.Helper;
 using DiscordBot.Commands.Memes;
+using DiscordBot.Commands.News;
 using DiscordBot.Commands.WatchTogether;
 using DiscordBot.Core.Constants;
 using DiscordBot.Data;
@@ -45,6 +46,7 @@ namespace DiscordBot.Service
             commands.RegisterCommands<DiceModule>();
             commands.RegisterCommands<RandomMemeModule>();
             commands.RegisterCommands<WatchTogetherModule>();
+            commands.RegisterCommands<NewsModule>();
 
             commands.SetHelpFormatter<CustomHelpFormatter>();
 

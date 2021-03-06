@@ -7,16 +7,16 @@ namespace DiscordBot.Data.Memes.Models
     public class MemeRemote
     {
         [JsonProperty("postLink")]
-        public string PostLink { get; set; }
+        public string? PostLink { get; set; }
 
         [JsonProperty("subreddit")]
-        public string Subreddit { get; set; }
+        public string? Subreddit { get; set; }
 
         [JsonProperty("title")]
-        public string Title { get; set; }
+        public string? Title { get; set; }
 
         [JsonProperty("url")]
-        public string Url { get; set; }
+        public string? Url { get; set; }
 
         [JsonProperty("nsfw")]
         public bool Nsfw { get; set; }
@@ -25,12 +25,12 @@ namespace DiscordBot.Data.Memes.Models
         public bool Spoiler { get; set; }
 
         [JsonProperty("author")]
-        public string Author { get; set; }
+        public string? Author { get; set; }
 
         [JsonProperty("ups")]
         public int Ups { get; set; }
 
         [JsonProperty("preview")]
-        public List<string> Preview { get; set; }
+        public List<string>? Preview { get; set; }
     }
 }

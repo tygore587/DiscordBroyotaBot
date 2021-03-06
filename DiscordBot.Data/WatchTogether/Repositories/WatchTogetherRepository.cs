@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
 using DiscordBot.Data.WatchTogether.DataSources;
 using DiscordBot.Domain.WatchTogether.Entities;
-using DiscordBot.WatchTogether.Domain.Repositories;
+using DiscordBot.Domain.WatchTogether.Repositories;
 
 namespace DiscordBot.Data.WatchTogether.Repositories
 {

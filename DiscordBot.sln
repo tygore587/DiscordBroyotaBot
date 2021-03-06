@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiscordBot.Service", "src\D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiscordBot.Commands", "src\DiscordBot.Commands\DiscordBot.Commands.csproj", "{FCEE40B2-0EC6-43FF-B3FF-567A7E2AB9B8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Discordbot.Core.Domain", "src\Discordbot.Core.Domain\Discordbot.Core.Domain.csproj", "{00BC7AB9-2015-453F-BBF2-FED01335FDFD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiscordBot.Core.Domain", "src\DiscordBot.Core.Domain\DiscordBot.Core.Domain.csproj", "{00BC7AB9-2015-453F-BBF2-FED01335FDFD}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiscordBot.Core.Constants", "src\DiscordBot.Core.Constants\DiscordBot.Core.Constants.csproj", "{B0529552-2FA9-4CD6-8620-0406C33F6BB3}"
 EndProject

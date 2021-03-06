@@ -24,7 +24,7 @@ namespace DiscordBot.Commands.Memes
             var author = context.Message.Author.Mention;
             try
             {
-                var withNFSW = argument.ToLower() switch
+                var withNfsw = argument.ToLower() switch
                 {
                     "" => false,
                     "--nfsw" => true,
@@ -33,7 +33,7 @@ namespace DiscordBot.Commands.Memes
 
                 var randomMemeParams = new RandomMemeParameters
                 {
-                    IncludeNSFW = withNFSW
+                    IncludeNsfw = withNfsw
                 };
 
                 var randomMeme = await _getRandomMeme.Execute(randomMemeParams);

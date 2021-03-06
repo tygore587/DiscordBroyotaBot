@@ -9,18 +9,18 @@ namespace DiscordBot.Data.Memes.Repositories
 {
     internal class MemesRepository : IMemesRepository
     {
-        private readonly IMemesRemoteDataSource RemoteDataSource;
+        private readonly IMemesRemoteDataSource _remoteDataSource;
 
         public MemesRepository(IMemesRemoteDataSource remoteDataSource)
         {
-            RemoteDataSource = remoteDataSource;
+            _remoteDataSource = remoteDataSource;
         }
 
-        public async Task<Meme> GetRandomMeme()
+        public async Task<Meme?> GetRandomMeme()
         {
             try
             {
-                var randomMeme = await RemoteDataSource.GetRandomMeme();
+                var randomMeme = await _remoteDataSource.GetRandomMeme();
 
                 return randomMeme.ToMeme();
             }

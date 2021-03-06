@@ -10,11 +10,12 @@
         <Folder Include="Dice"/>
         <Folder Include="Dragonball"/>
         <Folder Include="Memes"/>
+        <Folder Include="News\Entities"/>
         <Folder Include="WatchTogether"/>
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\Discordbot.Core.Domain\Discordbot.Core.Domain.csproj"/>
+        <ProjectReference Include="..\DiscordBot.Core.Domain\DiscordBot.Core.Domain.csproj"/>
     </ItemGroup>
 
 </Project>

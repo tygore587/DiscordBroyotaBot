@@ -5,6 +5,6 @@ namespace DiscordBot.Domain.Memes.Repositories
 {
     public interface IMemesRepository
     {
-        Task<Meme> GetRandomMeme();
+        Task<Meme?> GetRandomMeme();
     }
 }

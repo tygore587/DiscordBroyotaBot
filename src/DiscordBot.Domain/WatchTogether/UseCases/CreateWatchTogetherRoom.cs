@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Discordbot.Core;
+using DiscordBot.Core;
 using DiscordBot.Domain.WatchTogether.Entities;
-using DiscordBot.WatchTogether.Domain.Repositories;
+using DiscordBot.Domain.WatchTogether.Repositories;
 
-namespace DiscordBot.WatchTogether.Domain.UseCases
+namespace DiscordBot.Domain.WatchTogether.UseCases
 {
     public class CreateWatchTogetherRoom : IUseCase<Task<CreatedRoom>, CreateWatchTogetherRoomParameters>
     {

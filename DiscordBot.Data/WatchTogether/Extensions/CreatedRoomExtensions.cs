@@ -7,7 +7,7 @@ namespace DiscordBot.Data.WatchTogether.Extensions
     {
         public static CreatedRoom ToCreatedRoom(this CreatedRoomRemote createdRoomRemote)
         {
-            return new(createdRoomRemote.StreamKey);
+            return new(createdRoomRemote.StreamKey ?? string.Empty);
         }
     }
 }

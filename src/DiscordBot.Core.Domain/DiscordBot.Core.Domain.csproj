@@ -2,7 +2,7 @@
 
   <PropertyGroup>
       <TargetFramework>net5.0</TargetFramework>
-      <RootNamespace>Discordbot.Core</RootNamespace>
+      <RootNamespace>DiscordBot.Core</RootNamespace>
       <Nullable>enable</Nullable>
   </PropertyGroup>
 
