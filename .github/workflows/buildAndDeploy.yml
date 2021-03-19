@@ -48,7 +48,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: ${{ secrets.APP_NAME }}
-          path: /tmp/${{ secrets.APP_NAME }}.tar
+          path: ${{ secrets.APP_NAME }}.tar
         
       
   deploy:
