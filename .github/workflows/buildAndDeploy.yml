@@ -40,11 +40,11 @@ jobs:
           cache-to: type=local,dest=/tmp/.buildx-cache,mode=max
       
       - name: Save docker image to tar file
-        if: github.ref == ${{ env.DEPLOY_BRANCH }}
+        if: github.ref == 'refs/heads/main'
         run: docker save dokku/${{ secrets.APP_NAME }}:${{ env.VERSION }} > ${{ secrets.APP_NAME }}.tar
         
       - name: Upload artifact
-        if: github.ref == ${{ env.DEPLOY_BRANCH }}
+        if: github.ref == 'refs/heads/main'
         uses: actions/upload-artifact@v2
         with:
           name: ${{ secrets.APP_NAME }}
