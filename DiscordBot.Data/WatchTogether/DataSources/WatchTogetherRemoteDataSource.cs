@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using DiscordBot.Core.Constants;
 using DiscordBot.Data.Requests;
-using DiscordBot.Data.WatchTogether.Extensions;
 using DiscordBot.Data.WatchTogether.Models;
-using DiscordBot.Domain.WatchTogether.Entities;
 
 namespace DiscordBot.Data.WatchTogether.DataSources
 {
@@ -20,7 +18,7 @@ namespace DiscordBot.Data.WatchTogether.DataSources
             _requestClient = requestClient;
         }
 
-        public async Task<CreatedRoom> CreateWatchTogetherRoom(string? youtubeLink = null)
+        public async Task<CreatedRoomRemote> CreateWatchTogetherRoom(string? youtubeLink = null)
         {
             if (string.IsNullOrWhiteSpace(EnvironmentVariables.WatchTogetherApiKey))
                 throw new ArgumentNullException(nameof(EnvironmentVariables.WatchTogetherApiKey),
@@ -35,12 +33,7 @@ namespace DiscordBot.Data.WatchTogether.DataSources
             var createdRoom = await _requestClient.PostJsonAsync<RoomCreationRemote, CreatedRoomRemote>(createRoomBody,
                 BaseUrl, new List<string> {"rooms", "create.json"});
 
-            //TODO: Add own exception
-            if (string.IsNullOrWhiteSpace(createdRoom?.StreamKey))
-                throw new ArgumentNullException(nameof(createdRoom.StreamKey),
-                    "No room key was returned. Please try again later.");
-
-            return createdRoom.ToCreatedRoom();
+            return createdRoom;
         }
     }
 }

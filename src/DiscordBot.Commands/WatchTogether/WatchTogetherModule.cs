@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using Discordbot.Core;
+using DiscordBot.Commands.Exceptions;
 using DiscordBot.Domain.WatchTogether.UseCases;
 using DSharpPlus.CommandsNext;
 using DSharpPlus.CommandsNext.Attributes;

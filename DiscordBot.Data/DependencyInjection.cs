@@ -56,6 +56,7 @@ namespace DiscordBot.Data
             return services
                 .AddSingleton<INewsRepository, NewsRepository>()
                 .AddSingleton<ITagesschauRemoteDataSource, TagesschauRemoteDataSource>()
+                .AddSingleton<INewsLocalCacheDataSource, NewsLocalCacheDataSource>()
                 .AddSingleton<GetTagesschauNews>();
         }
 

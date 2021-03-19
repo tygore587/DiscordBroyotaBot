@@ -1,4 +1,6 @@
 ﻿using System.Threading.Tasks;
+using DiscordBot.Core.Xml;
+using DiscordBot.Data.News.Models;
 using DiscordBot.Data.Requests;
 
 namespace DiscordBot.Data.News.DataSources
@@ -14,11 +16,11 @@ namespace DiscordBot.Data.News.DataSources
             _requestClient = requestClient;
         }
 
-        public async Task<string> GetTagesschauNews()
+        public async Task<RssRemote?> GetTagesschauNews()
         {
             var xml = await _requestClient.GetAsync<string>(BaseUrl);
 
-            return xml;
+            return XmlConvert.DeserializeObject<RssRemote>(xml);
         }
     }
 }

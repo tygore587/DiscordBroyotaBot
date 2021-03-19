@@ -18,6 +18,7 @@
 
     <ItemGroup>
         <ProjectReference Include="..\src\DiscordBot.Core.Constants\DiscordBot.Core.Constants.csproj"/>
+        <ProjectReference Include="..\src\DiscordBot.Core\DiscordBot.Core.csproj"/>
         <ProjectReference Include="..\src\DiscordBot.Domain\DiscordBot.Domain.csproj"/>
     </ItemGroup>
 

@@ -10,7 +10,6 @@
         <Folder Include="Dice"/>
         <Folder Include="Dragonball"/>
         <Folder Include="Memes"/>
-        <Folder Include="News\Entities"/>
         <Folder Include="WatchTogether"/>
     </ItemGroup>
 

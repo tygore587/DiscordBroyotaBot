@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Discordbot.Core;
+using DiscordBot.Commands.Exceptions;
 using DiscordBot.Domain.Memes.UseCases;
 using DSharpPlus.CommandsNext;
 using DSharpPlus.CommandsNext.Attributes;

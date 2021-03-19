@@ -1,10 +1,14 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using DiscordBot.Core;
+using DiscordBot.Domain.News.Entities;
 using DiscordBot.Domain.News.Repositories;
 
 namespace DiscordBot.Domain.News.UseCases
 {
-    public class GetTagesschauNews : IUseCase<Task<string>, TagesschauParameters>
+    public class GetTagesschauNews : IUseCase<Task<List<NewsInternal>>, TagesschauParameters>
     {
         private readonly INewsRepository _newsRepository;
 
@@ -13,9 +17,17 @@ namespace DiscordBot.Domain.News.UseCases
             _newsRepository = newsRepository;
         }
 
-        public async Task<string> Execute(TagesschauParameters parameters)
+        public async Task<List<NewsInternal>> Execute(TagesschauParameters parameters)
         {
-            return await _newsRepository.GetLatestTagesschauNews();
+            if (parameters.Count <= 0)
+                throw new ArgumentOutOfRangeException(nameof(parameters.Count), "Parameter counts must not be null.");
+
+            var news = await _newsRepository.GetTagesschauNews();
+
+            if (news == null)
+                throw new ArgumentNullException(nameof(news), "News must not be null.");
+
+            return news.Take(parameters.Count).ToList();
         }
     }
 
