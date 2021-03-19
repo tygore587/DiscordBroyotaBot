@@ -1,4 +1,5 @@
-﻿using DiscordBot.Data.WatchTogether.Models;
+﻿using System;
+using DiscordBot.Data.WatchTogether.Models;
 using DiscordBot.Domain.WatchTogether.Entities;
 
 namespace DiscordBot.Data.WatchTogether.Extensions
@@ -7,7 +8,10 @@ namespace DiscordBot.Data.WatchTogether.Extensions
     {
         public static CreatedRoom ToCreatedRoom(this CreatedRoomRemote createdRoomRemote)
         {
-            return new(createdRoomRemote.StreamKey);
+            if (string.IsNullOrWhiteSpace(createdRoomRemote.StreamKey))
+                throw new ArgumentNullException(nameof(createdRoomRemote.StreamKey), "Stream key is null or empty.");
+
+            return new CreatedRoom(createdRoomRemote.StreamKey!);
         }
     }
 }

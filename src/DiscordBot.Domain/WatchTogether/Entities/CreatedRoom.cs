@@ -7,6 +7,6 @@
             StreamKey = streamKey;
         }
 
-        public string StreamKey { get; init; }
+        public string StreamKey { get; }
     }
 }

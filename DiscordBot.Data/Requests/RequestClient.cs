@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -10,23 +9,18 @@ namespace DiscordBot.Data.Requests
 {
     public class RequestClient : IRequestClient
     {
-        public Task<TResult> GetJsonAsync<TResult>(string baseUrl, List<string>? paths = null,
+        public async Task<TResult> GetAsync<TResult>(string baseUrl, List<string>? paths = null,
             Dictionary<string, string>? queries = null, CancellationToken cancellationToken = default)
         {
-            if (string.IsNullOrWhiteSpace(baseUrl))
-                throw new ArgumentNullException(nameof(baseUrl), "Base url must not be null or empty.");
-
-            return BuildUrl(baseUrl, paths, queries).GetJsonAsync<TResult>(cancellationToken);
+            return typeof(TResult) == typeof(string)
+                ? (TResult) (object) await BuildUrl(baseUrl, paths, queries).GetStringAsync(cancellationToken)
+                : await BuildUrl(baseUrl, paths, queries).GetJsonAsync<TResult>(cancellationToken);
         }
 
         public async Task<TResult> PostJsonAsync<TRequest, TResult>(TRequest requestBody, string baseUrl,
             List<string>? paths = null, Dictionary<string, string>? queries = null,
             CancellationToken cancellationToken = default)
         {
-            if (string.IsNullOrWhiteSpace(baseUrl))
-                throw new ArgumentNullException(nameof(baseUrl), "Base url must not be null.");
-
-
             return typeof(TResult) == typeof(string)
                 ? (TResult) (object) await BuildUrl(baseUrl, paths, queries)
                     .PostJsonAsync(requestBody, cancellationToken).ReceiveString()

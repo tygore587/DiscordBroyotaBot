@@ -14,7 +14,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\Discordbot.Core.Domain\Discordbot.Core.Domain.csproj"/>
+        <ProjectReference Include="..\DiscordBot.Core.Domain\DiscordBot.Core.Domain.csproj"/>
     </ItemGroup>
 
 </Project>

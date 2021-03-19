@@ -1,10 +1,10 @@
 ﻿using System.Threading.Tasks;
-using DiscordBot.Domain.WatchTogether.Entities;
+using DiscordBot.Data.WatchTogether.Models;
 
 namespace DiscordBot.Data.WatchTogether.DataSources
 {
     public interface IWatchTogetherRemoteDataSource
     {
-        Task<CreatedRoom> CreateWatchTogetherRoom(string youtubeLink = null);
+        Task<CreatedRoomRemote> CreateWatchTogetherRoom(string? youtubeLink = null);
     }
 }

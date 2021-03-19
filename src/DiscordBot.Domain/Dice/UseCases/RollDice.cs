@@ -1,4 +1,4 @@
-﻿using Discordbot.Core;
+﻿using DiscordBot.Core;
 using DiscordBot.Domain.Dice.Entities;
 
 namespace DiscordBot.Domain.Dice.UseCases

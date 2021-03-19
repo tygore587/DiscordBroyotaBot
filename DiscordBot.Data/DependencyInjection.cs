@@ -3,6 +3,8 @@ using DiscordBot.Data.Dragonball.DataSources;
 using DiscordBot.Data.Dragonball.Repositories;
 using DiscordBot.Data.Memes.DataSources;
 using DiscordBot.Data.Memes.Repositories;
+using DiscordBot.Data.News.DataSources;
+using DiscordBot.Data.News.Repositories;
 using DiscordBot.Data.Requests;
 using DiscordBot.Data.WatchTogether.DataSources;
 using DiscordBot.Data.WatchTogether.Repositories;
@@ -12,8 +14,10 @@ using DiscordBot.Domain.Dragonball.Repositories;
 using DiscordBot.Domain.Dragonball.UseCases;
 using DiscordBot.Domain.Memes.Repositories;
 using DiscordBot.Domain.Memes.UseCases;
-using DiscordBot.WatchTogether.Domain.Repositories;
-using DiscordBot.WatchTogether.Domain.UseCases;
+using DiscordBot.Domain.News.Repositories;
+using DiscordBot.Domain.News.UseCases;
+using DiscordBot.Domain.WatchTogether.Repositories;
+using DiscordBot.Domain.WatchTogether.UseCases;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace DiscordBot.Data
@@ -28,6 +32,7 @@ namespace DiscordBot.Data
                 .AddDiceServices()
                 .AddDragonballServices()
                 .AddMemesServices()
+                .AddNewsServices()
                 .AddWatchTogetherServices();
         }
 
@@ -41,9 +46,18 @@ namespace DiscordBot.Data
         private static IServiceCollection AddMemesServices(this IServiceCollection services)
         {
             return services
-                .AddSingleton<IMemesRemoteDataSource, MemesRemoteDataSource>()
                 .AddSingleton<IMemesRepository, MemesRepository>()
+                .AddSingleton<IMemesRemoteDataSource, MemesRemoteDataSource>()
                 .AddSingleton<GetRandomMeme>();
+        }
+
+        private static IServiceCollection AddNewsServices(this IServiceCollection services)
+        {
+            return services
+                .AddSingleton<INewsRepository, NewsRepository>()
+                .AddSingleton<ITagesschauRemoteDataSource, TagesschauRemoteDataSource>()
+                .AddSingleton<INewsLocalCacheDataSource, NewsLocalCacheDataSource>()
+                .AddSingleton<GetTagesschauNews>();
         }
 
         private static IServiceCollection AddWatchTogetherServices(this IServiceCollection services)

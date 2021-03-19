@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Discordbot.Core
+namespace DiscordBot.Commands.Exceptions
 {
     public class ArgumentValidationException : Exception
     {
