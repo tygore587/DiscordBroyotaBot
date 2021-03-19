@@ -1,13 +1,7 @@
 name: Build & Deploy to Dokku
 
 # Controls when the action will run. 
-on:
-  # Triggers the workflow on push events but only for the main branch
-  push:
-    branches: [ main ]
-
-  # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
+on: [push, workflow_dispatch]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -39,9 +33,11 @@ jobs:
           cache-to: type=local,dest=/tmp/.buildx-cache,mode=max
       
       - name: Save docker image to tar file
+        if: github.ref == 'refs/heads/main'
         run: docker save dokku/${{ secrets.APP_NAME }}:${{ env.VERSION }} > ${{ secrets.APP_NAME }}.tar
       
       - name: Copy docker image to dokku server
+        if: github.ref == 'refs/heads/main'
         uses: appleboy/scp-action@master
         with:
           host: ${{ secrets.DOKKU_SSH_HOST }}
@@ -51,6 +47,7 @@ jobs:
           target: .
       
       - name: Load docker image from tar
+        if: github.ref == 'refs/heads/main'
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.DOKKU_SSH_HOST }}
@@ -61,6 +58,7 @@ jobs:
             rm ${{ secrets.APP_NAME }}.tar
 
       - name: Deploy to dokku
+        if: github.ref == 'refs/heads/main'
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.DOKKU_SSH_HOST }}
