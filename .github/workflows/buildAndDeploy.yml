@@ -7,6 +7,15 @@ env:
   DEPLOY_BRANCH: "refs/heads/main"
   
 jobs:
+  conditions:
+    runs-on: ubuntu-latest
+    outputs:
+      deployBranch: ${{ steps.setDeployBranchName.outputs.deployBranch }}
+    steps:
+      - name: set value
+        id: setDeployBranchName
+        run: |
+          echo "::set-output name=deployBranch::$DEPLOY_BRANCH"  # get top level env and set it as output
   build:
     runs-on: ubuntu-latest
     steps:
@@ -44,8 +53,8 @@ jobs:
       
   deploy:
    runs-on: ubuntu-latest
-   needs: build
-   if: github.ref == ${{ env.DEPLOY_BRANCH }}
+   needs: [conditions,build]
+   if: ${{ needs.conditions.outputs.deployBranch == github.ref }}
    steps:
       - name: Download artifact
         uses: actions/download-artifact@v2
