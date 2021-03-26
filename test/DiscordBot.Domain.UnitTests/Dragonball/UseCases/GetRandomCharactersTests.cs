@@ -1,24 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using AutoFixture;
-using DiscordBot.Domain.Dragonball.Entities;
 using DiscordBot.Domain.Dragonball.Repositories;
 using DiscordBot.Domain.Dragonball.UseCases;
 using FluentAssertions;
 using NSubstitute;
 using Xunit;
 
-namespace DiscordBot.Domain.UnitTests.Dragonball
+namespace DiscordBot.Domain.UnitTests.Dragonball.UseCases
 {
     public class GetRandomCharactersTests
     {
         private readonly IDragonballRepository _dragonballRepository;
 
-        private readonly Random _random;
+        private readonly GetRandomCharacters _getRandomCharacters;
 
-        private GetRandomCharacters _getRandomCharacters;
+        private readonly Random _random;
 
         public GetRandomCharactersTests()
         {
@@ -31,9 +28,9 @@ namespace DiscordBot.Domain.UnitTests.Dragonball
         [Fact]
         public void Execute_Should_Throw_Exception_With_Count_Smaller_Or_Equal_To_Zero()
         {
-            var parameters = new RandomCharacterParams()
+            var parameters = new RandomCharacterParams
             {
-                Count = 0,
+                Count = 0
             };
 
             Assert.Throws<ArgumentOutOfRangeException>(() => _getRandomCharacters.Execute(parameters));
@@ -48,21 +45,21 @@ namespace DiscordBot.Domain.UnitTests.Dragonball
 
             // must be at least 2
             const int expectedCount = 2;
-            
+
             var existingCharacterNames = fixture.CreateMany<string>(expectedCount).ToList();
             _dragonballRepository.GetDragonballCharacterNames().Returns(existingCharacterNames);
             _random.Next(existingCharacterNames.Count).Returns(0, 0, 1);
-            
+
             var existingAssists = fixture.CreateMany<string>(expectedCount + 1).ToList();
             _dragonballRepository.GetAssists().ReturnsForAnyArgs(existingAssists);
             _random.Next(existingAssists.Count).Returns(0);
-            
+
             const int existingNumberOfColors = expectedCount + 2;
             _random.Next(existingNumberOfColors).Returns(existingNumberOfColors);
 
-            var parameters = new RandomCharacterParams()
+            var parameters = new RandomCharacterParams
             {
-                Count = expectedCount,
+                Count = expectedCount
             };
 
             var actualCharacters = _getRandomCharacters.Execute(parameters);
@@ -70,7 +67,6 @@ namespace DiscordBot.Domain.UnitTests.Dragonball
             actualCharacters.Should().NotBeNullOrEmpty();
             actualCharacters.Should().HaveCount(2);
             actualCharacters.Should().Contain(character => existingCharacterNames.Contains(character.Name));
-            
         }
     }
 }
