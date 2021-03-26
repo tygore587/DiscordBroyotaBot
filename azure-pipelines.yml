@@ -26,11 +26,6 @@ steps:
 
 - task: DotNetCoreCLI@2
   inputs:
-    command: 'build'
-  displayName: 'Build solution'
-
-- task: DotNetCoreCLI@2
-  inputs:
     command: 'test'
     arguments: '--collect:"XPlat Code Coverage"'
   displayName: 'Run Tests'
@@ -54,6 +49,5 @@ steps:
     checkCoverage: true
     coverageFailOption: 'fixed'
     coverageType: 'branches'
-    treat0of0as100: true
     coverageThreshold: '70'
     runTitle: 'Check test coverage threshold'
