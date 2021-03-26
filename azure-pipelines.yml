@@ -26,6 +26,12 @@ steps:
 
 - task: DotNetCoreCLI@2
   inputs:
+    command: 'build'
+    arguments: '--collect:"XPlat Code Coverage"'
+  displayName: 'Build solution'
+
+- task: DotNetCoreCLI@2
+  inputs:
     command: 'test'
     arguments: '--collect:"XPlat Code Coverage"'
   displayName: 'Run Tests'
