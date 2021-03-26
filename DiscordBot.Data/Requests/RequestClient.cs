@@ -10,7 +10,7 @@ namespace DiscordBot.Data.Requests
     public class RequestClient : IRequestClient
     {
         public async Task<TResult> GetAsync<TResult>(string baseUrl, List<string>? paths = null,
-            Dictionary<string, string>? queries = null, CancellationToken cancellationToken = default)
+            IReadOnlyCollection<KeyValuePair<string, string>>? queries = null, CancellationToken cancellationToken = default)
         {
             return typeof(TResult) == typeof(string)
                 ? (TResult) (object) await BuildUrl(baseUrl, paths, queries).GetStringAsync(cancellationToken)
@@ -18,7 +18,7 @@ namespace DiscordBot.Data.Requests
         }
 
         public async Task<TResult> PostJsonAsync<TRequest, TResult>(TRequest requestBody, string baseUrl,
-            List<string>? paths = null, Dictionary<string, string>? queries = null,
+            List<string>? paths = null, IReadOnlyCollection<KeyValuePair<string, string>>? queries = null,
             CancellationToken cancellationToken = default)
         {
             return typeof(TResult) == typeof(string)
@@ -29,7 +29,7 @@ namespace DiscordBot.Data.Requests
         }
 
         private static string BuildUrl(string baseUrl, IReadOnlyCollection<string>? paths,
-            Dictionary<string, string>? queries)
+            IReadOnlyCollection<KeyValuePair<string, string>>? queries)
         {
             var resultUrl = baseUrl;
 

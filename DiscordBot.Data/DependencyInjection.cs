@@ -8,7 +8,6 @@ using DiscordBot.Data.News.Repositories;
 using DiscordBot.Data.Requests;
 using DiscordBot.Data.WatchTogether.DataSources;
 using DiscordBot.Data.WatchTogether.Repositories;
-using DiscordBot.Domain.Dice.Entities;
 using DiscordBot.Domain.Dice.UseCases;
 using DiscordBot.Domain.Dragonball.Repositories;
 using DiscordBot.Domain.Dragonball.UseCases;
@@ -39,7 +38,6 @@ namespace DiscordBot.Data
         private static IServiceCollection AddDiceServices(this IServiceCollection services)
         {
             return services
-                .AddSingleton<Die>()
                 .AddSingleton<RollDice>();
         }
 
