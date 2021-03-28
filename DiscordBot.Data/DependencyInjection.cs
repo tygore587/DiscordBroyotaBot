@@ -27,6 +27,7 @@ namespace DiscordBot.Data
         {
             return services
                 .AddSingleton<Random>()
+                .AddSingleton<IUrlBuilder, UrlBuilder>()
                 .AddSingleton<IRequestClient, RequestClient>()
                 .AddDiceServices()
                 .AddDragonballServices()

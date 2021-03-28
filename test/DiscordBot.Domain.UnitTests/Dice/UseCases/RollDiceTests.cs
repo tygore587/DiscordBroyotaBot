@@ -32,7 +32,7 @@ namespace DiscordBot.Domain.UnitTests.Dice.UseCases
 
             var parameters = new DieParameter
             {
-                Sides = sides,
+                Sides = sides
             };
 
             var actualValue = _rollDice.Execute(parameters);
@@ -44,16 +44,16 @@ namespace DiscordBot.Domain.UnitTests.Dice.UseCases
         [Fact]
         public void Should_Throw_Exception_With_Validation_Errors()
         {
-            var parametersBelowZero = new DieParameter()
+            var parametersBelowZero = new DieParameter
             {
-                Sides = 0,
+                Sides = 0
             };
 
             Assert.Throws<ArgumentOutOfRangeException>(() => _rollDice.Execute(parametersBelowZero));
 
-            var parametersAbove100 = new DieParameter()
+            var parametersAbove100 = new DieParameter
             {
-                Sides = 101,
+                Sides = 101
             };
 
             Assert.Throws<ArgumentOutOfRangeException>(() => _rollDice.Execute(parametersAbove100));
