@@ -9,16 +9,43 @@ namespace DiscordBot.Data.Requests
 {
     public class RequestClient : IRequestClient
     {
-        public async Task<TResult> GetAsync<TResult>(string baseUrl, List<string>? paths = null,
-            IReadOnlyCollection<KeyValuePair<string, string>>? queries = null, CancellationToken cancellationToken = default)
+        public Task<TResult> GetAsync<TResult>(string baseUrl, CancellationToken cancellationToken = default)
+        {
+            return GetAsync<TResult>(baseUrl, null, null, cancellationToken);
+        }
+
+        public Task<TResult> GetAsync<TResult>(string baseUrl, List<string>? paths,
+            CancellationToken cancellationToken = default)
+        {
+            return GetAsync<TResult>(baseUrl, paths, null, cancellationToken);
+        }
+
+
+        public async Task<TResult> GetAsync<TResult>(string baseUrl, List<string>? paths,
+            IReadOnlyCollection<KeyValuePair<string, string>>? queries, CancellationToken cancellationToken = default)
         {
             return typeof(TResult) == typeof(string)
                 ? (TResult) (object) await BuildUrl(baseUrl, paths, queries).GetStringAsync(cancellationToken)
                 : await BuildUrl(baseUrl, paths, queries).GetJsonAsync<TResult>(cancellationToken);
         }
 
+        public Task<TResult> PostJsonAsync<TRequest, TResult>(TRequest requestBody, string baseUrl,
+            CancellationToken cancellationToken = default)
+        {
+            return PostJsonAsync<TRequest, TResult>(requestBody, baseUrl, null, cancellationToken);
+        }
+
+
+        public Task<TResult> PostJsonAsync<TRequest, TResult>(TRequest requestBody, string baseUrl,
+            List<string>? paths,
+            CancellationToken cancellationToken = default)
+        {
+            return PostJsonAsync<TRequest, TResult>(requestBody, baseUrl, paths, null, cancellationToken);
+        }
+
+
         public async Task<TResult> PostJsonAsync<TRequest, TResult>(TRequest requestBody, string baseUrl,
-            List<string>? paths = null, IReadOnlyCollection<KeyValuePair<string, string>>? queries = null,
+            List<string>? paths, IReadOnlyCollection<KeyValuePair<string, string>>? queries,
             CancellationToken cancellationToken = default)
         {
             return typeof(TResult) == typeof(string)
