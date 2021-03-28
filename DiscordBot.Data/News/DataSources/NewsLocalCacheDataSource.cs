@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using DiscordBot.Core.Cache;
 using DiscordBot.Domain.News.Entities;
+using Serilog;
 
 namespace DiscordBot.Data.News.DataSources
 {
     public class NewsLocalCacheDataSource : ExpirableMemCache<List<NewsInternal>>, INewsLocalCacheDataSource
     {
-        public NewsLocalCacheDataSource() : base(TimeSpan.FromMinutes(10))
+        public NewsLocalCacheDataSource(ILogger logger) : base(TimeSpan.FromMinutes(10), logger)
         {
         }
 

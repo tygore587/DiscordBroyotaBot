@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using DiscordBot.Commands.Extensions;
+using DiscordBot.Commands.Logging;
 using DiscordBot.Domain.News.UseCases;
 using DSharpPlus.CommandsNext;
 using DSharpPlus.CommandsNext.Attributes;
@@ -15,9 +16,12 @@ namespace DiscordBot.Commands.News
     {
         private readonly GetTagesschauNews _getTagesschauNews;
 
-        public NewsModule(GetTagesschauNews getTagesschauNews)
+        private readonly ICommandLogger _logger;
+
+        public NewsModule(GetTagesschauNews getTagesschauNews, ICommandLogger logger)
         {
             _getTagesschauNews = getTagesschauNews;
+            _logger = logger;
         }
 
         [Command("news")]
@@ -50,11 +54,14 @@ namespace DiscordBot.Commands.News
                 news.ForEach(item => embed.AddField(item.Title,
                     $"{item.Description}\n[{item.PublicationDate:dd.MM.yyyy HH:mm}]({item.Link})"));
 
+                _logger.Information(context, "Successfully processed news command.");
+
                 await context.RespondAsync(embed: embed.Build());
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
+                _logger.Error(ex, context, "Error while processing news command. Count: {count}", count);
+
                 await context.RespondAsync($"{context.GetAuthorMention()} An unexpected error occurs. {ex.Message}");
             }
         }

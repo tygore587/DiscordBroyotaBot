@@ -62,6 +62,8 @@ namespace DiscordBot.Service
         private static ServiceProvider CreateServices()
         {
             return new ServiceCollection()
+                .ConfigureLogging()
+                .AddCommandDependencies()
                 .AddDomainAndDataServices()
                 .BuildServiceProvider();
         }

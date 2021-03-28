@@ -1,6 +1,7 @@
 ﻿using System.Linq;
 using System.Threading.Tasks;
 using DiscordBot.Commands.Exceptions;
+using DiscordBot.Commands.Logging;
 using DiscordBot.Domain.Dragonball.UseCases;
 using DSharpPlus.CommandsNext;
 using DSharpPlus.CommandsNext.Attributes;
@@ -12,12 +13,15 @@ namespace DiscordBot.Commands.Dragonball
 {
     public class RandomDragonballCharacterModule : BaseCommandModule
     {
-        public RandomDragonballCharacterModule(GetRandomCharacters getRandomCharacters)
+        private readonly GetRandomCharacters _getRandomCharacters;
+        private readonly ICommandLogger _logger;
+
+        public RandomDragonballCharacterModule(GetRandomCharacters getRandomCharacters, ICommandLogger logger)
         {
-            GetRandomCharacters = getRandomCharacters;
+            _getRandomCharacters = getRandomCharacters;
+            _logger = logger;
         }
 
-        private GetRandomCharacters GetRandomCharacters { get; }
 
         [Command("dbzRandom")]
         [Description(
@@ -44,16 +48,21 @@ namespace DiscordBot.Commands.Dragonball
                     Count = 3
                 };
 
-                var characters = GetRandomCharacters.Execute(characterParams);
+                var characters = _getRandomCharacters.Execute(characterParams);
 
                 var characterStrings =
                     characters.Select(character => !withColor ? character.ToString() : character.ToStringWithColor());
 
                 var chosenCharacters = string.Join("\n", characterStrings);
+
+                _logger.Information(context, "Successfully got dragonball characters. {characters}", chosenCharacters);
+
                 await context.RespondAsync($"{author} the bot has chosen:\n{chosenCharacters}");
             }
             catch (ArgumentValidationException ex)
             {
+                _logger.Error(ex, context, "Error while processing dragonball command.");
+
                 await context.RespondAsync($"{author} {ex.Message}");
             }
         }

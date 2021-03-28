@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using DiscordBot.Commands.Logging;
 using DiscordBot.Domain.Dice.UseCases;
 using DSharpPlus.CommandsNext;
 using DSharpPlus.CommandsNext.Attributes;
@@ -8,11 +9,13 @@ namespace DiscordBot.Commands.Dice
     [Description("All dices commands.")]
     public class DiceModule : BaseCommandModule
     {
+        private readonly ICommandLogger _logger;
         private readonly RollDice _rollDice;
 
-        public DiceModule(RollDice rollDice)
+        public DiceModule(RollDice rollDice, ICommandLogger logger)
         {
             _rollDice = rollDice;
+            _logger = logger;
         }
 
         [Command("roll")]
@@ -33,6 +36,8 @@ namespace DiscordBot.Commands.Dice
             };
 
             var side = _rollDice.Execute(parameters);
+
+            _logger.Information(context, "Successfully processed dice roll command.");
 
             await context.RespondAsync($"{context.Message.Author.Mention} you rolled **{side}**. (d{sides})");
         }

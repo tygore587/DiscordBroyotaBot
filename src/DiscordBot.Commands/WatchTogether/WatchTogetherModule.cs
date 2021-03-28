@@ -2,6 +2,7 @@
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using DiscordBot.Commands.Exceptions;
+using DiscordBot.Commands.Logging;
 using DiscordBot.Domain.WatchTogether.UseCases;
 using DSharpPlus.CommandsNext;
 using DSharpPlus.CommandsNext.Attributes;
@@ -19,9 +20,12 @@ namespace DiscordBot.Commands.WatchTogether
 
         private readonly CreateWatchTogetherRoom _createWatchTogetherRoom;
 
-        public WatchTogetherModule(CreateWatchTogetherRoom createWatchTogetherRoom)
+        private readonly ICommandLogger _logger;
+
+        public WatchTogetherModule(CreateWatchTogetherRoom createWatchTogetherRoom, ICommandLogger logger)
         {
             _createWatchTogetherRoom = createWatchTogetherRoom;
+            _logger = logger;
         }
 
         [Command("watchtogether")]
@@ -44,7 +48,7 @@ namespace DiscordBot.Commands.WatchTogether
 
                 var createdRoom = await _createWatchTogetherRoom.Execute(createRoomParameter);
 
-                if (string.IsNullOrWhiteSpace(createdRoom?.StreamKey))
+                if (string.IsNullOrWhiteSpace(createdRoom.StreamKey))
                     throw new Exception("No room was created.");
 
                 await context.RespondAsync(
@@ -52,12 +56,18 @@ namespace DiscordBot.Commands.WatchTogether
             }
             catch (ArgumentValidationException ex)
             {
+                _logger.Error(ex, context, "Error while processing watch together command. Youtube-Link: {youtubeLink}",
+                    youtubeLink);
+
                 await context.RespondAsync($"{author} {ex.Message}");
             }
             catch (Exception ex)
             {
+                _logger.Error(ex, context, "Error while processing watch together command. Youtube-Link: {youtubeLink}",
+                    youtubeLink);
+
                 Console.WriteLine(ex.Message);
-                await context.RespondAsync($"{author} An unexpected error occures. {ex.Message}");
+                await context.RespondAsync($"{author} An unexpected error occurs. {ex.Message}");
             }
         }
     }

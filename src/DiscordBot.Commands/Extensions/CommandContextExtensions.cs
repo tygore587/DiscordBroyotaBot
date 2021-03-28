@@ -8,5 +8,15 @@ namespace DiscordBot.Commands.Extensions
         {
             return commandContext.Message.Author.Mention;
         }
+
+        public static string GetAuthorId(this CommandContext context)
+        {
+            return context.Message.Author.Id.ToString();
+        }
+
+        public static string? GetGuildId(this CommandContext context)
+        {
+            return context.Guild?.Id.ToString();
+        }
     }
 }
