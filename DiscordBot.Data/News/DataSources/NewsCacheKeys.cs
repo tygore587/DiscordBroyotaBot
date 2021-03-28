@@ -1,6 +1,6 @@
 ﻿namespace DiscordBot.Data.News.DataSources
 {
-    public abstract class NewsCacheKeys
+    public static class NewsCacheKeys
     {
         public const string Tagesschau = "tagesschau";
     }

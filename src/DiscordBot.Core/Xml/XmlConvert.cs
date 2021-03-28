@@ -8,7 +8,7 @@ namespace DiscordBot.Core.Xml
     {
         public static string SerializeObject<T>(T dataObject)
         {
-            if (dataObject == null)
+            if (Equals(dataObject, default(T)))
                 return string.Empty;
 
             try

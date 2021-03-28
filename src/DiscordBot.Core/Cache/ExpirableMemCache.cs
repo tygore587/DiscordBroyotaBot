@@ -25,7 +25,7 @@ namespace DiscordBot.Core.Cache
 
         protected Task Set(CacheKey key, TItem? item)
         {
-            if (item == null)
+            if (Equals(item, default(TItem?)))
                 return Task.CompletedTask;
 
             try
