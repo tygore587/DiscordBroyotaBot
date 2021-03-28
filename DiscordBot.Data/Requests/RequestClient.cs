@@ -30,7 +30,8 @@ namespace DiscordBot.Data.Requests
             IReadOnlyCollection<KeyValuePair<string, string>>? queries, CancellationToken cancellationToken = default)
         {
             var url = _urlBuilder.BuildUrl(baseUrl, paths, queries);
-            return typeof(TResult) == typeof(string)
+
+            return IsResultTypeString<TResult>()
                 ? (TResult) (object) await url.GetStringAsync(cancellationToken)
                 : await url.GetJsonAsync<TResult>(cancellationToken);
         }
@@ -56,9 +57,14 @@ namespace DiscordBot.Data.Requests
         {
             var url = _urlBuilder.BuildUrl(baseUrl, paths, queries);
 
-            return typeof(TResult) == typeof(string)
-                ? (TResult) (object) url.PostJsonAsync(requestBody, cancellationToken).ReceiveString()
+            return IsResultTypeString<TResult>()
+                ? (TResult) (object) await url.PostJsonAsync(requestBody, cancellationToken).ReceiveString()
                 : await url.PostJsonAsync(requestBody, cancellationToken).ReceiveJson<TResult>();
+        }
+
+        private static bool IsResultTypeString<TResult>()
+        {
+            return typeof(TResult) == typeof(string);
         }
     }
 }
