@@ -15,7 +15,7 @@ namespace DiscordBot.Data.WatchTogether.Repositories
             _watchTogetherRemoteDataSource = watchTogetherRemoteDataSource;
         }
 
-        public async Task<CreatedRoom> CreateWatchTogetherRoom(string? youtubeLink)
+        public async Task<CreatedRoom> CreateWatchTogetherRoom(string? youtubeLink = null)
         {
             var createdRoomRemote = await _watchTogetherRemoteDataSource.CreateWatchTogetherRoom(youtubeLink);
 

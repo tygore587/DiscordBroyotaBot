@@ -5,6 +5,6 @@ namespace DiscordBot.Domain.WatchTogether.Repositories
 {
     public interface IWatchTogetherRepository
     {
-        Task<CreatedRoom> CreateWatchTogetherRoom(string youtubeLink);
+        Task<CreatedRoom> CreateWatchTogetherRoom(string? youtubeLink = null);
     }
 }

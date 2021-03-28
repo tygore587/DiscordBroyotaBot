@@ -24,7 +24,7 @@ namespace DiscordBot.Domain.News.UseCases
 
             var news = await _newsRepository.GetTagesschauNews();
 
-            if (news == null)
+            if (news is null)
                 throw new ArgumentNullException(nameof(news), "News must not be null.");
 
             return news.Take(parameters.Count).ToList();
