@@ -1,6 +1,9 @@
 ﻿using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using DiscordBot.Data.Dragonball.DataSources;
 using DiscordBot.Domain.Dragonball.Repositories;
+
+[assembly: InternalsVisibleTo("DiscordBot.Data.Tests.Unit")]
 
 namespace DiscordBot.Data.Dragonball.Repositories
 {
@@ -25,7 +28,7 @@ namespace DiscordBot.Data.Dragonball.Repositories
 
         public int GetColorVariants()
         {
-            return _localDataSource.GetNumberOfColors();
+            return _localDataSource.GetColorVariants();
         }
     }
 }

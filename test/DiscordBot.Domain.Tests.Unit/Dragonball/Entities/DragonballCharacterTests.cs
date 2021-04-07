@@ -8,7 +8,7 @@ namespace DiscordBot.Domain.UnitTests.Dragonball.Entities
     public class DragonballCharacterTests
     {
         [Fact]
-        public void ToString_Should_Return_String_Without_Color()
+        public void ToString_ShouldReturnStringWithoutColor()
         {
             var fixture = new Fixture();
             var expectedName = fixture.Create<string>();
@@ -26,7 +26,7 @@ namespace DiscordBot.Domain.UnitTests.Dragonball.Entities
         }
 
         [Fact]
-        public void ToStringWithColor_Should_Return_String_With_Color()
+        public void ToStringWithColor_ShouldReturnStringWithColor()
         {
             var fixture = new Fixture();
             var expectedName = fixture.Create<string>();

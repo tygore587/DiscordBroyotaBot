@@ -23,7 +23,7 @@ namespace DiscordBot.Domain.UnitTests.Memes.UseCases
         }
 
         [Fact]
-        public async Task Should_Return_Meme_Successfully()
+        public async Task ShouldReturnMemeSuccessfully()
         {
             var fixture = new Fixture();
 
@@ -40,7 +40,7 @@ namespace DiscordBot.Domain.UnitTests.Memes.UseCases
         }
 
         [Fact]
-        public async Task Should_Search_For_A_Meme_Until_Find_One_Without_NSFW_Tag()
+        public async Task ShouldSearchForAMemeUntilFindOneWithoutNSFWTag()
         {
             var fixture = new Fixture();
 
@@ -61,7 +61,7 @@ namespace DiscordBot.Domain.UnitTests.Memes.UseCases
         }
 
         [Fact]
-        public async Task Should_Throw_Exception_If_No_Meme_Was_Returned()
+        public async Task ShouldThrowExceptionIfNoMemeWasReturned()
         {
             var fixture = new Fixture();
 

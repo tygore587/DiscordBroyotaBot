@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
 using DiscordBot.Data.Memes.DataSources;
-using DiscordBot.Data.Memes.Extensions;
 using DiscordBot.Domain.Memes.Entities;
 using DiscordBot.Domain.Memes.Repositories;
 using Serilog;
@@ -25,7 +24,7 @@ namespace DiscordBot.Data.Memes.Repositories
             {
                 var randomMeme = await _remoteDataSource.GetRandomMeme();
 
-                return randomMeme.ToMeme();
+                return randomMeme;
             }
             catch (Exception ex)
             {

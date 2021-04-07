@@ -25,7 +25,7 @@ namespace DiscordBot.Domain.UnitTests.News.UseCases
 
 
         [Fact]
-        public async Task Should_Return_Correct_Number_Of_News()
+        public async Task ShouldReturnCorrectNumberOfNews()
         {
             var fixture = new Fixture();
 
@@ -45,7 +45,7 @@ namespace DiscordBot.Domain.UnitTests.News.UseCases
         }
 
         [Fact]
-        public async Task Should_Return_As_Many_News_As_Possible_If_Selected_Number_Is_Higher()
+        public async Task ShouldReturnAsManyNewsAsPossibleIfSelectedNumberIsHigher()
         {
             var fixture = new Fixture();
 
@@ -67,7 +67,7 @@ namespace DiscordBot.Domain.UnitTests.News.UseCases
         }
 
         [Fact]
-        public async Task Should_Throw_Exception_If_Count_Is_Less_Or_Equal_To_0()
+        public async Task ShouldThrowExceptionIfCountIsLessOrEqualTo0()
         {
             var fixture = new Fixture();
 
@@ -81,7 +81,7 @@ namespace DiscordBot.Domain.UnitTests.News.UseCases
         }
 
         [Fact]
-        public async Task Should_Throw_Exception_If_Returned_News_Are_Null()
+        public async Task ShouldThrowExceptionIfReturnedNewsAreNull()
         {
             _newsRepository.GetTagesschauNews().Returns((IEnumerable<NewsInternal>?) null);
 

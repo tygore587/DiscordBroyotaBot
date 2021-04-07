@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using Flurl.Http;
@@ -16,18 +17,19 @@ namespace DiscordBot.Data.Requests
 
         public Task<TResult> GetAsync<TResult>(string baseUrl, CancellationToken cancellationToken = default)
         {
-            return GetAsync<TResult>(baseUrl, null, null, cancellationToken);
+            return GetAsync<TResult>(baseUrl, Array.Empty<string>(), Array.Empty<KeyValuePair<string, string>>(),
+                cancellationToken);
         }
 
-        public Task<TResult> GetAsync<TResult>(string baseUrl, List<string>? paths,
+        public Task<TResult> GetAsync<TResult>(string baseUrl, IReadOnlyCollection<string> paths,
             CancellationToken cancellationToken = default)
         {
-            return GetAsync<TResult>(baseUrl, paths, null, cancellationToken);
+            return GetAsync<TResult>(baseUrl, paths, Array.Empty<KeyValuePair<string, string>>(), cancellationToken);
         }
 
 
-        public async Task<TResult> GetAsync<TResult>(string baseUrl, List<string>? paths,
-            IReadOnlyCollection<KeyValuePair<string, string>>? queries, CancellationToken cancellationToken = default)
+        public async Task<TResult> GetAsync<TResult>(string baseUrl, IReadOnlyCollection<string> paths,
+            IReadOnlyCollection<KeyValuePair<string, string>> queries, CancellationToken cancellationToken = default)
         {
             var url = _urlBuilder.BuildUrl(baseUrl, paths, queries);
 
@@ -39,20 +41,21 @@ namespace DiscordBot.Data.Requests
         public Task<TResult> PostJsonAsync<TRequest, TResult>(TRequest requestBody, string baseUrl,
             CancellationToken cancellationToken = default)
         {
-            return PostJsonAsync<TRequest, TResult>(requestBody, baseUrl, null, cancellationToken);
+            return PostJsonAsync<TRequest, TResult>(requestBody, baseUrl, Array.Empty<string>(), cancellationToken);
         }
 
 
         public Task<TResult> PostJsonAsync<TRequest, TResult>(TRequest requestBody, string baseUrl,
-            List<string>? paths,
+            IReadOnlyCollection<string> paths,
             CancellationToken cancellationToken = default)
         {
-            return PostJsonAsync<TRequest, TResult>(requestBody, baseUrl, paths, null, cancellationToken);
+            return PostJsonAsync<TRequest, TResult>(requestBody, baseUrl, paths,
+                Array.Empty<KeyValuePair<string, string>>(), cancellationToken);
         }
 
 
         public async Task<TResult> PostJsonAsync<TRequest, TResult>(TRequest requestBody, string baseUrl,
-            List<string>? paths, IReadOnlyCollection<KeyValuePair<string, string>>? queries,
+            IReadOnlyCollection<string> paths, IReadOnlyCollection<KeyValuePair<string, string>> queries,
             CancellationToken cancellationToken = default)
         {
             var url = _urlBuilder.BuildUrl(baseUrl, paths, queries);

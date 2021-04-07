@@ -1,11 +1,11 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
-using DiscordBot.Data.Memes.Models;
+using DiscordBot.Domain.Memes.Entities;
 
 namespace DiscordBot.Data.Memes.DataSources
 {
-    public interface IMemesRemoteDataSource
+    internal interface IMemesRemoteDataSource
     {
-        Task<MemeRemote> GetRandomMeme(CancellationToken cancellationToken = default);
+        Task<Meme> GetRandomMeme(CancellationToken cancellationToken = default);
     }
 }

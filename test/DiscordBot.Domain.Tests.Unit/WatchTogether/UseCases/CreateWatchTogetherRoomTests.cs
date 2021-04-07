@@ -21,7 +21,7 @@ namespace DiscordBot.Domain.UnitTests.WatchTogether.UseCases
         }
 
         [Fact]
-        public async Task Should_Create_A_Watch_Together_Room_Successfully()
+        public async Task ShouldCreateAWatchTogetherRoomSuccessfully()
         {
             var fixture = new Fixture();
 

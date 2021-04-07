@@ -20,7 +20,7 @@ namespace DiscordBot.Domain.UnitTests.Dice.UseCases
         }
 
         [Fact]
-        public void Should_Roll_With_Correct_Number_Of_Sides()
+        public void ShouldRollWithCorrectNumberOfSides()
         {
             var fixture = new Fixture();
 
@@ -42,7 +42,7 @@ namespace DiscordBot.Domain.UnitTests.Dice.UseCases
         }
 
         [Fact]
-        public void Should_Throw_Exception_With_Validation_Errors()
+        public void ShouldThrowExceptionWithValidationErrors()
         {
             var parametersBelowZero = new DieParameter
             {

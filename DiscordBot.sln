@@ -23,13 +23,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiscordBot.Domain", "src\Di
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiscordBot.Core", "src\DiscordBot.Core\DiscordBot.Core.csproj", "{FEE2C2D8-CC06-461F-ADE9-A7997546178B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiscordBot.Domain.UnitTests", "test\DiscordBot.Domain.UnitTests\DiscordBot.Domain.UnitTests.csproj", "{DABD80EC-4BBB-4B1C-914C-67BB237D9AF4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiscordBot.Domain.Tests.Unit", "test\DiscordBot.Domain.Tests.Unit\DiscordBot.Domain.Tests.Unit.csproj", "{DABD80EC-4BBB-4B1C-914C-67BB237D9AF4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiscordBot.Data.UnitTests", "test\DiscordBot.Data.UnitTests\DiscordBot.Data.UnitTests.csproj", "{709382FA-6F40-4AB1-9317-CF3059F5DECD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiscordBot.Data.Tests.Unit", "test\DiscordBot.Data.Tests.Unit\DiscordBot.Data.Tests.Unit.csproj", "{709382FA-6F40-4AB1-9317-CF3059F5DECD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiscordBot.Tests.Core", "test\DiscordBot.Tests.Core\DiscordBot.Tests.Core.csproj", "{C91C469C-BFC7-4909-A58D-7DF91CA1AF8B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiscordBot.Commands.UnitTests", "test\DiscordBot.Commands.UnitTests\DiscordBot.Commands.UnitTests.csproj", "{8122CF29-E790-4463-9DC5-5DAB9F1B3B76}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiscordBot.Commands.Tests.Unit", "test\DiscordBot.Commands.Tests.Unit\DiscordBot.Commands.Tests.Unit.csproj", "{8122CF29-E790-4463-9DC5-5DAB9F1B3B76}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

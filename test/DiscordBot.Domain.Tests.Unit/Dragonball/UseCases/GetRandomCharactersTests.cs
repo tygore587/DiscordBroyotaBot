@@ -26,7 +26,7 @@ namespace DiscordBot.Domain.UnitTests.Dragonball.UseCases
         }
 
         [Fact]
-        public void Execute_Should_Throw_Exception_With_Count_Smaller_Or_Equal_To_Zero()
+        public void ShouldThrowExceptionWithCountSmallerOrEqualToZero()
         {
             var parameters = new RandomCharacterParams
             {
@@ -37,7 +37,7 @@ namespace DiscordBot.Domain.UnitTests.Dragonball.UseCases
         }
 
         [Fact]
-        public void Execute_Should_Return_Two_Different_Characters_With_Second_Choice_Is_The_Same_Name()
+        public void ShouldReturnTwoDifferentCharactersWithSecondChoiceIsTheSameName()
         {
             _random.Next(default, default).ReturnsForAnyArgs(0, 0, 1);
 

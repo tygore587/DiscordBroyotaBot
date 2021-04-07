@@ -12,13 +12,13 @@ namespace DiscordBot.Data.Requests
 
         Task<TResult> GetAsync<TResult>(
             string baseUrl,
-            List<string>? paths,
+            IReadOnlyCollection<string> paths,
             CancellationToken cancellationToken = default);
 
         Task<TResult> GetAsync<TResult>(
             string baseUrl,
-            List<string>? paths,
-            IReadOnlyCollection<KeyValuePair<string, string>>? queries,
+            IReadOnlyCollection<string> paths,
+            IReadOnlyCollection<KeyValuePair<string, string>> queries,
             CancellationToken cancellationToken = default);
 
         Task<TResult> PostJsonAsync<TRequest, TResult>(
@@ -29,14 +29,14 @@ namespace DiscordBot.Data.Requests
         Task<TResult> PostJsonAsync<TRequest, TResult>(
             TRequest requestBody,
             string baseUrl,
-            List<string>? paths,
+            IReadOnlyCollection<string> paths,
             CancellationToken cancellationToken = default);
 
         Task<TResult> PostJsonAsync<TRequest, TResult>(
             TRequest requestBody,
             string baseUrl,
-            List<string>? paths,
-            IReadOnlyCollection<KeyValuePair<string, string>>? queries,
+            IReadOnlyCollection<string> paths,
+            IReadOnlyCollection<KeyValuePair<string, string>> queries,
             CancellationToken cancellationToken = default);
     }
 }

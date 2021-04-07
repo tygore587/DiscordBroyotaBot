@@ -1,5 +1,6 @@
 ﻿using System;
 using DiscordBot.Data.Dragonball.DataSources;
+using DiscordBot.Data.Dragonball.DataSources.Provider;
 using DiscordBot.Data.Dragonball.Repositories;
 using DiscordBot.Data.Memes.DataSources;
 using DiscordBot.Data.Memes.Repositories;
@@ -73,7 +74,8 @@ namespace DiscordBot.Data
                 .AddSingleton<IDragonballRepository, DragonballRepository>()
                 .AddSingleton<IDragonballCharacterPropertiesLocalDataSource,
                     DragonballCharacterPropertiesLocalDataSource>()
-                .AddSingleton<GetRandomCharacters>();
+                .AddSingleton<GetRandomCharacters>()
+                .AddSingleton<IDragonballCharacterPropertyProvider, DragonballCharacterPropertyProvider>();
         }
     }
 }

@@ -1,4 +1,8 @@
 ﻿using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+
+[assembly: InternalsVisibleTo("DiscordBot.Data.Tests.Unit")]
+[assembly: InternalsVisibleTo("DynamicProxyGenAssembly2")]
 
 namespace DiscordBot.Data.Dragonball.DataSources
 {
@@ -6,6 +10,6 @@ namespace DiscordBot.Data.Dragonball.DataSources
     {
         List<string> GetCharacterNames();
         List<string> GetAssistVariants();
-        int GetNumberOfColors();
+        int GetColorVariants();
     }
 }
