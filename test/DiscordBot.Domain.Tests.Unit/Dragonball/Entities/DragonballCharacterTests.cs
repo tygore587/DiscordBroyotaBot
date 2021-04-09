@@ -22,7 +22,7 @@ namespace DiscordBot.Domain.UnitTests.Dragonball.Entities
             toString.Should().NotBeNull();
             toString.Should().Contain(expectedName);
             toString.Should().Contain(expectedAssist);
-            toString.Should().NotContain($"{notExpectedColor}");
+            toString.Should().NotContain($": {notExpectedColor}");
         }
 
         [Fact]
