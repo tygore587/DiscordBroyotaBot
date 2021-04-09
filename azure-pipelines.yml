@@ -53,9 +53,3 @@ steps:
     coverageType: 'branches'
     coverageThreshold: '70'
     runTitle: 'Check test coverage threshold'
-
-- task: PublishBuildArtifacts@1
-  inputs:
-    PathtoPublish: '$(Agent.TempDirectory)'
-    ArtifactName: 'drop'
-    publishLocation: 'Container'
