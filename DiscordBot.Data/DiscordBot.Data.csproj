@@ -7,13 +7,16 @@
 
     <ItemGroup>
         <Folder Include="Memes"/>
+        <Folder Include="Requests"/>
         <Folder Include="WatchTogether"/>
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Flurl.Http" Version="3.0.1"/>
         <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0"/>
         <PackageReference Include="Newtonsoft.Json" Version="12.0.3"/>
+        <PackageReference Include="Refit" Version="6.0.38"/>
+        <PackageReference Include="Refit.HttpClientFactory" Version="6.0.38"/>
+        <PackageReference Include="Refit.Newtonsoft.Json" Version="6.0.38"/>
     </ItemGroup>
 
     <ItemGroup>

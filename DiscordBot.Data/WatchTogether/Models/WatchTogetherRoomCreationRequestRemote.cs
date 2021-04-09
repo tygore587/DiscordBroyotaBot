@@ -3,9 +3,9 @@
 namespace DiscordBot.Data.WatchTogether.Models
 {
     [JsonObject]
-    internal class RoomCreationRemote
+    internal class WatchTogetherRoomCreationRequestRemote
     {
-        public RoomCreationRemote(string watchTogetherApiKey)
+        public WatchTogetherRoomCreationRequestRemote(string watchTogetherApiKey)
         {
             WatchTogetherApiKey = watchTogetherApiKey;
         }

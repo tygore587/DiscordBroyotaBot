@@ -5,6 +5,6 @@ namespace DiscordBot.Data.WatchTogether.DataSources
 {
     public interface IWatchTogetherRemoteDataSource
     {
-        Task<CreatedRoomRemote> CreateWatchTogetherRoom(string? youtubeLink = null);
+        Task<WatchTogetherRoomRemote> CreateWatchTogetherRoom(string? youtubeLink = null);
     }
 }

@@ -6,7 +6,6 @@ using DiscordBot.Data.Memes.DataSources;
 using DiscordBot.Data.Memes.Repositories;
 using DiscordBot.Data.News.DataSources;
 using DiscordBot.Data.News.Repositories;
-using DiscordBot.Data.Requests;
 using DiscordBot.Data.WatchTogether.DataSources;
 using DiscordBot.Data.WatchTogether.Repositories;
 using DiscordBot.Domain.Dice.UseCases;
@@ -19,22 +18,35 @@ using DiscordBot.Domain.News.UseCases;
 using DiscordBot.Domain.WatchTogether.Repositories;
 using DiscordBot.Domain.WatchTogether.UseCases;
 using Microsoft.Extensions.DependencyInjection;
+using Refit;
 
 namespace DiscordBot.Data
 {
     public static class DependencyInjection
     {
+        private static readonly RefitSettings RefitJsonSettings = new(new NewtonsoftJsonContentSerializer());
+
+        private static readonly RefitSettings RefitXmlSettings = new(new XmlContentSerializer());
+
         public static IServiceCollection AddDomainAndDataServices(this IServiceCollection services)
         {
             return services
                 .AddSingleton<Random>()
-                .AddSingleton<IUrlBuilder, UrlBuilder>()
-                .AddSingleton<IRequestClient, RequestClient>()
                 .AddDiceServices()
                 .AddDragonballServices()
                 .AddMemesServices()
                 .AddNewsServices()
                 .AddWatchTogetherServices();
+        }
+
+        private static IServiceCollection ConfigureRefitClient<T>(this IServiceCollection services, string baseUrl,
+            RefitSettings settings) where T : class
+        {
+            services
+                .AddRefitClient<T>(settings)
+                .ConfigureHttpClient(c => c.BaseAddress = new Uri(baseUrl));
+
+            return services;
         }
 
         private static IServiceCollection AddDiceServices(this IServiceCollection services)
@@ -48,6 +60,7 @@ namespace DiscordBot.Data
             return services
                 .AddSingleton<IMemesRepository, MemesRepository>()
                 .AddSingleton<IMemesRemoteDataSource, MemesRemoteDataSource>()
+                .ConfigureRefitClient<IMemeApi>(IMemeApi.BaseUrl, RefitJsonSettings)
                 .AddSingleton<GetRandomMeme>();
         }
 
@@ -56,6 +69,7 @@ namespace DiscordBot.Data
             return services
                 .AddSingleton<INewsRepository, NewsRepository>()
                 .AddSingleton<ITagesschauRemoteDataSource, TagesschauRemoteDataSource>()
+                .ConfigureRefitClient<ITagesschauApi>(ITagesschauApi.BaseUrl, RefitXmlSettings)
                 .AddSingleton<INewsLocalCacheDataSource, NewsLocalCacheDataSource>()
                 .AddSingleton<GetTagesschauNews>();
         }
@@ -65,6 +79,7 @@ namespace DiscordBot.Data
             return services
                 .AddSingleton<IWatchTogetherRepository, WatchTogetherRepository>()
                 .AddSingleton<IWatchTogetherRemoteDataSource, WatchTogetherRemoteDataSource>()
+                .ConfigureRefitClient<IWatchTogetherApi>(IWatchTogetherApi.BaseUrl, RefitJsonSettings)
                 .AddSingleton<CreateWatchTogetherRoom>();
         }
 

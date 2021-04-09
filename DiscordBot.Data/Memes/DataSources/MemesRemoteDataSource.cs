@@ -1,10 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Runtime.CompilerServices;
+﻿using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
 using DiscordBot.Data.Memes.Extensions;
-using DiscordBot.Data.Memes.Models;
-using DiscordBot.Data.Requests;
 using DiscordBot.Domain.Memes.Entities;
 
 [assembly: InternalsVisibleTo("DiscordBot.Data.Tests.Unit")]
@@ -13,19 +10,17 @@ namespace DiscordBot.Data.Memes.DataSources
 {
     internal class MemesRemoteDataSource : IMemesRemoteDataSource
     {
-        private const string BaseUrl = "https://meme-api.herokuapp.com";
+        private readonly IMemeApi _memeApi;
 
-        private readonly IRequestClient _requestClient;
-
-        public MemesRemoteDataSource(IRequestClient requestClient)
+        public MemesRemoteDataSource(IMemeApi memeApi)
         {
-            _requestClient = requestClient;
+            _memeApi = memeApi;
         }
 
         public async Task<Meme> GetRandomMeme(CancellationToken cancellationToken = default)
         {
             var response =
-                await _requestClient.GetAsync<MemeRemote>(BaseUrl, new List<string> {"gimme"}, cancellationToken);
+                await _memeApi.GetRandomMeme(cancellationToken);
 
             return response.ToMeme();
         }

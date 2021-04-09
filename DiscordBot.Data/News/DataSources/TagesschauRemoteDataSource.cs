@@ -1,26 +1,21 @@
-﻿using System.Threading.Tasks;
-using DiscordBot.Core.Xml;
+﻿using System.Threading;
+using System.Threading.Tasks;
 using DiscordBot.Data.News.Models;
-using DiscordBot.Data.Requests;
 
 namespace DiscordBot.Data.News.DataSources
 {
     internal class TagesschauRemoteDataSource : ITagesschauRemoteDataSource
     {
-        private const string BaseUrl = "https://www.tagesschau.de/xml/rss2";
+        private readonly ITagesschauApi _tagesschauApi;
 
-        private readonly IRequestClient _requestClient;
-
-        public TagesschauRemoteDataSource(IRequestClient requestClient)
+        public TagesschauRemoteDataSource(ITagesschauApi tagesschauApi)
         {
-            _requestClient = requestClient;
+            _tagesschauApi = tagesschauApi;
         }
 
-        public async Task<RssRemote?> GetTagesschauNews()
+        public Task<RssRemote> GetTagesschauNews(CancellationToken cancellationToken = default)
         {
-            var xml = await _requestClient.GetAsync<string>(BaseUrl);
-
-            return XmlConvert.DeserializeObject<RssRemote>(xml);
+            return _tagesschauApi.GetTagesschauNews(cancellationToken);
         }
     }
 }

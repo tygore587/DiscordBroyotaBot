@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 namespace DiscordBot.Data.WatchTogether.Models
 {
     [JsonObject]
-    public class CreatedRoomRemote
+    public class WatchTogetherRoomRemote
     {
         [JsonProperty("id")]
         public int Id { get; set; }

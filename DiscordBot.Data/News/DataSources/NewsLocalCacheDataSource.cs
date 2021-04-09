@@ -13,7 +13,7 @@ namespace DiscordBot.Data.News.DataSources
         {
         }
 
-        protected override string KeyPrefix { get; } = "news_";
+        protected override string KeyPrefix => "news_";
 
         public Task Set(string newsPortal, List<NewsInternal> newsInternal)
         {

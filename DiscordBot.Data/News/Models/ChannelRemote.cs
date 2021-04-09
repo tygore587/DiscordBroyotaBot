@@ -31,6 +31,6 @@ namespace DiscordBot.Data.News.Models
         public string? TimeToLife { get; set; }
 
         [XmlElement(ElementName = "item")]
-        public List<ItemRemote>? Items { get; set; }
+        public List<ItemRemote> Items { get; set; } = new();
     }
 }

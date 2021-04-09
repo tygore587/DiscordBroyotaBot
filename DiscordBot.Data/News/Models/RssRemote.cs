@@ -6,7 +6,7 @@ namespace DiscordBot.Data.News.Models
     public class RssRemote
     {
         [XmlElement(ElementName = "channel")]
-        public ChannelRemote? Channel { get; set; }
+        public ChannelRemote Channel { get; set; } = new();
 
         [XmlAttribute(AttributeName = "content", Namespace = "http://www.w3.org/2000/xmlns/")]
         public string? Content { get; set; }

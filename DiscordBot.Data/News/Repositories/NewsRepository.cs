@@ -29,14 +29,14 @@ namespace DiscordBot.Data.News.Repositories
 
             var rssRemote = await _tagesschauRemoteDataSource.GetTagesschauNews();
 
-            if (rssRemote == null)
-                return null;
+            var newsResult = rssRemote.ToNewsInternalList().ToList();
 
-            var newsResult = rssRemote.ToNewsInternalList()!.ToList();
+            if (newsResult.Any() != true)
+                return null;
 
             await _newsLocalCacheDataSource.Set(NewsCacheKeys.Tagesschau, newsResult);
 
-            return rssRemote.ToNewsInternalList();
+            return newsResult;
         }
     }
 }

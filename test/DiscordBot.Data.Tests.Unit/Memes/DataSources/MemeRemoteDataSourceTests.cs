@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using AutoFixture;
 using DiscordBot.Data.Memes.DataSources;
 using DiscordBot.Data.Memes.Extensions;
 using DiscordBot.Data.Memes.Models;
-using DiscordBot.Data.Requests;
 using FluentAssertions;
 using NSubstitute;
 using NSubstitute.ExceptionExtensions;
@@ -16,15 +14,15 @@ namespace DiscordBot.Data.Tests.Unit.Memes.DataSources
 {
     public class MemeRemoteDataSourceTests
     {
-        private readonly IRequestClient _requestClient;
+        private readonly IMemeApi _iMemeApi;
 
         private readonly MemesRemoteDataSource _sut;
 
         public MemeRemoteDataSourceTests()
         {
-            _requestClient = Substitute.For<IRequestClient>();
+            _iMemeApi = Substitute.For<IMemeApi>();
 
-            _sut = new MemesRemoteDataSource(_requestClient);
+            _sut = new MemesRemoteDataSource(_iMemeApi);
         }
 
         [Fact]
@@ -34,8 +32,7 @@ namespace DiscordBot.Data.Tests.Unit.Memes.DataSources
 
             var memeRemote = fixture.Create<MemeRemote>();
 
-            _requestClient.GetAsync<MemeRemote>(Arg.Any<string>(), Arg.Any<IReadOnlyCollection<string>>(),
-                Arg.Any<CancellationToken>()).Returns(Task.FromResult(memeRemote));
+            _iMemeApi.GetRandomMeme(Arg.Any<CancellationToken>()).Returns(Task.FromResult(memeRemote));
 
             var expectedMeme = memeRemote.ToMeme();
 
@@ -47,8 +44,7 @@ namespace DiscordBot.Data.Tests.Unit.Memes.DataSources
         [Fact]
         public async Task GetRandomMemeShouldThrowExceptionIfRequestClientThrowsException()
         {
-            _requestClient.GetAsync<MemeRemote>(Arg.Any<string>(), Arg.Any<IReadOnlyCollection<string>>(),
-                Arg.Any<CancellationToken>()).Throws(new Exception("testMessage"));
+            _iMemeApi.GetRandomMeme(Arg.Any<CancellationToken>()).Throws(new Exception("testMessage"));
 
             await Assert.ThrowsAsync<Exception>(() => _sut.GetRandomMeme());
         }

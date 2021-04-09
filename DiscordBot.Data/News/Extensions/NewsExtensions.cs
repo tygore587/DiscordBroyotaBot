@@ -18,14 +18,14 @@ namespace DiscordBot.Data.News.Extensions
             );
         }
 
-        private static IEnumerable<NewsInternal>? ToNewsInternalList(this IEnumerable<ItemRemote?>? itemRemotes)
+        private static IEnumerable<NewsInternal> ToNewsInternalList(this IEnumerable<ItemRemote> itemRemotes)
         {
-            return itemRemotes?.Where(item => item != null).Select(item => item!.ToNewsInternal());
+            return itemRemotes.Select(item => item.ToNewsInternal());
         }
 
-        public static IEnumerable<NewsInternal>? ToNewsInternalList(this RssRemote? rssRemote)
+        public static IEnumerable<NewsInternal> ToNewsInternalList(this RssRemote rssRemote)
         {
-            return rssRemote?.Channel?.Items?.ToNewsInternalList();
+            return rssRemote.Channel.Items.ToNewsInternalList();
         }
     }
 }
