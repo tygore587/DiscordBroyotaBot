@@ -27,7 +27,8 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'test'
-    arguments: '--collect:"XPlat Code Coverage"'
+    arguments: '--collect:"XPlat Code Coverage" --logger trx'
+    publishTestResults: false
   displayName: 'Run Tests'
 
 - task: reportgenerator@4
