@@ -20,9 +20,9 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\src\DiscordBot.Core.Constants\DiscordBot.Core.Constants.csproj"/>
-        <ProjectReference Include="..\src\DiscordBot.Core\DiscordBot.Core.csproj"/>
-        <ProjectReference Include="..\src\DiscordBot.Domain\DiscordBot.Domain.csproj"/>
+        <ProjectReference Include="..\DiscordBot.Domain\DiscordBot.Domain.csproj"/>
+        <ProjectReference Include="..\DiscordBot.Core.Constants\DiscordBot.Core.Constants.csproj"/>
+        <ProjectReference Include="..\DiscordBot.Core\DiscordBot.Core.csproj"/>
     </ItemGroup>
 
 </Project>

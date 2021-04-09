@@ -20,7 +20,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\DiscordBot.Data\DiscordBot.Data.csproj"/>
+        <ProjectReference Include="..\..\src\DiscordBot.Data\DiscordBot.Data.csproj"/>
         <ProjectReference Include="..\DiscordBot.Tests.Core\DiscordBot.Tests.Core.csproj"/>
     </ItemGroup>
 
