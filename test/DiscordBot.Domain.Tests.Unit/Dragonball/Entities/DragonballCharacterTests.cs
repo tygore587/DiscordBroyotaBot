@@ -20,8 +20,8 @@ namespace DiscordBot.Domain.UnitTests.Dragonball.Entities
             var toString = character.ToString();
 
             toString.Should().NotBeNull();
-            toString.Should().Contain(expectedName);
-            toString.Should().Contain(expectedAssist);
+            toString.Should().Contain($"{expectedName} :");
+            toString.Should().Contain($": {expectedAssist}");
             toString.Should().NotContain($": {notExpectedColor}");
         }
 
@@ -38,9 +38,9 @@ namespace DiscordBot.Domain.UnitTests.Dragonball.Entities
             var toString = character.ToStringWithColor();
 
             toString.Should().NotBeNull();
-            toString.Should().Contain(expectedName);
-            toString.Should().Contain(expectedAssist);
-            toString.Should().Contain($"{expectedColor}");
+            toString.Should().Contain($"{expectedName} :");
+            toString.Should().Contain($": {expectedAssist}");
+            toString.Should().Contain($": {expectedColor}");
         }
     }
 }
