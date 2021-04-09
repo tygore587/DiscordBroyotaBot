@@ -33,9 +33,9 @@ steps:
 
 - task: reportgenerator@4
   inputs:
-    reports: '$(Agent.BuildDirectory)/test/**/coverage.cobertura.xml'
+    reports: '$(Build.sourcesdirectory)/test/**/coverage.cobertura.xml'
     targetdir: '$(Agent.BuildDirectory)/coveragereport'
-    sourcedirs: '$(Agent.BuildDirectory)/src/'
+    sourcedirs: '$(Build.sourcesdirectory)/src/'
     tag: '$(build.buildnumber)_#$(build.buildid)_#$(build.sourceBranchName)'
   displayName: 'Generate Coverage Report'
 
