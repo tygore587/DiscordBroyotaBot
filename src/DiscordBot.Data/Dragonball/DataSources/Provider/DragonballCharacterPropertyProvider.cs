@@ -2,7 +2,7 @@
 
 namespace DiscordBot.Data.Dragonball.DataSources.Provider
 {
-    public class DragonballCharacterPropertyProvider : IDragonballCharacterPropertyProvider
+    internal class DragonballCharacterPropertyProvider : IDragonballCharacterPropertyProvider
     {
         public IEnumerable<string> GetCharacterNames()
         {

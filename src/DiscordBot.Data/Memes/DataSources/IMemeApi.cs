@@ -5,7 +5,7 @@ using Refit;
 
 namespace DiscordBot.Data.Memes.DataSources
 {
-    internal interface IMemeApi
+    public interface IMemeApi
     {
         const string BaseUrl = "https://meme-api.herokuapp.com";
 

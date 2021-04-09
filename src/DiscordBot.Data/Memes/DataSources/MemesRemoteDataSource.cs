@@ -8,7 +8,7 @@ using DiscordBot.Domain.Memes.Entities;
 
 namespace DiscordBot.Data.Memes.DataSources
 {
-    internal class MemesRemoteDataSource : IMemesRemoteDataSource
+    public class MemesRemoteDataSource : IMemesRemoteDataSource
     {
         private readonly IMemeApi _memeApi;
 

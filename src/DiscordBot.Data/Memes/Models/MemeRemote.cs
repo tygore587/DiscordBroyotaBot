@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 namespace DiscordBot.Data.Memes.Models
 {
     [JsonObject]
-    internal class MemeRemote
+    public class MemeRemote
     {
         [JsonProperty("postLink")]
         public string? PostLink { get; set; }
