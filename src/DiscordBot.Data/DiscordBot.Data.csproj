@@ -7,7 +7,6 @@
 
     <ItemGroup>
         <Folder Include="Memes"/>
-        <Folder Include="Requests"/>
         <Folder Include="WatchTogether"/>
     </ItemGroup>
 

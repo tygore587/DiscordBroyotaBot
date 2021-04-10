@@ -2,7 +2,6 @@
 using System.Linq;
 using System.Threading.Tasks;
 using DiscordBot.Data.News.DataSources;
-using DiscordBot.Data.News.Extensions;
 using DiscordBot.Domain.News.Entities;
 using DiscordBot.Domain.News.Repositories;
 
@@ -27,16 +26,14 @@ namespace DiscordBot.Data.News.Repositories
             if (cachedNews?.Any() == true)
                 return cachedNews;
 
-            var rssRemote = await _tagesschauRemoteDataSource.GetTagesschauNews();
+            var news = await _tagesschauRemoteDataSource.GetTagesschauNews();
 
-            var newsResult = rssRemote.ToNewsInternalList().ToList();
-
-            if (newsResult.Any() != true)
+            if (news.Any() != true)
                 return null;
 
-            await _newsLocalCacheDataSource.Set(NewsCacheKeys.Tagesschau, newsResult);
+            await _newsLocalCacheDataSource.Set(NewsCacheKeys.Tagesschau, news);
 
-            return newsResult;
+            return news;
         }
     }
 }

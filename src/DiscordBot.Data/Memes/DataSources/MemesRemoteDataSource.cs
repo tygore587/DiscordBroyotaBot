@@ -1,10 +1,11 @@
 ﻿using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Threading.Tasks;
+using DiscordBot.Data;
 using DiscordBot.Data.Memes.Extensions;
 using DiscordBot.Domain.Memes.Entities;
 
-[assembly: InternalsVisibleTo("DiscordBot.Data.Tests.Unit")]
+[assembly: InternalsVisibleTo(TestConstants.AssemblyName)]
 
 namespace DiscordBot.Data.Memes.DataSources
 {

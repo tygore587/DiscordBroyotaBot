@@ -7,16 +7,16 @@ namespace DiscordBot.Data.Memes.Models
     public class MemeRemote
     {
         [JsonProperty("postLink")]
-        public string? PostLink { get; set; }
+        public string PostLink = "";
+
+        [JsonProperty("title")]
+        public string Title = "";
+
+        [JsonProperty("url")]
+        public string Url = "";
 
         [JsonProperty("subreddit")]
         public string? Subreddit { get; set; }
-
-        [JsonProperty("title")]
-        public string? Title { get; set; }
-
-        [JsonProperty("url")]
-        public string? Url { get; set; }
 
         [JsonProperty("nsfw")]
         public bool Nsfw { get; set; }

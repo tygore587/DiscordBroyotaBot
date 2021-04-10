@@ -25,9 +25,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Folder Include="Memes\Extensions"/>
-        <Folder Include="News"/>
-        <Folder Include="Requests"/>
+        <Folder Include="News\DataSources"/>
         <Folder Include="WatchTogether"/>
     </ItemGroup>
 

@@ -1,11 +1,12 @@
-﻿using System.Threading;
+﻿using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
-using DiscordBot.Data.News.Models;
+using DiscordBot.Domain.News.Entities;
 
 namespace DiscordBot.Data.News.DataSources
 {
     internal interface ITagesschauRemoteDataSource
     {
-        Task<RssRemote> GetTagesschauNews(CancellationToken cancellationToken = default);
+        Task<List<NewsInternal>> GetTagesschauNews(CancellationToken cancellationToken = default);
     }
 }

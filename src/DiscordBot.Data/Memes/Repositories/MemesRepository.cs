@@ -1,9 +1,13 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
+using DiscordBot.Data;
 using DiscordBot.Data.Memes.DataSources;
 using DiscordBot.Domain.Memes.Entities;
 using DiscordBot.Domain.Memes.Repositories;
 using Serilog;
+
+[assembly: InternalsVisibleTo(TestConstants.AssemblyName)]
 
 namespace DiscordBot.Data.Memes.Repositories
 {
@@ -22,9 +26,7 @@ namespace DiscordBot.Data.Memes.Repositories
         {
             try
             {
-                var randomMeme = await _remoteDataSource.GetRandomMeme();
-
-                return randomMeme;
+                return await _remoteDataSource.GetRandomMeme();
             }
             catch (Exception ex)
             {

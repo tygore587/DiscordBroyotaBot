@@ -1,6 +1,9 @@
-﻿using System.Threading;
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
-using DiscordBot.Data.News.Models;
+using DiscordBot.Data.News.Extensions;
+using DiscordBot.Domain.News.Entities;
 
 namespace DiscordBot.Data.News.DataSources
 {
@@ -13,9 +16,10 @@ namespace DiscordBot.Data.News.DataSources
             _tagesschauApi = tagesschauApi;
         }
 
-        public Task<RssRemote> GetTagesschauNews(CancellationToken cancellationToken = default)
+        public async Task<List<NewsInternal>> GetTagesschauNews(CancellationToken cancellationToken = default)
         {
-            return _tagesschauApi.GetTagesschauNews(cancellationToken);
+            var result = await _tagesschauApi.GetTagesschauNews(cancellationToken);
+            return result.ToNewsInternalList().ToList();
         }
     }
 }
