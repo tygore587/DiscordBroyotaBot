@@ -1,6 +1,6 @@
 ﻿namespace DiscordBot.Domain.Entities
 {
-    public class CreatedRoom
+    public record CreatedRoom
     {
         public CreatedRoom(string streamKey)
         {

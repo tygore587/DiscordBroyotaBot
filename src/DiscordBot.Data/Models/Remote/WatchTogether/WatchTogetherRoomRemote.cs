@@ -6,11 +6,11 @@ namespace DiscordBot.Data.Models.Remote.WatchTogether
     [JsonObject]
     public class WatchTogetherRoomRemote
     {
+        [JsonProperty("streamkey")]
+        public string StreamKey = "";
+
         [JsonProperty("id")]
         public int Id { get; set; }
-
-        [JsonProperty("streamkey")]
-        public string? StreamKey { get; set; }
 
         [JsonProperty("created_at")]
         public DateTime CreatedAt { get; set; }

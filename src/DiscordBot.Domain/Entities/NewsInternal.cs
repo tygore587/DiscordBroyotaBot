@@ -2,7 +2,7 @@
 
 namespace DiscordBot.Domain.Entities
 {
-    public class NewsInternal
+    public record NewsInternal
     {
         public NewsInternal(string title, string link, string description, DateTime publicationDate)
         {

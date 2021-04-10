@@ -1,6 +1,6 @@
 ﻿namespace DiscordBot.Domain.Entities
 {
-    public class Meme
+    public record Meme
     {
         public string PostLink { get; init; } = string.Empty;
         public string Title { get; init; } = string.Empty;

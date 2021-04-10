@@ -12,7 +12,7 @@ namespace DiscordBot.Data.Extensions
                 throw new ArgumentNullException(nameof(watchTogetherRoomRemote.StreamKey),
                     "Stream key is null or empty.");
 
-            return new CreatedRoom(watchTogetherRoomRemote.StreamKey!);
+            return new CreatedRoom(watchTogetherRoomRemote.StreamKey);
         }
     }
 }

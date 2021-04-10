@@ -1,6 +1,6 @@
 ﻿namespace DiscordBot.Domain.Entities
 {
-    public class DragonballCharacter
+    public record DragonballCharacter
     {
         public DragonballCharacter(string name, string assist, int color)
         {
