@@ -1,32 +1,33 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Caching.Memory;
 using Serilog;
 
 namespace DiscordBot.Core.Cache
 {
-    public abstract class ExpirableMemCache<TItem>
+    public sealed class ExpirableMemCache<TItem> : IExpirableMemCache<TItem>
     {
         private readonly MemoryCacheEntryOptions _entryOptions;
         private readonly ILogger _logger;
         private readonly MemoryCache _memoryCache;
 
-        protected ExpirableMemCache(TimeSpan expireTimeSpan, ILogger logger) : this(
+        public ExpirableMemCache(TimeSpan expireTimeSpan, ILogger logger) : this(
             new MemoryCache(new MemoryCacheOptions()),
             new MemoryCacheEntryOptions().SetAbsoluteExpiration(expireTimeSpan), logger)
         {
         }
 
-        private ExpirableMemCache(MemoryCache memoryCache, MemoryCacheEntryOptions options, ILogger logger)
+        private ExpirableMemCache(MemoryCache memoryCache, MemoryCacheEntryOptions options,
+            ILogger logger)
         {
             _memoryCache = memoryCache;
             _entryOptions = options;
             _logger = logger;
         }
 
-        protected abstract string KeyPrefix { get; }
 
-        protected Task Set(CacheKey key, TItem? item)
+        public Task Set(CacheKey key, TItem? item)
         {
             if (Equals(item, default(TItem?)))
                 return Task.CompletedTask;
@@ -42,7 +43,7 @@ namespace DiscordBot.Core.Cache
             }
         }
 
-        protected bool TryGetValue(CacheKey key, out TItem? item)
+        public bool TryGetValue(CacheKey key, out TItem? item)
         {
             try
             {
@@ -56,7 +57,7 @@ namespace DiscordBot.Core.Cache
             }
         }
 
-        protected Task<TItem?> GetValue(CacheKey key)
+        public Task<TItem?> GetValue(CacheKey key)
         {
             try
             {
@@ -69,7 +70,7 @@ namespace DiscordBot.Core.Cache
             }
         }
 
-        protected Task RemoveValue(CacheKey key)
+        public Task RemoveValue(CacheKey key)
         {
             try
             {
@@ -82,9 +83,9 @@ namespace DiscordBot.Core.Cache
             }
         }
 
-        protected CacheKey CreateCacheKey(params string[] parameters)
+        public CacheKey CreateCacheKey(string keyPrefix, IEnumerable<string> parameters)
         {
-            return new(KeyPrefix, parameters);
+            return new(keyPrefix, parameters);
         }
     }
 }

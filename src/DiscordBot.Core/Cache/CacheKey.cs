@@ -1,16 +1,19 @@
-﻿namespace DiscordBot.Core.Cache
+﻿using System.Collections.Generic;
+using System.Linq;
+
+namespace DiscordBot.Core.Cache
 {
     public class CacheKey
     {
-        public CacheKey(string keyPrefix, string[] keyParameters)
+        public CacheKey(string keyPrefix, IEnumerable<string> keyParameters)
         {
             KeyPrefix = keyPrefix;
-            KeyParameters = keyParameters;
+            KeyParameters = keyParameters.ToList();
         }
 
         private string KeyPrefix { get; }
 
-        private string[] KeyParameters { get; }
+        private List<string> KeyParameters { get; }
 
         public string ToCacheKey()
         {

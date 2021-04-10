@@ -24,8 +24,4 @@
         <ProjectReference Include="..\DiscordBot.Tests.Core\DiscordBot.Tests.Core.csproj"/>
     </ItemGroup>
 
-    <ItemGroup>
-        <Folder Include="WatchTogether"/>
-    </ItemGroup>
-
 </Project>

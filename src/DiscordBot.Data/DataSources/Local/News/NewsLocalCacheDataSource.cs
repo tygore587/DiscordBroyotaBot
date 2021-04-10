@@ -7,32 +7,40 @@ using Serilog;
 
 namespace DiscordBot.Data.DataSources.Local.News
 {
-    public class NewsLocalCacheDataSource : ExpirableMemCache<List<NewsInternal>>, INewsLocalCacheDataSource
+    public class NewsLocalCacheDataSource : INewsLocalCacheDataSource
     {
-        public NewsLocalCacheDataSource(ILogger logger) : base(TimeSpan.FromMinutes(10), logger)
-        {
-        }
+        private const string KeyPrefix = "news_";
+        private readonly IExpirableMemCache<List<NewsInternal>> _memCache;
 
-        protected override string KeyPrefix => "news_";
+        public NewsLocalCacheDataSource(ILogger logger, IExpirableMemCache<List<NewsInternal>>? memCache = null)
+        {
+            _memCache = memCache ??
+                        new ExpirableMemCache<List<NewsInternal>>(TimeSpan.FromMinutes(10), logger);
+        }
 
         public Task Set(string newsPortal, List<NewsInternal> newsInternal)
         {
-            return Set(CreateCacheKey(newsPortal), newsInternal);
+            return _memCache.Set(CreateCacheKey(newsPortal), newsInternal);
         }
 
         public bool TryGet(string newsPortal, out List<NewsInternal>? newsInternal)
         {
-            return TryGetValue(CreateCacheKey(newsPortal), out newsInternal);
+            return _memCache.TryGetValue(CreateCacheKey(newsPortal), out newsInternal);
         }
 
         public Task<List<NewsInternal>?> Get(string newsPortal)
         {
-            return GetValue(CreateCacheKey(newsPortal));
+            return _memCache.GetValue(CreateCacheKey(newsPortal));
         }
 
         public Task Remove(string newsPortal)
         {
-            return RemoveValue(CreateCacheKey(newsPortal));
+            return _memCache.RemoveValue(CreateCacheKey(newsPortal));
+        }
+
+        private CacheKey CreateCacheKey(string newsPortal)
+        {
+            return _memCache.CreateCacheKey(KeyPrefix, new[] {newsPortal});
         }
     }
 }
