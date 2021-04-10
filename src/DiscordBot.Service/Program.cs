@@ -1,11 +1,7 @@
 ﻿using System.Threading.Tasks;
 using DiscordBot.Commands;
-using DiscordBot.Commands.Dice;
-using DiscordBot.Commands.Dragonball;
 using DiscordBot.Commands.Helper;
-using DiscordBot.Commands.Memes;
-using DiscordBot.Commands.News;
-using DiscordBot.Commands.WatchTogether;
+using DiscordBot.Commands.Modules;
 using DiscordBot.Core.Constants;
 using DiscordBot.Data;
 using DotNetEnv;

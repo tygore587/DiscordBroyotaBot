@@ -6,8 +6,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Folder Include="Memes"/>
-        <Folder Include="WatchTogether"/>
+        <Folder Include="Models\Local"/>
     </ItemGroup>
 
     <ItemGroup>

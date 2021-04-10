@@ -7,13 +7,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Folder Include="Dice"/>
-        <Folder Include="Dragonball"/>
-        <Folder Include="Memes"/>
-        <Folder Include="WatchTogether"/>
-    </ItemGroup>
-
-    <ItemGroup>
         <ProjectReference Include="..\DiscordBot.Core.Domain\DiscordBot.Core.Domain.csproj"/>
     </ItemGroup>
 
