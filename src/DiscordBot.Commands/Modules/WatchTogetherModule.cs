@@ -3,7 +3,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using DiscordBot.Commands.Exceptions;
 using DiscordBot.Commands.Logging;
-using DiscordBot.Domain.UseCases;
+using DiscordBot.Domain.WatchTogether.UseCases;
 using DSharpPlus.CommandsNext;
 using DSharpPlus.CommandsNext.Attributes;
 

@@ -3,7 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using DiscordBot.Commands.Extensions;
 using DiscordBot.Commands.Logging;
-using DiscordBot.Domain.UseCases;
+using DiscordBot.Domain.News.UseCases;
 using DSharpPlus.CommandsNext;
 using DSharpPlus.CommandsNext.Attributes;
 using DSharpPlus.Entities;

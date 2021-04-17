@@ -24,8 +24,12 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\src\DiscordBot.Domain\DiscordBot.Domain.csproj" />
+        <ProjectReference Include="..\..\src\DiscordBot.Domain\DiscordBot.Domain.csproj"/>
         <ProjectReference Include="..\DiscordBot.Tests.Core\DiscordBot.Tests.Core.csproj"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Folder Include="News"/>
     </ItemGroup>
 
 </Project>
