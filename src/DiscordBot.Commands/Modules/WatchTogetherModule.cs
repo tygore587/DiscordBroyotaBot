@@ -66,7 +66,6 @@ namespace DiscordBot.Commands.Modules
                 _logger.Error(ex, context, "Error while processing watch together command. Youtube-Link: {youtubeLink}",
                     youtubeLink);
 
-                Console.WriteLine(ex.Message);
                 await context.RespondAsync($"{author} An unexpected error occurs. {ex.Message}");
             }
         }

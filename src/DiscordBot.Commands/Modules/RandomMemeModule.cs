@@ -29,7 +29,7 @@ namespace DiscordBot.Commands.Modules
             var author = context.GetAuthorMention();
             try
             {
-                var withNfsw = argument.ToLower() switch
+                var withNfsw = argument.ToLowerInvariant() switch
                 {
                     "" => false,
                     "--nsfw" => true,

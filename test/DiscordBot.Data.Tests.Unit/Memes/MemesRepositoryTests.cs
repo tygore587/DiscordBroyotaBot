@@ -15,16 +15,14 @@ namespace DiscordBot.Data.Tests.Unit.Memes
 {
     public class MemesRepositoryTests
     {
-        private readonly ILogger _logger;
-
         private readonly IMemesRemoteDataSource _remoteDataSource;
         private readonly MemesRepository _sut;
 
         public MemesRepositoryTests()
         {
-            _logger = Substitute.For<ILogger>();
+            var logger = Substitute.For<ILogger>();
             _remoteDataSource = Substitute.For<IMemesRemoteDataSource>();
-            _sut = new MemesRepository(_remoteDataSource, _logger);
+            _sut = new MemesRepository(_remoteDataSource, logger);
         }
 
         [Fact]
