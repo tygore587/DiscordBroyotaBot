@@ -3,21 +3,10 @@
 namespace DiscordBot.Domain.News.Entities
 {
     public record NewsInternal
-    {
-        public NewsInternal(string title, string link, string description, DateTime publicationDate)
-        {
-            Title = title;
-            Link = link;
-            Description = description;
-            PublicationDate = publicationDate;
-        }
-
-        public string Title { get; }
-
-        public string Link { get; }
-
-        public string Description { get; }
-
-        public DateTime PublicationDate { get; }
-    }
+    (
+        string Title,
+        string Link,
+        string Description,
+        DateTime PublicationDate
+    );
 }

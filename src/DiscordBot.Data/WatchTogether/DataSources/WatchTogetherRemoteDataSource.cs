@@ -20,11 +20,8 @@ namespace DiscordBot.Data.WatchTogether.DataSources
                 throw new ArgumentNullException(nameof(EnvironmentVariables.WatchTogetherApiKey),
                     "Watch together api key was null or empty.");
 
-            var createRoomBody = new WatchTogetherRoomCreationRequestRemote(EnvironmentVariables.WatchTogetherApiKey)
-            {
-                BackgroundColor = "#131313",
-                Share = youtubeLink
-            };
+            var createRoomBody = new WatchTogetherRoomCreationRequestRemote(EnvironmentVariables.WatchTogetherApiKey,
+                youtubeLink, "#131313", null);
 
             return await _watchTogetherApi.CreateRoom(createRoomBody);
         }

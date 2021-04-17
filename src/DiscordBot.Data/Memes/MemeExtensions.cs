@@ -7,13 +7,7 @@ namespace DiscordBot.Data.Memes
     {
         public static Meme ToMeme(this MemeRemote memeRemote)
         {
-            return new()
-            {
-                Nsfw = memeRemote.Nsfw,
-                PostLink = memeRemote.PostLink ?? string.Empty,
-                Title = memeRemote.Title ?? string.Empty,
-                Url = memeRemote.Url ?? string.Empty
-            };
+            return new(memeRemote.PostLink, memeRemote.Title, memeRemote.Url, memeRemote.Nsfw);
         }
     }
 }
