@@ -16,13 +16,7 @@ namespace DiscordBot.Data.Tests.Unit.Memes
 
             var memeRemote = fixture.Create<MemeRemote>();
 
-            var expectedMeme = new Meme
-            {
-                Nsfw = memeRemote.Nsfw,
-                Title = memeRemote.Title,
-                Url = memeRemote.Url,
-                PostLink = memeRemote.PostLink
-            };
+            var expectedMeme = new Meme(memeRemote.PostLink, memeRemote.Title, memeRemote.Url, memeRemote.Nsfw);
 
             var actualMeme = memeRemote.ToMeme();
 

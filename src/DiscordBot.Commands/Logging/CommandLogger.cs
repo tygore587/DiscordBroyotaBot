@@ -53,7 +53,8 @@ namespace DiscordBot.Commands.Logging
             return (completeMessageTemplate, completeArgumentList);
         }
 
-        private void Log(LogEventLevel level, CommandContext context, string messageTemplate, object[] arguments)
+        private void Log(LogEventLevel level, CommandContext context, string messageTemplate,
+            IEnumerable<object> arguments)
         {
             var (completeMessageTemplate, completeArgumentList) =
                 AddDiscordContext(messageTemplate, context, arguments);
