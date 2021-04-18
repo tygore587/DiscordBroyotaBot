@@ -10,8 +10,9 @@ COPY ["src/DiscordBot.Core.Constants/DiscordBot.Core.Constants.csproj", "src/Dis
 COPY ["src/DiscordBot.Commands/DiscordBot.Commands.csproj", "src/DiscordBot.Commands/"]
 COPY ["src/DiscordBot.Domain/DiscordBot.Domain.csproj", "src/DiscordBot.Domain/"]
 COPY ["src/DiscordBot.Core.Domain/DiscordBot.Core.Domain.csproj", "src/DiscordBot.Core.Domain/"]
-COPY ["src/DiscordBot.Data/DiscordBot.Data.csproj", "src/DiscordBot.Data/"]
 COPY ["src/DiscordBot.Core/DiscordBot.Core.csproj", "src/DiscordBot.Core/"]
+COPY ["src/DiscordBot.Data/DiscordBot.Data.csproj", "src/DiscordBot.Data/"]
+COPY ["src/DiscordBot.Core.Data/DiscordBot.Core.Data.csproj", "src/DiscordBot.Core.Data/"]
 RUN dotnet restore "src/DiscordBot.Service/DiscordBot.Service.csproj"
 COPY . .
 WORKDIR "/src/src/DiscordBot.Service"
