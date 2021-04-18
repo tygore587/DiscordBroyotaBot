@@ -6,9 +6,9 @@ namespace DiscordBot.Data.News.DataSources.Local
 {
     public interface INewsLocalCacheDataSource
     {
-        Task<List<NewsInternal>?> Get(string newsPortal);
+        Task<List<NewsEntity>?> Get(string newsPortal);
         Task Remove(string newsPortal);
-        Task Set(string newsPortal, List<NewsInternal> newsInternal);
-        bool TryGet(string newsPortal, out List<NewsInternal>? newsInternal);
+        Task Set(string newsPortal, List<NewsEntity> newsInternal);
+        bool TryGet(string newsPortal, out List<NewsEntity>? newsInternal);
     }
 }

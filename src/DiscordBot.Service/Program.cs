@@ -3,6 +3,7 @@ using DiscordBot.Commands;
 using DiscordBot.Commands.Helper;
 using DiscordBot.Commands.Modules;
 using DiscordBot.Core.Constants;
+using DiscordBot.Core.DateTimeProvider;
 using DiscordBot.Data;
 using DotNetEnv;
 using DSharpPlus;
@@ -59,6 +60,7 @@ namespace DiscordBot.Service
         {
             return new ServiceCollection()
                 .ConfigureLogging()
+                .AddSingleton<IDateTimeProvider, DateTimeProvider>()
                 .AddCommandDependencies()
                 .AddDomainAndDataServices()
                 .BuildServiceProvider();

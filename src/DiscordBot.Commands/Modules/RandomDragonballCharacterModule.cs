@@ -1,10 +1,13 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using DiscordBot.Commands.Exceptions;
+using DiscordBot.Commands.Extensions;
 using DiscordBot.Commands.Logging;
+using DiscordBot.Domain.Dragonball.Entities;
 using DiscordBot.Domain.Dragonball.UseCases;
 using DSharpPlus.CommandsNext;
 using DSharpPlus.CommandsNext.Attributes;
+using DSharpPlus.Entities;
 
 // ReSharper disable UnusedMember.Global
 // ReSharper disable ClassNeverInstantiated.Global
@@ -31,10 +34,10 @@ namespace DiscordBot.Commands.Modules
             [Description("Use --color to also get random color.")]
             string argument = "")
         {
-            var author = context.Message.Author.Mention;
-
             try
             {
+                await context.TriggerTypingAsync();
+
                 var withColor = argument switch
                 {
                     "--color" => true,
@@ -50,21 +53,45 @@ namespace DiscordBot.Commands.Modules
 
                 var characters = _getRandomCharacters.Execute(characterParams);
 
-                var characterStrings =
-                    characters.Select(character => !withColor ? character.ToString() : character.ToStringWithColor());
+                _logger.Information(context, "Successfully got dragonball characters. {@characters}", characters);
 
-                var chosenCharacters = string.Join("\n", characterStrings);
+                var embed = CreateRandomCharacterEmbed(characters, withColor);
 
-                _logger.Information(context, "Successfully got dragonball characters. {characters}", chosenCharacters);
-
-                await context.RespondAsync($"{author} the bot has chosen:\n{chosenCharacters}");
+                await context.RespondAsync($"{context.GetAuthorMention()} The bot has chosen:", embed: embed);
             }
             catch (ArgumentValidationException ex)
             {
                 _logger.Error(ex, context, "Error while processing dragonball command.");
 
-                await context.RespondAsync($"{author} {ex.Message}");
+                await context.RespondAsync($"{context.GetAuthorMention()} {ex.Message}");
             }
+        }
+
+        private static DiscordEmbed CreateRandomCharacterEmbed(List<DragonballCharacter> dragonballCharacters,
+            bool withColor)
+        {
+            var embedBuilder = new DiscordEmbedBuilder();
+
+            embedBuilder.WithAuthor("Random Characters");
+
+            embedBuilder.WithThumbnail(
+                "https://cdn.akamai.steamstatic.com/steam/apps/678950/header.jpg?t=1617120109");
+
+            dragonballCharacters.ForEach(character =>
+            {
+                var (name,
+                    assist,
+                    color) = character;
+
+                var text = $"Assist: {assist}";
+
+                if (withColor)
+                    text += $"\nColor: {color}";
+
+                embedBuilder.AddField(name, text);
+            });
+
+            return embedBuilder.Build();
         }
     }
 }

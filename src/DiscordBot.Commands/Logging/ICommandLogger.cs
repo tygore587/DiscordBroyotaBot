@@ -7,5 +7,6 @@ namespace DiscordBot.Commands.Logging
     {
         void Error(Exception ex, CommandContext context, string messageTemplate, params object[] arguments);
         void Information(CommandContext context, string messageTemplate, params object[] arguments);
+        void Debug(CommandContext context, string messageTemplate, params object[] arguments);
     }
 }

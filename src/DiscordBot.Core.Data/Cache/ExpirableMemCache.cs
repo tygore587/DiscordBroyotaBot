@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using DiscordBot.Core.Cache;
 using Microsoft.Extensions.Caching.Memory;
 using Serilog;
 
-namespace DiscordBot.Core.Cache
+namespace DiscordBot.Core.Data.Cache
 {
     public sealed class ExpirableMemCache<TItem> : IExpirableMemCache<TItem>
     {
@@ -27,18 +28,15 @@ namespace DiscordBot.Core.Cache
         }
 
 
-        public Task Set(CacheKey key, TItem? item)
+        public Task Set(CacheKey key, TItem item)
         {
-            if (Equals(item, default(TItem?)))
-                return Task.CompletedTask;
-
             try
             {
                 return Task.Run(() => _memoryCache.Set(key.ToCacheKey(), item, _entryOptions));
             }
             catch (Exception ex)
             {
-                _logger.Error(ex, "Can't set value in cache for {key}.", key);
+                _logger.Error(ex, "Can't set value in cache for {@Key}", key);
                 return Task.CompletedTask;
             }
         }
@@ -51,7 +49,7 @@ namespace DiscordBot.Core.Cache
             }
             catch (Exception ex)
             {
-                _logger.Error(ex, "Can't get value in cache for {key}.", key);
+                _logger.Error(ex, "Can't get value in cache for {@Key}", key);
                 item = default;
                 return false;
             }
@@ -65,7 +63,7 @@ namespace DiscordBot.Core.Cache
             }
             catch (Exception ex)
             {
-                _logger.Error(ex, "Can't get value in cache for {key}.", key);
+                _logger.Error(ex, "Can't get value in cache for {@Key}", key);
                 return Task.FromResult<TItem?>(default);
             }
         }
@@ -78,7 +76,7 @@ namespace DiscordBot.Core.Cache
             }
             catch (Exception ex)
             {
-                _logger.Error(ex, "Can't remove value from cache for {key}.", key);
+                _logger.Error(ex, "Can't remove value from cache for {@Key}", key);
                 return Task.CompletedTask;
             }
         }

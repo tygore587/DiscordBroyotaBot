@@ -6,6 +6,6 @@ namespace DiscordBot.Domain.News.Repositories
 {
     public interface INewsRepository
     {
-        Task<IEnumerable<NewsInternal>?> GetTagesschauNews();
+        Task<IEnumerable<NewsEntity>?> GetTagesschauNews();
     }
 }

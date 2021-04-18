@@ -20,7 +20,7 @@ namespace DiscordBot.Data.News
             _newsLocalCacheDataSource = newsLocalCacheDataSource;
         }
 
-        public async Task<IEnumerable<NewsInternal>?> GetTagesschauNews()
+        public async Task<IEnumerable<NewsEntity>?> GetTagesschauNews()
         {
             var cachedNews = await _newsLocalCacheDataSource.Get(NewsCacheKeys.Tagesschau);
 

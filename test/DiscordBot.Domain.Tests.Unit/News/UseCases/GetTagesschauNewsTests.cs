@@ -29,7 +29,7 @@ namespace DiscordBot.Domain.UnitTests.News.UseCases
         {
             var fixture = new Fixture();
 
-            var generatedNews = fixture.CreateMany<NewsInternal>(20).ToList();
+            var generatedNews = fixture.CreateMany<NewsEntity>(20).ToList();
 
             _newsRepository.GetTagesschauNews().Returns(generatedNews);
 
@@ -51,7 +51,7 @@ namespace DiscordBot.Domain.UnitTests.News.UseCases
 
             const int expectedNumberOfNews = 20;
 
-            var generatedNews = fixture.CreateMany<NewsInternal>(expectedNumberOfNews).ToList();
+            var generatedNews = fixture.CreateMany<NewsEntity>(expectedNumberOfNews).ToList();
 
             _newsRepository.GetTagesschauNews().Returns(generatedNews);
 
@@ -71,7 +71,7 @@ namespace DiscordBot.Domain.UnitTests.News.UseCases
         {
             var fixture = new Fixture();
 
-            var generatedNews = fixture.CreateMany<NewsInternal>(20).ToList();
+            var generatedNews = fixture.CreateMany<NewsEntity>(20).ToList();
 
             _newsRepository.GetTagesschauNews().Returns(generatedNews);
 
@@ -83,7 +83,7 @@ namespace DiscordBot.Domain.UnitTests.News.UseCases
         [Fact]
         public async Task ShouldThrowExceptionIfReturnedNewsAreNull()
         {
-            _newsRepository.GetTagesschauNews().Returns((IEnumerable<NewsInternal>?) null);
+            _newsRepository.GetTagesschauNews().Returns((IEnumerable<NewsEntity>?) null);
 
             var parameters = new TagesschauParameters(20);
 

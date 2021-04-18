@@ -8,7 +8,7 @@ namespace DiscordBot.Data.News
 {
     public static class NewsExtensions
     {
-        private static NewsInternal ToNewsInternal(this ItemRemote itemRemote)
+        private static NewsEntity ToNewsInternal(this ItemRemote itemRemote)
         {
             return new(
                 itemRemote.Title,
@@ -18,12 +18,12 @@ namespace DiscordBot.Data.News
             );
         }
 
-        private static IEnumerable<NewsInternal> ToNewsInternalList(this IEnumerable<ItemRemote> itemRemotes)
+        private static IEnumerable<NewsEntity> ToNewsInternalList(this IEnumerable<ItemRemote> itemRemotes)
         {
             return itemRemotes.Select(item => item.ToNewsInternal());
         }
 
-        public static IEnumerable<NewsInternal> ToNewsInternalList(this RssRemote rssRemote)
+        public static IEnumerable<NewsEntity> ToNewsInternalList(this RssRemote rssRemote)
         {
             return rssRemote.Channel.Items.ToNewsInternalList();
         }

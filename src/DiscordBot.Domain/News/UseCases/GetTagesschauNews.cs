@@ -8,7 +8,7 @@ using DiscordBot.Domain.News.Repositories;
 
 namespace DiscordBot.Domain.News.UseCases
 {
-    public class GetTagesschauNews : IUseCase<Task<List<NewsInternal>>, TagesschauParameters>
+    public class GetTagesschauNews : IUseCase<Task<List<NewsEntity>>, TagesschauParameters>
     {
         private readonly INewsRepository _newsRepository;
 
@@ -17,7 +17,7 @@ namespace DiscordBot.Domain.News.UseCases
             _newsRepository = newsRepository;
         }
 
-        public async Task<List<NewsInternal>> Execute(TagesschauParameters parameters)
+        public async Task<List<NewsEntity>> Execute(TagesschauParameters parameters)
         {
             if (parameters.Count <= 0)
                 throw new ArgumentOutOfRangeException(nameof(parameters.Count), "Parameter counts must not be null.");

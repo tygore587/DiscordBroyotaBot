@@ -33,9 +33,9 @@ namespace DiscordBot.Data.Tests.Unit.News
         {
             var fixture = new Fixture();
 
-            var expectedNews = fixture.CreateMany<NewsInternal>(10).ToList();
+            var expectedNews = fixture.CreateMany<NewsEntity>(10).ToList();
 
-            _newsLocalCacheDataSource.Get(Arg.Any<string>()).Returns(Task.FromResult<List<NewsInternal>>(null));
+            _newsLocalCacheDataSource.Get(Arg.Any<string>()).Returns(Task.FromResult<List<NewsEntity>>(null));
 
             _tagesschauRemoteDataSource.GetTagesschauNews(Arg.Any<CancellationToken>())
                 .Returns(Task.FromResult(expectedNews));
@@ -52,7 +52,7 @@ namespace DiscordBot.Data.Tests.Unit.News
         {
             var fixture = new Fixture();
 
-            var expectedNews = fixture.CreateMany<NewsInternal>(10).ToList();
+            var expectedNews = fixture.CreateMany<NewsEntity>(10).ToList();
 
             _newsLocalCacheDataSource.Get(Arg.Any<string>()).Returns(Task.FromResult(expectedNews));
 

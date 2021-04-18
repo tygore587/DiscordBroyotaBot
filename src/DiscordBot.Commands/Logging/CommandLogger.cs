@@ -17,6 +17,11 @@ namespace DiscordBot.Commands.Logging
             _logger = logger;
         }
 
+        public void Debug(CommandContext context, string messageTemplate, params object[] arguments)
+        {
+            Log(LogEventLevel.Debug, context, messageTemplate, arguments);
+        }
+
         public void Error(Exception ex, CommandContext context, string messageTemplate, params object[] arguments)
         {
             Log(LogEventLevel.Error, context, messageTemplate, arguments);

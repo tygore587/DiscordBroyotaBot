@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using DiscordBot.Core.Cache;
+using DiscordBot.Core.Data.Cache;
 using DiscordBot.Domain.News.Entities;
 using Serilog;
 
@@ -10,25 +11,25 @@ namespace DiscordBot.Data.News.DataSources.Local
     public class NewsLocalCacheDataSource : INewsLocalCacheDataSource
     {
         private const string KeyPrefix = "news_";
-        private readonly IExpirableMemCache<List<NewsInternal>> _memCache;
+        private readonly IExpirableMemCache<List<NewsEntity>> _memCache;
 
-        public NewsLocalCacheDataSource(ILogger logger, IExpirableMemCache<List<NewsInternal>>? memCache = null)
+        public NewsLocalCacheDataSource(ILogger logger, IExpirableMemCache<List<NewsEntity>>? memCache = null)
         {
             _memCache = memCache ??
-                        new ExpirableMemCache<List<NewsInternal>>(TimeSpan.FromMinutes(10), logger);
+                        new ExpirableMemCache<List<NewsEntity>>(TimeSpan.FromMinutes(10), logger);
         }
 
-        public Task Set(string newsPortal, List<NewsInternal> newsInternal)
+        public Task Set(string newsPortal, List<NewsEntity> newsInternal)
         {
             return _memCache.Set(CreateCacheKey(newsPortal), newsInternal);
         }
 
-        public bool TryGet(string newsPortal, out List<NewsInternal>? newsInternal)
+        public bool TryGet(string newsPortal, out List<NewsEntity>? newsInternal)
         {
             return _memCache.TryGetValue(CreateCacheKey(newsPortal), out newsInternal);
         }
 
-        public Task<List<NewsInternal>?> Get(string newsPortal)
+        public Task<List<NewsEntity>?> Get(string newsPortal)
         {
             return _memCache.GetValue(CreateCacheKey(newsPortal));
         }

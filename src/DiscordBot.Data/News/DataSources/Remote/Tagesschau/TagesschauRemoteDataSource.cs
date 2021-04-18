@@ -15,7 +15,7 @@ namespace DiscordBot.Data.News.DataSources.Remote.Tagesschau
             _tagesschauApi = tagesschauApi;
         }
 
-        public async Task<List<NewsInternal>> GetTagesschauNews(CancellationToken cancellationToken = default)
+        public async Task<List<NewsEntity>> GetTagesschauNews(CancellationToken cancellationToken = default)
         {
             var result = await _tagesschauApi.GetTagesschauNews(cancellationToken);
             return result.ToNewsInternalList().ToList();

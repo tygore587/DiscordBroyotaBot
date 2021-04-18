@@ -7,6 +7,6 @@ namespace DiscordBot.Data.News.DataSources.Remote.Tagesschau
 {
     internal interface ITagesschauRemoteDataSource
     {
-        Task<List<NewsInternal>> GetTagesschauNews(CancellationToken cancellationToken = default);
+        Task<List<NewsEntity>> GetTagesschauNews(CancellationToken cancellationToken = default);
     }
 }
