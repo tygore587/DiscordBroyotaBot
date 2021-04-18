@@ -1,12 +1,9 @@
 ﻿using System.Threading.Tasks;
 using DiscordBot.Commands;
-using DiscordBot.Commands.Dice;
-using DiscordBot.Commands.Dragonball;
 using DiscordBot.Commands.Helper;
-using DiscordBot.Commands.Memes;
-using DiscordBot.Commands.News;
-using DiscordBot.Commands.WatchTogether;
+using DiscordBot.Commands.Modules;
 using DiscordBot.Core.Constants;
+using DiscordBot.Core.DateTimeProvider;
 using DiscordBot.Data;
 using DotNetEnv;
 using DSharpPlus;
@@ -15,7 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace DiscordBot.Service
 {
-    internal class Program
+    internal static class Program
     {
         private static void Main(string[] args)
         {
@@ -62,6 +59,9 @@ namespace DiscordBot.Service
         private static ServiceProvider CreateServices()
         {
             return new ServiceCollection()
+                .ConfigureLogging()
+                .AddSingleton<IDateTimeProvider, DateTimeProvider>()
+                .AddCommandDependencies()
                 .AddDomainAndDataServices()
                 .BuildServiceProvider();
         }

@@ -22,7 +22,7 @@ namespace DiscordBot.Domain.Memes.UseCases
             if (randomMeme == null)
                 throw new ArgumentNullException(nameof(randomMeme), "Couldn't get a random meme from repository.");
 
-            while (randomMeme?.Nsfw == true && !parameters.IncludeNsfw)
+            while (randomMeme!.Nsfw && !parameters.IncludeNsfw)
                 randomMeme = await _memesRepository.GetRandomMeme();
 
             return randomMeme!;

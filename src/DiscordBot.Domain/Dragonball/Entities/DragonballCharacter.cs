@@ -1,18 +1,12 @@
-﻿namespace Discordbot.Domain.Dragonball.Entities
+﻿namespace DiscordBot.Domain.Dragonball.Entities
 {
-    public class DragonballCharacter
+    public record DragonballCharacter
+    (
+        string Name,
+        string Assist,
+        int Color
+    )
     {
-        public DragonballCharacter(string name, string assist, int color)
-        {
-            Name = name;
-            Assist = assist;
-            Color = color;
-        }
-
-        public string Name { get; }
-        public string Assist { get; }
-        public int Color { get; }
-
         public override string ToString()
         {
             return $"{Name} : {Assist}";

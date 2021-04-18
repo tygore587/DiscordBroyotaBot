@@ -7,14 +7,15 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Folder Include="Dice"/>
-        <Folder Include="Dragonball"/>
-        <Folder Include="Memes"/>
-        <Folder Include="WatchTogether"/>
+        <ProjectReference Include="..\DiscordBot.Core.Domain\DiscordBot.Core.Domain.csproj"/>
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\DiscordBot.Core.Domain\DiscordBot.Core.Domain.csproj"/>
+        <PackageReference Include="Serilog" Version="2.10.0"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Folder Include="WatchTogether"/>
     </ItemGroup>
 
 </Project>

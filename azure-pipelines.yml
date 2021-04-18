@@ -1,0 +1,55 @@
+pool:
+  vmImage: 'ubuntu-latest'
+
+variables:
+  solution: 'DiscordBot.sln'
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
+  disable.coverage.autogenerate: 'true' # Disable Generation of Publish Code Coverage Result Task
+
+name: $(Date:yyyyMMdd)$(Rev:.r)_$(Build.SourceBranchName)
+
+pr:
+  - main
+trigger:
+  - main
+ 
+steps:
+- task: UseDotNet@2
+  inputs:
+    packageType: 'sdk'
+    version: '5.x'
+  displayName: 'Install .net core sdk'
+
+- task: NuGetToolInstaller@1
+  displayName: Install NuGet
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'test'
+    arguments: '--collect:"XPlat Code Coverage"'
+  displayName: 'Run Tests'
+
+- task: reportgenerator@4
+  inputs:
+    reports: '$(Agent.TempDirectory)/**/coverage.cobertura.xml'
+    targetdir: '$(Agent.BuildDirectory)/coveragereport'
+    sourcedirs: '$(Build.sourcesdirectory)/src/'
+    verbosity: 'Verbose'
+    tag: '$(build.buildnumber)_#$(build.buildid)_#$(build.sourceBranchName)'
+  displayName: 'Generate Coverage Report'
+
+- task: PublishCodeCoverageResults@1
+  inputs:
+    codeCoverageTool: 'Cobertura'
+    summaryFileLocation: '$(Agent.BuildDirectory)/coveragereport/Cobertura.xml'
+    reportDirectory: '$(Agent.BuildDirectory)/coveragereport'
+  displayName: 'Publish coverage report'
+
+- task: BuildQualityChecks@7
+  inputs:
+    checkCoverage: true
+    coverageFailOption: 'fixed'
+    coverageType: 'branches'
+    coverageThreshold: '70'
+    runTitle: 'Check test coverage threshold'

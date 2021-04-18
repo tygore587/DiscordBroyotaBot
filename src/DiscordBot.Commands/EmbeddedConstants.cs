@@ -1,6 +1,6 @@
 ﻿namespace DiscordBot.Commands
 {
-    public abstract class EmbeddedConstants
+    public static class EmbeddedConstants
     {
         public const int MaxFields = 25;
     }
