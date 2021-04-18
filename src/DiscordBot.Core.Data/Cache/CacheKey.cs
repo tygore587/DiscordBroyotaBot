@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace DiscordBot.Core.Cache
+namespace DiscordBot.Core.Data.Cache
 {
     public class CacheKey
     {

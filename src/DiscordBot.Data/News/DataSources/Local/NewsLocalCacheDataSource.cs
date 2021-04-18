@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using DiscordBot.Core.Cache;
 using DiscordBot.Core.Data.Cache;
 using DiscordBot.Domain.News.Entities;
 using Serilog;
