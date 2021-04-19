@@ -3,12 +3,23 @@
 namespace DiscordBot.Data.WatchTogether.Models
 {
     [JsonObject]
-    internal record WatchTogetherRoomCreationRequestRemote
-    (
+    public class WatchTogetherRoomCreationRequestRemote
+    {
+        public WatchTogetherRoomCreationRequestRemote(string watchTogetherApiKey)
+        {
+            WatchTogetherApiKey = watchTogetherApiKey;
+        }
+
         [JsonProperty("w2g_api_key", Required = Required.DisallowNull)]
-        string WatchTogetherApiKey,
-        [JsonProperty("share")] string? Share,
-        [JsonProperty("bg_color")] string? BackgroundColor,
-        [JsonProperty("bg_opacity")] string? BackgroundOpacity
-    );
+        public string WatchTogetherApiKey { get; set; }
+
+        [JsonProperty("share")]
+        public string? Share { get; set; }
+
+        [JsonProperty("bg_color")]
+        public string? BackgroundColor { get; set; }
+
+        [JsonProperty("bg_opacity")]
+        public string? BackgroundOpacity { get; set; }
+    }
 }
