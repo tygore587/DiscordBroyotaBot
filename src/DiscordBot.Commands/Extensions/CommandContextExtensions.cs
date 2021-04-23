@@ -14,9 +14,9 @@ namespace DiscordBot.Commands.Extensions
             return context.Message.Author.Id.ToString();
         }
 
-        public static string? GetGuildId(this CommandContext context)
+        public static string GetGuildId(this CommandContext context)
         {
-            return context.Guild?.Id.ToString();
+            return context.Guild?.Id.ToString() ?? string.Empty;
         }
     }
 }

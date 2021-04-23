@@ -8,15 +8,17 @@ using DSharpPlus.CommandsNext;
 using DSharpPlus.CommandsNext.Attributes;
 using DSharpPlus.Entities;
 
-namespace DiscordBot.Commands.Modules
+// ReSharper disable UnusedMember.Global
+
+namespace DiscordBot.Commands.Modules.Chat
 {
-    public class RandomMemeModule : BaseCommandModule
+    public class MemeChatModule : BaseCommandModule
     {
         private readonly GetRandomMeme _getRandomMeme;
 
         private readonly ICommandLogger _logger;
 
-        public RandomMemeModule(GetRandomMeme getRandomMeme, ICommandLogger logger)
+        public MemeChatModule(GetRandomMeme getRandomMeme, ICommandLogger logger)
         {
             _getRandomMeme = getRandomMeme;
             _logger = logger;
@@ -24,7 +26,7 @@ namespace DiscordBot.Commands.Modules
 
         [Command("meme")]
         [Description("This returns a random meme from an api. Use --nsfw to include nfsw content.")]
-        public async Task RandomMemeApi(CommandContext context, string argument = "")
+        public async Task PostRandomMeme(CommandContext context, string argument = "")
         {
             var author = context.GetAuthorMention();
             try
@@ -54,7 +56,7 @@ namespace DiscordBot.Commands.Modules
                 //TODO: Add counter for successful calls instead of log messages?
                 _logger.Information(context, "Successfully processed random meme command.");
 
-                await context.RespondAsync($"{author}", embed: embed);
+                await context.RespondAsync($"{author}", embed);
             }
             catch (ArgumentValidationException ex)
             {

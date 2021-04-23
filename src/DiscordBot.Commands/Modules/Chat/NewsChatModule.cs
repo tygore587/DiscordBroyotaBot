@@ -13,16 +13,16 @@ using DSharpPlus.Entities;
 
 // ReSharper disable UnusedMember.Global
 
-namespace DiscordBot.Commands.Modules
+namespace DiscordBot.Commands.Modules.Chat
 {
-    public class NewsModule : BaseCommandModule
+    public class NewsChatModule : BaseCommandModule
     {
         private readonly IDateTimeProvider _dateTimeProvider;
         private readonly GetTagesschauNews _getTagesschauNews;
 
         private readonly ICommandLogger _logger;
 
-        public NewsModule(GetTagesschauNews getTagesschauNews, ICommandLogger logger,
+        public NewsChatModule(GetTagesschauNews getTagesschauNews, ICommandLogger logger,
             IDateTimeProvider dateTimeProvider)
         {
             _getTagesschauNews = getTagesschauNews;
@@ -55,7 +55,7 @@ namespace DiscordBot.Commands.Modules
 
                 var embed = BuildNewsEmbed(news);
 
-                await context.RespondAsync(embed: embed);
+                await context.RespondAsync(embed);
             }
             catch (Exception ex)
             {

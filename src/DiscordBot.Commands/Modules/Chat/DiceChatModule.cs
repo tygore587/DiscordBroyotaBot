@@ -6,15 +6,15 @@ using DSharpPlus.CommandsNext.Attributes;
 
 // ReSharper disable UnusedMember.Global
 
-namespace DiscordBot.Commands.Modules
+namespace DiscordBot.Commands.Modules.Chat
 {
     [Description("All dices commands.")]
-    public class DiceModule : BaseCommandModule
+    public class DiceChatModule : BaseCommandModule
     {
         private readonly ICommandLogger _logger;
         private readonly RollDice _rollDice;
 
-        public DiceModule(RollDice rollDice, ICommandLogger logger)
+        public DiceChatModule(RollDice rollDice, ICommandLogger logger)
         {
             _rollDice = rollDice;
             _logger = logger;

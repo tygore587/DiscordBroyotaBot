@@ -9,9 +9,9 @@ using DSharpPlus.CommandsNext.Attributes;
 
 // ReSharper disable ClassNeverInstantiated.Global
 
-namespace DiscordBot.Commands.Modules
+namespace DiscordBot.Commands.Modules.Chat
 {
-    public class WatchTogetherModule : BaseCommandModule
+    public class WatchTogetherChatModule : BaseCommandModule
     {
         private const string WatchTogetherBaseUrl = "https://w2g.tv/rooms/";
 
@@ -22,7 +22,7 @@ namespace DiscordBot.Commands.Modules
 
         private readonly ICommandLogger _logger;
 
-        public WatchTogetherModule(CreateWatchTogetherRoom createWatchTogetherRoom, ICommandLogger logger)
+        public WatchTogetherChatModule(CreateWatchTogetherRoom createWatchTogetherRoom, ICommandLogger logger)
         {
             _createWatchTogetherRoom = createWatchTogetherRoom;
             _logger = logger;

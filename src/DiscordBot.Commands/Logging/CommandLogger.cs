@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
-using DiscordBot.Commands.Extensions;
 using DSharpPlus.CommandsNext;
+using DSharpPlus.SlashCommands;
 using Serilog;
 using Serilog.Events;
 
@@ -19,21 +19,52 @@ namespace DiscordBot.Commands.Logging
 
         public void Debug(CommandContext context, string messageTemplate, params object[] arguments)
         {
-            Log(LogEventLevel.Debug, context, messageTemplate, arguments);
+            DebugInternal(context.ToLoggingContext(), messageTemplate, arguments);
         }
 
         public void Error(Exception ex, CommandContext context, string messageTemplate, params object[] arguments)
         {
-            Log(LogEventLevel.Error, context, messageTemplate, arguments);
+            ErrorInternal(ex, context.ToLoggingContext(), messageTemplate, arguments);
         }
 
         public void Information(CommandContext context, string messageTemplate, params object[] arguments)
+        {
+            InformationInternal(context.ToLoggingContext(), messageTemplate, arguments);
+        }
+
+        public void Debug(InteractionContext context, string messageTemplate, params object[] arguments)
+        {
+            DebugInternal(context.ToLoggingContext(), messageTemplate, arguments);
+        }
+
+        public void Error(Exception ex, InteractionContext context, string messageTemplate, params object[] arguments)
+        {
+            ErrorInternal(ex, context.ToLoggingContext(), messageTemplate, arguments);
+        }
+
+        public void Information(InteractionContext context, string messageTemplate, params object[] arguments)
+        {
+            InformationInternal(context.ToLoggingContext(), messageTemplate, arguments);
+        }
+
+        private void DebugInternal(LoggingContext context, string messageTemplate, params object[] arguments)
+        {
+            Log(LogEventLevel.Debug, context, messageTemplate, arguments);
+        }
+
+        private void ErrorInternal(Exception ex, LoggingContext context, string messageTemplate,
+            params object[] arguments)
+        {
+            Log(LogEventLevel.Error, context, messageTemplate, arguments, ex);
+        }
+
+        private void InformationInternal(LoggingContext context, string messageTemplate, IEnumerable<object> arguments)
         {
             Log(LogEventLevel.Information, context, messageTemplate, arguments);
         }
 
         private static (string completeMessageTemplate, List<object> completeArgumentList) AddDiscordContext(
-            string messageTemplate, CommandContext context, IEnumerable<object> argumentList)
+            string messageTemplate, LoggingContext context, IEnumerable<object> argumentList)
         {
             var completeMessageTemplate = messageTemplate;
 
@@ -44,7 +75,7 @@ namespace DiscordBot.Commands.Logging
 
             var completeArgumentList = new List<object>(argumentList);
 
-            var guildId = context.GetGuildId();
+            var (authorId, guildId) = context;
 
             if (!string.IsNullOrEmpty(guildId))
             {
@@ -53,18 +84,21 @@ namespace DiscordBot.Commands.Logging
             }
 
             completeMessageTemplate += " Author: {author}";
-            completeArgumentList.Add(context.GetAuthorId());
+            completeArgumentList.Add(authorId);
 
             return (completeMessageTemplate, completeArgumentList);
         }
 
-        private void Log(LogEventLevel level, CommandContext context, string messageTemplate,
-            IEnumerable<object> arguments)
+        private void Log(LogEventLevel level, LoggingContext context, string messageTemplate,
+            IEnumerable<object> arguments, Exception? ex = null)
         {
             var (completeMessageTemplate, completeArgumentList) =
                 AddDiscordContext(messageTemplate, context, arguments);
 
-            _logger.Write(level, completeMessageTemplate, completeArgumentList.ToArray());
+            if (ex != null)
+                _logger.Write(level, ex, completeMessageTemplate, completeArgumentList.ToArray());
+            else
+                _logger.Write(level, completeMessageTemplate, completeArgumentList.ToArray());
         }
     }
 }

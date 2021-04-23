@@ -12,14 +12,14 @@ using DSharpPlus.Entities;
 // ReSharper disable UnusedMember.Global
 // ReSharper disable ClassNeverInstantiated.Global
 
-namespace DiscordBot.Commands.Modules
+namespace DiscordBot.Commands.Modules.Chat
 {
-    public class RandomDragonballCharacterModule : BaseCommandModule
+    public class DragonballCharacterChatModule : BaseCommandModule
     {
         private readonly GetRandomCharacters _getRandomCharacters;
         private readonly ICommandLogger _logger;
 
-        public RandomDragonballCharacterModule(GetRandomCharacters getRandomCharacters, ICommandLogger logger)
+        public DragonballCharacterChatModule(GetRandomCharacters getRandomCharacters, ICommandLogger logger)
         {
             _getRandomCharacters = getRandomCharacters;
             _logger = logger;
@@ -57,7 +57,7 @@ namespace DiscordBot.Commands.Modules
 
                 var embed = CreateRandomCharacterEmbed(characters, withColor);
 
-                await context.RespondAsync($"{context.GetAuthorMention()} The bot has chosen:", embed: embed);
+                await context.RespondAsync($"{context.GetAuthorMention()} The bot has chosen:", embed);
             }
             catch (ArgumentValidationException ex)
             {
