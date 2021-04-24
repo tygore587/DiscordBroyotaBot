@@ -17,11 +17,35 @@ namespace DiscordBot.Commands.Extensions
             return context.Member.Id.ToString();
         }
 
+        public static string GetAuthorMention(this InteractionContext context)
+        {
+            return context.Member.Mention;
+        }
+
         public static Task RespondImmediate(this InteractionContext context, string message)
         {
-            var builder = new DiscordInteractionResponseBuilder().WithContent(message);
+            var response = new DiscordInteractionResponseBuilder().WithContent(message);
 
-            return context.CreateResponseAsync(InteractionResponseType.ChannelMessageWithSource, builder);
+            return context.CreateResponseAsync(InteractionResponseType.ChannelMessageWithSource, response);
+        }
+
+        public static Task SendWorkPendingResponse(this InteractionContext context)
+        {
+            return context.CreateResponseAsync(InteractionResponseType.DeferredChannelMessageWithSource);
+        }
+
+        public static Task SendWorkFinishedResponse(this InteractionContext context, string message)
+        {
+            var response = new DiscordWebhookBuilder().WithContent(message);
+
+            return context.EditResponseAsync(response);
+        }
+
+        public static Task SendWorkFinishedResponse(this InteractionContext context, string message, DiscordEmbed embed)
+        {
+            var response = new DiscordWebhookBuilder().WithContent(message).AddEmbed(embed);
+
+            return context.EditResponseAsync(response);
         }
     }
 }

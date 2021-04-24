@@ -1,4 +1,5 @@
-﻿using DSharpPlus.CommandsNext;
+﻿using System.Threading.Tasks;
+using DSharpPlus.CommandsNext;
 
 namespace DiscordBot.Commands.Extensions
 {
@@ -17,6 +18,12 @@ namespace DiscordBot.Commands.Extensions
         public static string GetGuildId(this CommandContext context)
         {
             return context.Guild?.Id.ToString() ?? string.Empty;
+        }
+
+        public static Task RespondWithDeprecatedMessage(this CommandContext context, string slashCommand)
+        {
+            return context.RespondAsync(
+                $"{context.GetAuthorMention()} the command {context.Command.Name} is deprecated. Please use the `/{slashCommand}` slash command.");
         }
     }
 }

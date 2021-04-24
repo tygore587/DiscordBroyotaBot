@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using DiscordBot.Commands;
 using DiscordBot.Commands.Helper;
@@ -87,6 +88,9 @@ namespace DiscordBot.Service
             var slash = discord.UseSlashCommands(slashConfiguration);
 
             slash.RegisterCommands<DiceSlashModule>(guildId);
+            slash.RegisterCommands<DragonballSlashModule>(guildId);
+
+            logger?.Information("Registered slash commands. Guild: {GuildId}", guildId);
 
             return discord;
         }
@@ -108,6 +112,11 @@ namespace DiscordBot.Service
             commands.RegisterCommands<NewsChatModule>();
 
             commands.SetHelpFormatter<CustomHelpFormatter>();
+
+            var logger = services.GetService<ILogger>();
+
+            logger?.Information("Registered chat modules. Modules: {@Modules}",
+                commands.RegisteredCommands.Select(c => c.Key));
 
             return discord;
         }
