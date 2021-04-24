@@ -18,6 +18,9 @@ namespace DiscordBot.Commands.Modules.Chat
         private static readonly Regex YoutubeLinkRegex =
             new(@"(?:https?:\/\/)?(?:www\.)?youtu\.?be(?:\.com)?\/?.*(?:watch|embed)?(?:.*v=|v\/|\/)([\w\-_]+)\&?");
 
+        private static readonly Regex TwitchLinkRegex =
+            new(@"^(?:https?:\/\/)?(?:www\.|go\.)?twitch\.tv\/([a-zA-Z0-9_]+)($|\?)");
+
         private readonly CreateWatchTogetherRoom _createWatchTogetherRoom;
 
         private readonly ICommandLogger _logger;
@@ -40,7 +43,8 @@ namespace DiscordBot.Commands.Modules.Chat
 
             try
             {
-                if (!string.IsNullOrWhiteSpace(youtubeLink) && !YoutubeLinkRegex.IsMatch(youtubeLink))
+                if (!string.IsNullOrWhiteSpace(youtubeLink) && !YoutubeLinkRegex.IsMatch(youtubeLink) &&
+                    !TwitchLinkRegex.IsMatch(youtubeLink))
                     throw new ArgumentValidationException(
                         $"{youtubeLink} this isn't a youtube link. Please initiate with a youtube link or without any link.");
 
