@@ -48,9 +48,13 @@ namespace DiscordBot.Commands.Extensions
             return context.EditResponseAsync(response);
         }
 
-        public static Task SendWorkFinishedResponse(this InteractionContext context, string message, DiscordEmbed embed)
+        public static Task SendWorkFinishedResponse(this InteractionContext context, DiscordEmbed embed,
+            string? message = null)
         {
-            var response = new DiscordWebhookBuilder().WithContent(message).AddEmbed(embed);
+            var response = new DiscordWebhookBuilder().AddEmbed(embed);
+
+            if (!string.IsNullOrWhiteSpace(message))
+                response.WithContent(message);
 
             return context.EditResponseAsync(response);
         }

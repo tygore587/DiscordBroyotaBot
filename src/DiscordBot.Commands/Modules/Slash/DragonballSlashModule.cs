@@ -45,7 +45,7 @@ namespace DiscordBot.Commands.Modules.Slash
 
                     var embed = CreateRandomCharacterEmbed(characters, withColors);
 
-                    await context.SendWorkFinishedResponse($"{context.GetAuthorMention()} The bot has chosen:", embed);
+                    await context.SendWorkFinishedResponse(embed, "The bot has chosen:");
                 }
                 catch (ArgumentValidationException ex)
                 {
