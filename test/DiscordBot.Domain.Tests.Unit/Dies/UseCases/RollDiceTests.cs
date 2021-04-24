@@ -46,14 +46,14 @@ namespace DiscordBot.Domain.UnitTests.Dies.UseCases
         {
             var parametersBelowZero = new DieParameter
             {
-                Sides = 0
+                Sides = 1
             };
 
             Assert.Throws<ArgumentOutOfRangeException>(() => _rollDice.Execute(parametersBelowZero));
 
             var parametersAbove100 = new DieParameter
             {
-                Sides = 101
+                Sides = 1001
             };
 
             Assert.Throws<ArgumentOutOfRangeException>(() => _rollDice.Execute(parametersAbove100));
