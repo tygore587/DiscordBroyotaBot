@@ -21,12 +21,12 @@ namespace DiscordBot.Service
 {
     internal static class Program
     {
-        private static void Main(string[] args)
+        private static void Main()
         {
-            MainAsync(args).GetAwaiter().GetResult();
+            MainAsync().GetAwaiter().GetResult();
         }
 
-        private static async Task MainAsync(string[] args)
+        private static async Task MainAsync()
         {
             SetupConfigurations();
 
@@ -92,15 +92,14 @@ namespace DiscordBot.Service
             slash.RegisterCommands<DiceSlashModule>(guildId);
             slash.RegisterCommands<DragonballSlashModule>(guildId);
 
-            slash.SlashCommandErrored += (sender, commandArgs) => HandleSlashCommandErrors(logger, sender, commandArgs);
+            slash.SlashCommandErrored += (_, commandArgs) => HandleSlashCommandErrors(logger, commandArgs);
 
             logger?.Information("Registered slash commands. Guild: {GuildId}", guildId);
 
             return discord;
         }
 
-        private static Task HandleSlashCommandErrors(ILogger? logger, SlashCommandsExtension extension,
-            SlashCommandErrorEventArgs eventArgs)
+        private static Task HandleSlashCommandErrors(ILogger? logger, SlashCommandErrorEventArgs eventArgs)
         {
             var exception = eventArgs.Exception;
             var context = eventArgs.Context;
