@@ -50,7 +50,7 @@ namespace DiscordBot.Commands.Modules.Slash
                 var createdRoom = await _createWatchTogetherRoom.Execute(createRoomParameter);
 
                 if (string.IsNullOrWhiteSpace(createdRoom.StreamKey))
-                    throw new Exception("No room was created.");
+                    throw new NoRoomCreatedException("No room was created.");
 
                 await context.SendWorkFinishedResponse(
                     $"Have fun with the room: {WatchTogetherBaseUrl}{createdRoom.StreamKey}");
