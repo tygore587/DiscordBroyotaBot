@@ -79,11 +79,11 @@ namespace DiscordBot.Commands.Logging
 
             if (!string.IsNullOrEmpty(guildId))
             {
-                completeMessageTemplate += " Guild: {guildId} |";
+                completeMessageTemplate += " Guild ID: {guildId} |";
                 completeArgumentList.Add(guildId);
             }
 
-            completeMessageTemplate += " Author: {author}";
+            completeMessageTemplate += " Author ID: {author}";
             completeArgumentList.Add(authorId);
 
             return (completeMessageTemplate, completeArgumentList);

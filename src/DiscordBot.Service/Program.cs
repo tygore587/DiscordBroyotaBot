@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 using DiscordBot.Commands;
+using DiscordBot.Commands.Extensions;
 using DiscordBot.Commands.Helper;
 using DiscordBot.Commands.Modules.Chat;
 using DiscordBot.Commands.Modules.Slash;
@@ -12,6 +13,7 @@ using DotNetEnv;
 using DSharpPlus;
 using DSharpPlus.CommandsNext;
 using DSharpPlus.SlashCommands;
+using DSharpPlus.SlashCommands.EventArgs;
 using Microsoft.Extensions.DependencyInjection;
 using Serilog;
 
@@ -90,9 +92,25 @@ namespace DiscordBot.Service
             slash.RegisterCommands<DiceSlashModule>(guildId);
             slash.RegisterCommands<DragonballSlashModule>(guildId);
 
+            slash.SlashCommandErrored += (sender, commandArgs) => HandleSlashCommandErrors(logger, sender, commandArgs);
+
             logger?.Information("Registered slash commands. Guild: {GuildId}", guildId);
 
             return discord;
+        }
+
+        private static Task HandleSlashCommandErrors(ILogger? logger, SlashCommandsExtension extension,
+            SlashCommandErrorEventArgs eventArgs)
+        {
+            var exception = eventArgs.Exception;
+            var context = eventArgs.Context;
+
+            logger?.Error(eventArgs.Exception,
+                "An error occured while running a command. Guild ID: {GuildId} | Command Name: {CommandName}",
+                context.GetGuildId(), context.CommandName);
+
+            return context.RespondWithError(
+                $"An unexpected error happened while running the command. Please contact the developer. The error message was: {exception.Message}");
         }
 
         private static DiscordClient RegisterChatCommands(this DiscordClient discord, IServiceProvider services)

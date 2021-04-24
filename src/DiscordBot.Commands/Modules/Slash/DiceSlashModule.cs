@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using DiscordBot.Commands.Extensions;
 using DiscordBot.Commands.Logging;
 using DiscordBot.Domain.Dies.UseCases;
@@ -20,26 +21,34 @@ namespace DiscordBot.Commands.Modules.Slash
 
         [SlashCommand("roll", "This rolls a die with sides.")]
         public async Task RollDie(InteractionContext ctx,
-            [Option("sides", "Number of sides between 2 and 100. The default is 20.")]
+            [Option("sides", "Number of sides between 2 and 1000. The default is 20.")]
             long sides = 20)
         {
-            if (sides is <= 1 or > 100)
+            if (sides is <= 1 or > 1000)
             {
-                await ctx.RespondImmediate(
-                    $"{ctx.Member.Mention} your die must have between 1 and 100 sides.");
+                await ctx.RespondWithError(
+                    $"{ctx.Member.Mention} your die must have between 1 and 1000 sides.");
                 return;
             }
 
-            var parameters = new DieParameter
+            try
             {
-                Sides = int.Parse(sides.ToString())
-            };
+                var parameters = new DieParameter
+                {
+                    Sides = (int) sides
+                };
 
-            var side = _rollDice.Execute(parameters);
+                var side = _rollDice.Execute(parameters);
 
-            _logger.Information(ctx, "Successfully processed dice roll command.");
+                _logger.Information(ctx, "Successfully processed dice roll command.");
 
-            await ctx.RespondImmediate($"{ctx.Member.Mention} you rolled **{side}**. (d{sides})");
+                await ctx.RespondImmediate($"{ctx.Member.Mention} you rolled **{side}**. (d{sides})");
+            }
+            catch (Exception ex)
+            {
+                _logger.Error(ex, ctx, "Error rolling the die. Sides: {Sides}", sides);
+                await ctx.RespondWithError($"Error while rolling the die. {ex.Message}");
+            }
         }
     }
 }

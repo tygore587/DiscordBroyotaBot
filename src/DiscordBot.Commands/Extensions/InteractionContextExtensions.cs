@@ -29,6 +29,13 @@ namespace DiscordBot.Commands.Extensions
             return context.CreateResponseAsync(InteractionResponseType.ChannelMessageWithSource, response);
         }
 
+        public static Task RespondWithError(this InteractionContext context, string errorMessage)
+        {
+            var response = new DiscordInteractionResponseBuilder().WithContent(errorMessage).AsEphemeral(true);
+
+            return context.CreateResponseAsync(InteractionResponseType.ChannelMessageWithSource, response);
+        }
+
         public static Task SendWorkPendingResponse(this InteractionContext context)
         {
             return context.CreateResponseAsync(InteractionResponseType.DeferredChannelMessageWithSource);

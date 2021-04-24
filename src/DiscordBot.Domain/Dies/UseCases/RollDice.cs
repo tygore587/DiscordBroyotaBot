@@ -14,7 +14,7 @@ namespace DiscordBot.Domain.Dies.UseCases
 
         public int Execute(DieParameter parameters)
         {
-            if (parameters.Sides <= 0 || parameters.Sides > 100)
+            if (parameters.Sides is <= 1 or > 1000)
                 throw new ArgumentOutOfRangeException(nameof(parameters),
                     "Sides must be bigger than 0 and smaller or equal to 100."
                 );
