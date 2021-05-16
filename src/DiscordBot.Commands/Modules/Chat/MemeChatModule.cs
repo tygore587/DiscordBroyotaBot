@@ -15,5 +15,12 @@ namespace DiscordBot.Commands.Modules.Chat
         {
             await context.RespondWithDeprecatedMessage("meme");
         }
+
+        [Command("redditmeme")]
+        [Description("This returns a random meme from an api. Use --nsfw to include nfsw content.")]
+        public async Task PostRandomRedditMeme(CommandContext context, string argument = "")
+        {
+            await PostRandomMeme(context, argument);
+        }
     }
 }

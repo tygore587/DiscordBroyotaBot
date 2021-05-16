@@ -9,7 +9,6 @@ using DiscordBot.Domain.News.Entities;
 using DiscordBot.Domain.News.UseCases;
 using DSharpPlus.Entities;
 using DSharpPlus.SlashCommands;
-using DSharpPlus.SlashCommands.Attributes;
 
 namespace DiscordBot.Commands.Modules.Slash
 {
@@ -28,9 +27,9 @@ namespace DiscordBot.Commands.Modules.Slash
             _logger = logger;
         }
 
-        [SlashCommand("news", "Get news from german official news media (tagesschau.de)")]
+        [SlashCommand("news", "get news from german official news media (tagesschau.de)")]
         public async Task GetTagesschauNews(InteractionContext context,
-            [Option("count", "Number of news you want to get. Default is 5.")]
+            [Option("count", "number of news you want to get. default is 5.")]
             long count = 5)
         {
             try

@@ -4,7 +4,6 @@ using DiscordBot.Commands.Extensions;
 using DiscordBot.Commands.Logging;
 using DiscordBot.Domain.Dies.UseCases;
 using DSharpPlus.SlashCommands;
-using DSharpPlus.SlashCommands.Attributes;
 
 namespace DiscordBot.Commands.Modules.Slash
 {
@@ -19,9 +18,9 @@ namespace DiscordBot.Commands.Modules.Slash
             _rollDice = rollDice;
         }
 
-        [SlashCommand("roll", "This rolls a die with sides.")]
+        [SlashCommand("roll", "this rolls a die with sides.")]
         public async Task RollDie(InteractionContext ctx,
-            [Option("sides", "Number of sides between 2 and 1000. The default is 20.")]
+            [Option("sides", "number of sides between 2 and 1000. The default is 20.")]
             long sides = 20)
         {
             if (sides is <= 1 or > 1000)

@@ -52,11 +52,11 @@ namespace DiscordBot.Commands.Modules.Chat
 
                 var createdRoom = await _createWatchTogetherRoom.Execute(createRoomParameter);
 
-                if (string.IsNullOrWhiteSpace(createdRoom.StreamKey))
+                if (string.IsNullOrWhiteSpace(createdRoom.RoomLink))
                     throw new Exception("No room was created.");
 
                 await context.RespondAsync(
-                    $"{author} Have fun with the room: {WatchTogetherBaseUrl}{createdRoom.StreamKey}");
+                    $"{author} Have fun with the room: {WatchTogetherBaseUrl}{createdRoom.RoomLink}");
             }
             catch (ArgumentValidationException ex)
             {

@@ -41,8 +41,8 @@ namespace DiscordBot.Service
             var serviceProvider = CreateServices();
 
             discord
-                .RegisterChatCommands(serviceProvider)
-                .RegisterSlashCommands(serviceProvider);
+                .RegisterSlashCommands(serviceProvider)
+                .RegisterChatCommands(serviceProvider);
 
             await discord.ConnectAsync();
             await Task.Delay(-1);
@@ -92,8 +92,10 @@ namespace DiscordBot.Service
             slash.RegisterCommands<DiceSlashModule>(guildId);
             slash.RegisterCommands<DragonballSlashModule>(guildId);
             slash.RegisterCommands<MemeSlashModule>(guildId);
+            slash.RegisterCommands<RedditMemeSlashModule>(guildId);
             slash.RegisterCommands<NewsSlashModule>(guildId);
             slash.RegisterCommands<WatchTogetherSlashModule>(guildId);
+            slash.RegisterCommands<TrainingsSlashModule>(guildId);
 
             slash.SlashCommandErrored += (_, commandArgs) => HandleSlashCommandErrors(logger, commandArgs);
 

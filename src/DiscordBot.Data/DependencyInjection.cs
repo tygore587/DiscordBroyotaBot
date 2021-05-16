@@ -7,6 +7,9 @@ using DiscordBot.Data.Memes.DataSources;
 using DiscordBot.Data.News;
 using DiscordBot.Data.News.DataSources.Local;
 using DiscordBot.Data.News.DataSources.Remote.Tagesschau;
+using DiscordBot.Data.Trainings.DataSources.Local;
+using DiscordBot.Data.Trainings.DataSources.Local.IgorVoitenko;
+using DiscordBot.Data.Trainings.Repositories;
 using DiscordBot.Data.WatchTogether;
 using DiscordBot.Data.WatchTogether.DataSources;
 using DiscordBot.Domain.Dies.UseCases;
@@ -16,6 +19,8 @@ using DiscordBot.Domain.Memes.Repositories;
 using DiscordBot.Domain.Memes.UseCases;
 using DiscordBot.Domain.News.Repositories;
 using DiscordBot.Domain.News.UseCases;
+using DiscordBot.Domain.Trainings.Repositories;
+using DiscordBot.Domain.Trainings.UseCases;
 using DiscordBot.Domain.WatchTogether.Repositories;
 using DiscordBot.Domain.WatchTogether.UseCases;
 using Microsoft.Extensions.DependencyInjection;
@@ -37,7 +42,8 @@ namespace DiscordBot.Data
                 .AddDragonballServices()
                 .AddMemesServices()
                 .AddNewsServices()
-                .AddWatchTogetherServices();
+                .AddWatchTogetherServices()
+                .AddTrainingsServices();
         }
 
         private static IServiceCollection ConfigureRefitClient<T>(this IServiceCollection services, string baseUrl,
@@ -92,6 +98,16 @@ namespace DiscordBot.Data
                     DragonballCharacterPropertiesLocalDataSource>()
                 .AddSingleton<GetRandomCharacters>()
                 .AddSingleton<IDragonballCharacterPropertyProvider, DragonballCharacterPropertyProvider>();
+        }
+
+        private static IServiceCollection AddTrainingsServices(this IServiceCollection services)
+        {
+            return services
+                .AddSingleton<IIgorVoitenkoProvider, IgorVoitenkoProvider>()
+                .AddSingleton<ITrainingLocalDataSource, TrainingLocalDataSource>()
+                .AddSingleton<ITrainingsRepository, TrainingsRepository>()
+                .AddSingleton<ITrainingsStartProvider, TrainingsStartProvider>()
+                .AddSingleton<GetTodayTraining>();
         }
     }
 }

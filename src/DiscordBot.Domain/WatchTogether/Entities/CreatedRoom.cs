@@ -2,6 +2,6 @@
 {
     public record CreatedRoom
     (
-        string StreamKey
+        string RoomLink
     );
 }

@@ -7,7 +7,6 @@ using DiscordBot.Domain.Dragonball.Entities;
 using DiscordBot.Domain.Dragonball.UseCases;
 using DSharpPlus.Entities;
 using DSharpPlus.SlashCommands;
-using DSharpPlus.SlashCommands.Attributes;
 
 namespace DiscordBot.Commands.Modules.Slash
 {
@@ -25,9 +24,9 @@ namespace DiscordBot.Commands.Modules.Slash
                 _logger = logger;
             }
 
-            [SlashCommand("random", "Returns 3 random characters with assists for the game Dragonball FighterZ.")]
+            [SlashCommand("random", "returns 3 random characters with assists for the game dragonball fighterZ.")]
             public async Task GetRandomCharacterChoice(InteractionContext context,
-                [Option("includeColors", "Choose if you want to ")]
+                [Option("includeColors", "choose if you want to ")]
                 bool withColors = false)
             {
                 try

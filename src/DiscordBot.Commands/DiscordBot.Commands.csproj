@@ -7,7 +7,7 @@
 
     <ItemGroup>
         <PackageReference Include="DSharpPlus.CommandsNext" Version="4.0.0-rc3"/>
-        <PackageReference Include="IDoEverything.DSharpPlus.SlashCommands" Version="1.1.1"/>
+        <PackageReference Include="IDoEverything.DSharpPlus.SlashCommands" Version="1.2.1"/>
     </ItemGroup>
 
     <ItemGroup>

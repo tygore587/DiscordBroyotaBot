@@ -6,26 +6,25 @@ using DiscordBot.Commands.Logging;
 using DiscordBot.Domain.Memes.UseCases;
 using DSharpPlus.Entities;
 using DSharpPlus.SlashCommands;
-using DSharpPlus.SlashCommands.Attributes;
 
 namespace DiscordBot.Commands.Modules.Slash
 {
-    public class MemeSlashModule : SlashCommandModule
+    public class RedditMemeSlashModule : SlashCommandModule
     {
         private readonly GetRandomMeme _getRandomMeme;
 
         private readonly ICommandLogger _logger;
 
-        public MemeSlashModule(GetRandomMeme getRandomMeme, ICommandLogger logger)
+        public RedditMemeSlashModule(GetRandomMeme getRandomMeme, ICommandLogger logger)
         {
             _getRandomMeme = getRandomMeme;
             _logger = logger;
         }
 
         //TODO: add Argument for subreddit
-        [SlashCommand("meme", "This returns a random meme from an api.")]
+        [SlashCommand("redditmeme", "this returns a random meme from an api.")]
         public async Task PostRandomMeme(InteractionContext context,
-            [Option("includeNsfw", "Set to true if nsfw content is allowed. Default is false")]
+            [Option("includeNsfw", "set to true if nsfw content is allowed. Default is false")]
             bool includeNsfw = false)
         {
             var author = context.GetAuthorMention();

@@ -6,14 +6,11 @@ using DiscordBot.Commands.Extensions;
 using DiscordBot.Commands.Logging;
 using DiscordBot.Domain.WatchTogether.UseCases;
 using DSharpPlus.SlashCommands;
-using DSharpPlus.SlashCommands.Attributes;
 
 namespace DiscordBot.Commands.Modules.Slash
 {
     public class WatchTogetherSlashModule : SlashCommandModule
     {
-        private const string WatchTogetherBaseUrl = "https://w2g.tv/rooms/";
-
         private static readonly Regex YoutubeLinkRegex =
             new(@"(?:https?:\/\/)?(?:www\.)?youtu\.?be(?:\.com)?\/?.*(?:watch|embed)?(?:.*v=|v\/|\/)([\w\-_]+)\&?");
 
@@ -30,10 +27,10 @@ namespace DiscordBot.Commands.Modules.Slash
             _logger = logger;
         }
 
-        [SlashCommand("watchtogether", "This creates a watch together room.")]
-        public async Task RandomMemeApi(
+        [SlashCommand("wt", "this creates a watch together room.")]
+        public async Task CreateWatchTogetherRoom(
             InteractionContext context,
-            [Option("youtubeOrTwitchLink", "Add a youtube or twitch link if this video should be loaded at start.")]
+            [Option("youtubeOrTwitchLink", "add a youtube or twitch link if this video should be loaded at start.")]
             string? youtubeOrTwitchLink = null)
         {
             try
@@ -49,11 +46,11 @@ namespace DiscordBot.Commands.Modules.Slash
 
                 var createdRoom = await _createWatchTogetherRoom.Execute(createRoomParameter);
 
-                if (string.IsNullOrWhiteSpace(createdRoom.StreamKey))
+                if (string.IsNullOrWhiteSpace(createdRoom.RoomLink))
                     throw new NoRoomCreatedException("No room was created.");
 
                 await context.SendWorkFinishedResponse(
-                    $"Have fun with the room: {WatchTogetherBaseUrl}{createdRoom.StreamKey}");
+                    $"Have fun with the room: {createdRoom.RoomLink}");
             }
             catch (Exception ex)
             {

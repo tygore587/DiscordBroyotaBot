@@ -2,19 +2,22 @@
 using System.Threading.Tasks;
 using DiscordBot.Core.Constants;
 using DiscordBot.Data.WatchTogether.Models;
+using DiscordBot.Domain.WatchTogether.Entities;
 
 namespace DiscordBot.Data.WatchTogether.DataSources
 {
     internal class WatchTogetherRemoteDataSource : IWatchTogetherRemoteDataSource
     {
+        private const string WatchTogetherBaseUrl = "https://w2g.tv/rooms/";
         private readonly IWatchTogetherApi _watchTogetherApi;
+
 
         public WatchTogetherRemoteDataSource(IWatchTogetherApi watchTogetherApi)
         {
             _watchTogetherApi = watchTogetherApi;
         }
 
-        public async Task<WatchTogetherRoomRemote> CreateWatchTogetherRoom(string? youtubeLink = null)
+        public async Task<CreatedRoom> CreateWatchTogetherRoom(string? youtubeLink = null)
         {
             if (string.IsNullOrWhiteSpace(EnvironmentVariables.WatchTogetherApiKey))
                 throw new ArgumentNullException(nameof(EnvironmentVariables.WatchTogetherApiKey),
@@ -27,7 +30,9 @@ namespace DiscordBot.Data.WatchTogether.DataSources
                 BackgroundOpacity = null
             };
 
-            return await _watchTogetherApi.CreateRoom(createRoomBody);
+            var result = await _watchTogetherApi.CreateRoom(createRoomBody);
+
+            return result.ToCreatedRoom(WatchTogetherBaseUrl);
         }
     }
 }
