@@ -13,8 +13,6 @@ namespace DiscordBot.Commands.Modules.Chat
 {
     public class WatchTogetherChatModule : BaseCommandModule
     {
-        private const string WatchTogetherBaseUrl = "https://w2g.tv/rooms/";
-
         private static readonly Regex YoutubeLinkRegex =
             new(@"(?:https?:\/\/)?(?:www\.)?youtu\.?be(?:\.com)?\/?.*(?:watch|embed)?(?:.*v=|v\/|\/)([\w\-_]+)\&?");
 
@@ -34,7 +32,7 @@ namespace DiscordBot.Commands.Modules.Chat
         [Command("watchtogether")]
         [Aliases("youtube", "wt")]
         [Description("This creates a watch together room.")]
-        public async Task RandomMemeApi(
+        public async Task CreateWatchTogetherRoom(
             CommandContext context,
             [Description("Add a youtube link if this video should be loaded at start.")]
             string youtubeLink = "")
@@ -56,7 +54,7 @@ namespace DiscordBot.Commands.Modules.Chat
                     throw new Exception("No room was created.");
 
                 await context.RespondAsync(
-                    $"{author} Have fun with the room: {WatchTogetherBaseUrl}{createdRoom.RoomLink}");
+                    $"{author} Have fun with the room: {createdRoom.RoomLink}");
             }
             catch (ArgumentValidationException ex)
             {

@@ -8,7 +8,7 @@ namespace DiscordBot.Data.WatchTogether.DataSources
 {
     internal class WatchTogetherRemoteDataSource : IWatchTogetherRemoteDataSource
     {
-        private const string WatchTogetherBaseUrl = "https://w2g.tv/rooms/";
+        private const string WatchTogetherBaseUrl = "https://w2g.tv/rooms";
         private readonly IWatchTogetherApi _watchTogetherApi;
 
 
