@@ -6,9 +6,9 @@ namespace DiscordBot.Commands.Modules.Slash
 {
     public class MemeSlashModule : SlashCommandModule
     {
-        [SlashCommand("meme", "this returns a random meme from an api.")]
+        [SlashCommand("meme", "this command is obsolete. Use /redditmeme")]
         public async Task OldMemeCommand(InteractionContext context,
-            [Option("includeNsfw", "set to true if nsfw content is allowed. Default is false")]
+            [Option("includeNsfw", "this is obsolete")]
             bool includeNsfw = false)
         {
             await context.RespondWithError(

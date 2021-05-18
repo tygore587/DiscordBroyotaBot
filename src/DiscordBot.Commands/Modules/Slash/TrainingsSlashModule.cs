@@ -90,6 +90,8 @@ namespace DiscordBot.Commands.Modules.Slash
 
             embedBuilder.WithTitle($"Day {trainingDay}");
 
+            embedBuilder.WithUrl("http://igorvoitenko.com/from0to100");
+
             if (training.IsRestDay)
             {
                 embedBuilder.WithImageUrl(
@@ -119,7 +121,7 @@ namespace DiscordBot.Commands.Modules.Slash
                 embedBuilder.AddField(mandatoryTraining.Name, mandatoryTraining.Link));
 
             training.OptionsTrainings.ForEach(optionalTraining =>
-                embedBuilder.AddField(optionalTraining.Name, optionalTraining.Link));
+                embedBuilder.AddField($"{optionalTraining.Name} (optional)", optionalTraining.Link));
 
             var coolDownTraining = training.CoolDownTraining;
 
