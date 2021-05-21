@@ -108,8 +108,6 @@ namespace DiscordBot.Commands.Modules.Slash
             embedBuilder.WithImageUrl(
                 "https://thumb.tildacdn.com/tild3463-3938-4433-a666-643537343731/-/resize/400x/-/format/webp/from_0_100.jpg");
 
-            embedBuilder.WithUrl(trainingsResult.WatchTogetherRoom?.RoomLink);
-
             embedBuilder.AddField("WatchTogether Room", watchTogetherRoom?.RoomLink);
 
             var warmUp = training.WarmUpTraining;

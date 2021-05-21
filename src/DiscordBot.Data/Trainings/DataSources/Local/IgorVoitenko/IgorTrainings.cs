@@ -39,5 +39,8 @@ namespace DiscordBot.Data.Trainings.DataSources.Local.IgorVoitenko
 
         public static readonly TrainingLocal ObliqueUpperAbsLowerAbs =
             new("ABS Workout At Home For Men", "https://www.youtube.com/watch?v=vICVYyx22AY");
+
+        public static readonly TrainingLocal ThreeMinutePause =
+            new("3 Minute Pause", "https://www.youtube.com/watch?v=YAIKQT3k42Y");
     }
 }
