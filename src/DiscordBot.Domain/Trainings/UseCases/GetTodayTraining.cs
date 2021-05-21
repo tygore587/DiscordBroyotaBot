@@ -47,7 +47,7 @@ namespace DiscordBot.Domain.Trainings.UseCases
 
             var trainingsStart = _trainingsRepository.GetTrainingsStart(trainingType);
 
-            return (_dateTimeProvider.Today().Date - trainingsStart.Date).Days;
+            return (_dateTimeProvider.Today().Date.ToUniversalTime() - trainingsStart.Date.ToUniversalTime()).Days;
         }
     }
 
