@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using DiscordBot.Core;
 using DiscordBot.Core.DateTimeProvider;
+using DiscordBot.Core.DateTimes;
 using DiscordBot.Domain.Trainings.Entities;
 using DiscordBot.Domain.Trainings.Repositories;
 using DiscordBot.Domain.WatchTogether.Repositories;
@@ -47,7 +48,7 @@ namespace DiscordBot.Domain.Trainings.UseCases
 
             var trainingsStart = _trainingsRepository.GetTrainingsStart(trainingType);
 
-            return (_dateTimeProvider.Today().Date.ToUniversalTime() - trainingsStart.Date.ToUniversalTime()).Days;
+            return (_dateTimeProvider.UtcNow().ConvertToCest() - trainingsStart).Days;
         }
     }
 
