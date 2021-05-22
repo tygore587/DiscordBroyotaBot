@@ -1,4 +1,5 @@
 ﻿using System;
+using TimeZoneConverter;
 
 namespace DiscordBot.Core.DateTimes
 {
@@ -6,7 +7,7 @@ namespace DiscordBot.Core.DateTimes
     {
         public static DateTime ConvertToCest(this DateTime dateTime)
         {
-            var timeZone = TimeZoneInfo.FindSystemTimeZoneById("Central European Standard Time");
+            var timeZone = TZConvert.GetTimeZoneInfo("Europe/Berlin");
 
             return TimeZoneInfo.ConvertTimeFromUtc(dateTime, timeZone);
         }
