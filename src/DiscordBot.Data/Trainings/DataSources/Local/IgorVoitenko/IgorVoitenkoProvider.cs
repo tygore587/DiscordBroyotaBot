@@ -205,6 +205,8 @@ namespace DiscordBot.Data.Trainings.DataSources.Local.IgorVoitenko
                         new List<TrainingLocal>
                         {
                             IgorTrainings.SixMinuteShoulders,
+                            IgorTrainings.ThreeMinutePause,
+                            IgorTrainings.SixMinuteShoulders,
                             IgorTrainings.SixMinLegs
                         },
                         new List<TrainingLocal> {IgorTrainings.FixPosture},
