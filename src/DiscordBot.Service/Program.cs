@@ -6,6 +6,7 @@ using DiscordBot.Commands.Extensions;
 using DiscordBot.Commands.Helper;
 using DiscordBot.Commands.Modules.Chat;
 using DiscordBot.Commands.Modules.Slash;
+using DiscordBot.Commands.Modules.Slash.Trainings;
 using DiscordBot.Core.Constants;
 using DiscordBot.Core.DateTimeProvider;
 using DiscordBot.Data;

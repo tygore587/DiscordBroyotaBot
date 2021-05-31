@@ -2,6 +2,7 @@
 {
     public enum TrainingType
     {
-        IgorFrom0To100
+        IgorFrom0To100,
+        SaschaHuberPlan1Starter
     }
 }

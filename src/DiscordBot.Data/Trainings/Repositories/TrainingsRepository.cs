@@ -15,7 +15,7 @@ namespace DiscordBot.Data.Trainings.Repositories
             _localDataSource = localDataSource;
         }
 
-        public TrainingsDay GetTrainingForDay(long day, TrainingType type)
+        public TrainingsPlanDay GetTrainingForDay(long day, TrainingType type)
         {
             return _localDataSource.GetActualTraining(day, type);
         }

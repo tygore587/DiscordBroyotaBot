@@ -5,7 +5,7 @@ namespace DiscordBot.Data.Trainings.DataSources.Local
 {
     public interface ITrainingLocalDataSource
     {
-        TrainingsDay GetActualTraining(long day, TrainingType type);
+        TrainingsPlanDay GetActualTraining(long day, TrainingType type);
         DateTime GetTrainingsStart(TrainingType type);
     }
 }

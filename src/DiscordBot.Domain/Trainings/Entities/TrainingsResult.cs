@@ -2,5 +2,5 @@
 
 namespace DiscordBot.Domain.Trainings.Entities
 {
-    public record TrainingsResult(long Day, TrainingsDay TrainingsDay, CreatedRoom? WatchTogetherRoom);
+    public record TrainingsResult(long Day, TrainingsPlanDay TrainingsDay, CreatedRoom? WatchTogetherRoom);
 }

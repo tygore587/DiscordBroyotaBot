@@ -29,14 +29,14 @@ namespace DiscordBot.Domain.Trainings.UseCases
         {
             var dayOfTraining = GetDayOfTraining(parameters);
 
-            var training = _trainingsRepository.GetTrainingForDay(dayOfTraining, parameters.Type);
+            var trainingForToday = _trainingsRepository.GetTrainingForDay(dayOfTraining, parameters.Type);
 
-            if (training.IsRestDay)
-                return new TrainingsResult(dayOfTraining, training, null);
+            if (trainingForToday.TrainingsDay.IsRestDay)
+                return new TrainingsResult(dayOfTraining, trainingForToday, null);
 
             var watchTogetherRoom = await _watchTogetherRepository.CreateWatchTogetherRoom();
 
-            return new TrainingsResult(dayOfTraining, training, watchTogetherRoom);
+            return new TrainingsResult(dayOfTraining, trainingForToday, watchTogetherRoom);
         }
 
         private long GetDayOfTraining(GetTodayTrainingParameter parameters)

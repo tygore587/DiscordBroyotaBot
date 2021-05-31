@@ -9,6 +9,7 @@ using DiscordBot.Data.News.DataSources.Local;
 using DiscordBot.Data.News.DataSources.Remote.Tagesschau;
 using DiscordBot.Data.Trainings.DataSources.Local;
 using DiscordBot.Data.Trainings.DataSources.Local.IgorVoitenko;
+using DiscordBot.Data.Trainings.DataSources.Local.SaschaHuber;
 using DiscordBot.Data.Trainings.Repositories;
 using DiscordBot.Data.WatchTogether;
 using DiscordBot.Data.WatchTogether.DataSources;
@@ -104,6 +105,7 @@ namespace DiscordBot.Data
         {
             return services
                 .AddSingleton<IIgorVoitenkoProvider, IgorVoitenkoProvider>()
+                .AddSingleton<ISaschaHuberProvider, SaschaHuberProvider>()
                 .AddSingleton<ITrainingLocalDataSource, TrainingLocalDataSource>()
                 .AddSingleton<ITrainingsRepository, TrainingsRepository>()
                 .AddSingleton<ITrainingsStartProvider, TrainingsStartProvider>()

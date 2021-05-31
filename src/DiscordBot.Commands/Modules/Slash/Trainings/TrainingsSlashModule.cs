@@ -7,7 +7,7 @@ using DiscordBot.Domain.Trainings.UseCases;
 using DSharpPlus.Entities;
 using DSharpPlus.SlashCommands;
 
-namespace DiscordBot.Commands.Modules.Slash
+namespace DiscordBot.Commands.Modules.Slash.Trainings
 {
     public class TrainingsSlashModule : SlashCommandModule
     {
@@ -25,13 +25,14 @@ namespace DiscordBot.Commands.Modules.Slash
         public async Task GetTodayTraining(
             InteractionContext context,
             [Option("day", "Choose the day you want to print.")]
-            long day = -1)
+            long day = -1,
+            [Option("traini", "test")] Trainingsplan plan = Trainingsplan.SaschaHuberPlan1Starter)
         {
             try
             {
                 await context.SendWorkPendingResponse();
 
-                var parameter = new GetTodayTrainingParameter(day, TrainingType.IgorFrom0To100);
+                var parameter = new GetTodayTrainingParameter(day, plan.ToTrainingType());
 
                 var todayTrainingResult = await _getTodayTraining.Execute(parameter);
 
@@ -61,7 +62,9 @@ namespace DiscordBot.Commands.Modules.Slash
 
         private static bool IsToBigForEmbed(TrainingsResult trainingsResult)
         {
-            var (_, trainingsDay, watchTogetherRoom) = trainingsResult;
+            var (_, trainingsPlanDay, watchTogetherRoom) = trainingsResult;
+
+            var trainingsDay = trainingsPlanDay.TrainingsDay;
 
             if (trainingsDay.IsRestDay)
                 return false;
@@ -86,11 +89,11 @@ namespace DiscordBot.Commands.Modules.Slash
         {
             var embedBuilder = new DiscordEmbedBuilder();
 
-            var (trainingDay, training, watchTogetherRoom) = trainingsResult;
+            var (trainingDay, (trainingsUrl, training, imageUrl), watchTogetherRoom) = trainingsResult;
 
             embedBuilder.WithTitle($"Day {trainingDay}");
 
-            embedBuilder.WithUrl("http://igorvoitenko.com/from0to100");
+            embedBuilder.WithUrl(trainingsUrl);
 
             if (training.IsRestDay)
             {
@@ -105,8 +108,7 @@ namespace DiscordBot.Commands.Modules.Slash
             embedBuilder.WithDescription(
                 "Please use the watch together room to prepare it yourself. WatchTogether doesn't allow something like this at the moment.");
 
-            embedBuilder.WithImageUrl(
-                "https://thumb.tildacdn.com/tild3463-3938-4433-a666-643537343731/-/resize/400x/-/format/webp/from_0_100.jpg");
+            embedBuilder.WithImageUrl(imageUrl);
 
             embedBuilder.AddField("WatchTogether Room", watchTogetherRoom?.RoomLink);
 
