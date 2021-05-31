@@ -33,6 +33,8 @@ namespace DiscordBot.Data.Trainings.DataSources.Local
 
             var calculatedDay = day % trainings.Count;
 
+            calculatedDay = calculatedDay > 0 ? calculatedDay : day;
+
             return trainings.ContainsKey(calculatedDay)
                 ? trainings[calculatedDay].ToTrainingsDay(_dateTimeProvider.Today())
                 : TrainingDayLocal.RestDay.ToTrainingsDay(_dateTimeProvider.Today());
