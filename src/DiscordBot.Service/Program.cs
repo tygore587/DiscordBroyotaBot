@@ -91,7 +91,7 @@ namespace DiscordBot.Service
             var slash = discord.UseSlashCommands(slashConfiguration);
 
             slash.RegisterCommands<DiceSlashModule>(guildId);
-            slash.RegisterCommands<DragonballSlashModule>(guildId);
+            slash.RegisterCommands<DragonballGroupModule>(guildId);
             slash.RegisterCommands<MemeSlashModule>(guildId);
             slash.RegisterCommands<RedditMemeSlashModule>(guildId);
             slash.RegisterCommands<NewsSlashModule>(guildId);
