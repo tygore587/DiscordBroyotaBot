@@ -4,21 +4,12 @@ namespace DiscordBot.Data.Trainings.Models
 {
     public record TrainingDayLocal
     (
-        TrainingLocal? WarmUpTraining,
-        List<TrainingLocal> MandatoryTrainings,
-        List<TrainingLocal> OptionalTrainings,
-        TrainingLocal? CoolDownTraining
+        TrainingLocal? WarmUp,
+        List<TrainingLocal> Trainings,
+        TrainingLocal? Cooldown = null
     )
     {
-        public TrainingDayLocal(
-            TrainingLocal? warmUpTraining,
-            List<TrainingLocal> mandatoryTrainings,
-            TrainingLocal? coolDownTraining
-        ) : this(warmUpTraining, mandatoryTrainings, new List<TrainingLocal>(), coolDownTraining)
-        {
-        }
-
         public static TrainingDayLocal RestDay =>
-            new(null, new List<TrainingLocal>(), new List<TrainingLocal>(), null);
+            new(null, new List<TrainingLocal>(), null);
     }
 }

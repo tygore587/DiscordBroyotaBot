@@ -12,12 +12,14 @@ namespace DiscordBot.Data.Trainings
             this TrainingDayLocal trainingDayLocal,
             DateTime date)
         {
+            var optionalTrainings = trainingDayLocal.Trainings.Where(training => training is OptionalTrainingLocal).ToList();
+
             return new(
                 date,
-                trainingDayLocal.WarmUpTraining?.ToTraining(),
-                trainingDayLocal.MandatoryTrainings.ToTrainings(),
-                trainingDayLocal.OptionalTrainings.ToTrainings(),
-                trainingDayLocal.CoolDownTraining?.ToTraining()
+                trainingDayLocal.WarmUp?.ToTraining(),
+                trainingDayLocal.Trainings.Except(optionalTrainings).ToTrainings(),
+                optionalTrainings.ToTrainings(),
+                trainingDayLocal.Cooldown?.ToTraining()
             );
         }
 
