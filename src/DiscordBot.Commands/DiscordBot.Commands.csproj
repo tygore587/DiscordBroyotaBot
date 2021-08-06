@@ -3,14 +3,11 @@
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <Nullable>enable</Nullable>
-    <RestoreAdditionalProjectSources>
-      https://nuget.emzi0767.com/api/v3/index.json;
-    </RestoreAdditionalProjectSources>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="DSharpPlus.CommandsNext" Version="4.0.1" />
-    <PackageReference Include="IDoEverything.DSharpPlus.SlashCommands" Version="1.6.1" />
+    <PackageReference Include="DSharpPlus.CommandsNext" Version="4.1.0" />
+    <PackageReference Include="IDoEverything.DSharpPlus.SlashCommands" Version="1.7.3" />
   </ItemGroup>
 
   <ItemGroup>
