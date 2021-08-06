@@ -20,7 +20,7 @@ namespace DiscordBot.Data.Youtube.Models
 		public string Title { get; set; } = string.Empty;
 
 		[XmlElement(ElementName = "link")]
-		public LinkRemote Link { get; set; } = string.Empty;
+		public LinkRemote? Link { get; set; }
 
 		[XmlElement(ElementName = "author")]
 		public AuthorRemote? Author { get; set; }
