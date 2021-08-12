@@ -33,5 +33,13 @@ namespace DiscordBot.Data.Trainings.DataSources.Local.SaschaHuber
         public static readonly TrainingLocal Back2 = new("Back Nr. 2", "https://youtu.be/vwLV2sCSQEo");
 
         public static readonly TrainingLocal Legs2 = new("Legs Nr. 2", "https://youtu.be/OU9OpJIFt0Y");
+
+        public static readonly TrainingLocal Chest5Minutes = new("Chest Stamina", "https://youtu.be/wZ7ZzalCI4k");
+
+        public static readonly TrainingLocal Shoulders5Minutes = new("Shoulders Stamina", "https://youtu.be/Cknm5JQp2hg");
+
+        public static readonly TrainingLocal Biceps5Minutes = new("Biceps Stamina", "https://youtu.be/_XchEBmGugk");
+
+        public static readonly TrainingLocal Triceps5Minutes = new("Triceps Stamina", "https://youtu.be/0WEot369EfE");
     }
 }
