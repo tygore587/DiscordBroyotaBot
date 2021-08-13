@@ -41,7 +41,11 @@ namespace DiscordBot.Data.Trainings.DataSources.Local.SaschaHuber
                         new TrainingDayLocal
                         (
                             SaschaTrainings.ThreeMinuteWarmup,
-                            new List<TrainingLocal> {SaschaTrainings.UpperBody}
+                            new List<TrainingLocal> {SaschaTrainings.UpperBody,
+                                SaschaTrainings.Chest5Minutes,
+                                SaschaTrainings.Shoulders5Minutes,
+                                SaschaTrainings.Biceps5Minutes,
+                                SaschaTrainings.Triceps5Minutes}
                         )
                     },
                     {
