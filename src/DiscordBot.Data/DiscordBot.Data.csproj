@@ -8,9 +8,9 @@
     <ItemGroup>
         <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0" />
         <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-        <PackageReference Include="Refit" Version="6.0.38" />
-        <PackageReference Include="Refit.HttpClientFactory" Version="6.0.38" />
-        <PackageReference Include="Refit.Newtonsoft.Json" Version="6.0.38" />
+        <PackageReference Include="Refit" Version="6.0.94" />
+        <PackageReference Include="Refit.HttpClientFactory" Version="6.0.94" />
+        <PackageReference Include="Refit.Newtonsoft.Json" Version="6.0.94" />
     </ItemGroup>
 
     <ItemGroup>
