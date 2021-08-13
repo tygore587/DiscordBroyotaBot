@@ -16,9 +16,9 @@ namespace DiscordBot.Data.Trainings.DataSources.Local.IgorVoitenko
                             new List<TrainingLocal>
                             {
                                 IgorTrainings.ChestWorkout,
-                                IgorTrainings.Days28
+                                IgorTrainings.Days28,
+                                IgorTrainings.FixPosture
                             },
-                            new List<TrainingLocal> {IgorTrainings.FixPosture},
                             IgorTrainings.CoolDownRoutine)
                     },
                     {
@@ -51,9 +51,9 @@ namespace DiscordBot.Data.Trainings.DataSources.Local.IgorVoitenko
                                 IgorTrainings.WarmUpRoutine,
                                 IgorTrainings.SixMinuteShoulders,
                                 IgorTrainings.Days28,
-                                IgorTrainings.WarmUpRoutine
+                                IgorTrainings.WarmUpRoutine,
+                                IgorTrainings.FixPosture
                             },
-                            new List<TrainingLocal> {IgorTrainings.FixPosture},
                             IgorTrainings.CoolDownRoutine)
                     },
                     {
@@ -73,9 +73,9 @@ namespace DiscordBot.Data.Trainings.DataSources.Local.IgorVoitenko
                             new List<TrainingLocal>
                             {
                                 IgorTrainings.GetWiderIn28Days,
-                                IgorTrainings.BackIn5Minutes
+                                IgorTrainings.BackIn5Minutes,
+                                IgorTrainings.FixPosture
                             },
-                            new List<TrainingLocal> {IgorTrainings.FixPosture},
                             IgorTrainings.CoolDownRoutine)
                     },
                     {
@@ -108,7 +108,8 @@ namespace DiscordBot.Data.Trainings.DataSources.Local.IgorVoitenko
                     {
                         13,
                         new TrainingDayLocal(IgorTrainings.WarmUpRoutine,
-                            new List<TrainingLocal> {IgorTrainings.SixPackAbs8Minutes}, IgorTrainings.CoolDownRoutine)
+                            new List<TrainingLocal> {IgorTrainings.SixPackAbs8Minutes},
+                            IgorTrainings.CoolDownRoutine)
                     },
                     {
                         14, new TrainingDayLocal(
@@ -137,9 +138,9 @@ namespace DiscordBot.Data.Trainings.DataSources.Local.IgorVoitenko
                             new List<TrainingLocal>
                             {
                                 IgorTrainings.GetWiderIn28Days,
-                                IgorTrainings.ObliqueUpperAbsLowerAbs
+                                IgorTrainings.ObliqueUpperAbsLowerAbs,
+                                IgorTrainings.FixPosture
                             },
-                            new List<TrainingLocal> {IgorTrainings.FixPosture},
                             IgorTrainings.CoolDownRoutine)
                     },
                     {17, TrainingDayLocal.RestDay},
@@ -208,9 +209,9 @@ namespace DiscordBot.Data.Trainings.DataSources.Local.IgorVoitenko
                                 IgorTrainings.SixMinuteShoulders,
                                 IgorTrainings.ThreeMinutePause,
                                 IgorTrainings.SixMinuteShoulders,
-                                IgorTrainings.SixMinLegs
+                                IgorTrainings.SixMinLegs,
+                                IgorTrainings.FixPosture
                             },
-                            new List<TrainingLocal> {IgorTrainings.FixPosture},
                             IgorTrainings.CoolDownRoutine)
                     },
                     {26, TrainingDayLocal.RestDay},

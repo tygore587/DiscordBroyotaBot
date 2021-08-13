@@ -7,9 +7,9 @@ namespace DiscordBot.Data.News.DataSources.Remote.Tagesschau
 {
     public interface ITagesschauApi
     {
-        const string BaseUrl = "https://www.tagesschau.de/xml/rss2";
+        const string BaseUrl = "https://www.tagesschau.de";
 
-        [Get("/")]
+        [Get("/xml/rss2")]
         public Task<RssRemote> GetTagesschauNews(CancellationToken cancellationToken);
     }
 }
