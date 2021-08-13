@@ -13,9 +13,9 @@ namespace DiscordBot.Data.Youtube
 {
     public class YoutubeRepository : IYoutubeRepository
     {
-        private IYoutubeRemoteDataSource _youtubeRemoteDataSource;
+        private readonly IYoutubeRemoteDataSource _youtubeRemoteDataSource;
 
-        private IYoutubeLocalCacheDataSource _youtubeLocalCacheDataSource;
+        private readonly IYoutubeLocalCacheDataSource _youtubeLocalCacheDataSource;
 
         public YoutubeRepository(IYoutubeRemoteDataSource youtubeRemoteDataSource, IYoutubeLocalCacheDataSource localCacheDataSource)
         {

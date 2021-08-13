@@ -4,10 +4,6 @@ using DiscordBot.Domain.Youtube.Entities;
 using DiscordBot.Domain.Youtube.UseCases;
 using DSharpPlus.SlashCommands;
 using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace DiscordBot.Commands.Modules.Slash
@@ -15,9 +11,9 @@ namespace DiscordBot.Commands.Modules.Slash
     [SlashCommandGroup("youtube", "Get video from youtube")]
     public class YoutubeSlashModule : SlashCommandModule
     {
-        private ICommandLogger _logger;
+        private readonly ICommandLogger _logger;
 
-        private SearchNewestVideoFromChannel SearchNewestVideoFromChannel;
+        private readonly SearchNewestVideoFromChannel SearchNewestVideoFromChannel;
 
         public YoutubeSlashModule(ICommandLogger logger, SearchNewestVideoFromChannel searchNewestVideoFromChannel)
         {

@@ -9,7 +9,7 @@ namespace DiscordBot.Data.Youtube.DataSources.Remote
 {
     public class YoutubeRemoteDataSource : IYoutubeRemoteDataSource
     {
-        private IYoutubeRSSApi _youtubeRSSApi;
+        private readonly IYoutubeRSSApi _youtubeRSSApi;
 
         public YoutubeRemoteDataSource(IYoutubeRSSApi youtubeRSSApi)
         {
@@ -23,7 +23,7 @@ namespace DiscordBot.Data.Youtube.DataSources.Remote
 
             var channelInfo = await _youtubeRSSApi.GetChannelVideos(channelId);
 
-            return channelInfo.Entry.WithoutEmptyLinkVideos().ToYoutubeVideos();
+            return channelInfo.YoutubeVideos.WithoutEmptyLinkVideos().ToYoutubeVideos();
         }
     }
 }

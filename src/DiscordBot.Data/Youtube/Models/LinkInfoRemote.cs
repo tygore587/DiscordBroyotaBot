@@ -2,13 +2,6 @@
 
 namespace DiscordBot.Data.Youtube.Models
 {
-    // using System.Xml.Serialization;
-    // XmlSerializer serializer = new XmlSerializer(typeof(Feed));
-    // using (StringReader reader = new StringReader(xml))
-    // {
-    //    var test = (Feed)serializer.Deserialize(reader);
-    // }
-
     [XmlRoot(ElementName = "link", Namespace = "http://www.w3.org/2005/Atom")]
 	public class LinkInfoRemote
 	{

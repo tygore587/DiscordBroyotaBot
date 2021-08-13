@@ -13,7 +13,7 @@ namespace DiscordBot.Data.Youtube.DataSources.Local
     {
         private const string _keyPrefix = "YoutubeVideos_";
 
-        private IExpirableMemCache<List<YoutubeVideo>> _expirableMemCache;
+        private readonly IExpirableMemCache<List<YoutubeVideo>> _expirableMemCache;
 
         public YoutubeLocalCacheDataSource(ILogger logger, IExpirableMemCache<List<YoutubeVideo>>? expirableMemCache = null)
         {

@@ -10,6 +10,6 @@ namespace DiscordBot.Data.Trainings.Models
     )
     {
         public static TrainingDayLocal RestDay =>
-            new(null, new List<TrainingLocal>(), null);
+            new(null, new List<TrainingLocal>());
     }
 }

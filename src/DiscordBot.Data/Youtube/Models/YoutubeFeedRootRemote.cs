@@ -31,7 +31,7 @@ namespace DiscordBot.Data.Youtube.Models
 		public DateTime Published { get; set; } = DateTime.UtcNow;
 
 		[XmlElement(ElementName = "entry", Namespace = "http://www.w3.org/2005/Atom")]
-		public List<YoutubeVideoInfoRemote> Entry { get; set; } = new();
+		public List<YoutubeVideoInfoRemote> YoutubeVideos { get; set; } = new();
 
 		[XmlAttribute(AttributeName = "yt", Namespace = "http://www.w3.org/2000/xmlns/")]
 		public string YoutubeXmlNamespace { get; set; } = string.Empty;
