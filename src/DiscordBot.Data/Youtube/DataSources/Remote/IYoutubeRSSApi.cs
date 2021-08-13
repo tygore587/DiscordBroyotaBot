@@ -12,7 +12,7 @@ namespace DiscordBot.Data.Youtube.DataSources.Remote
     {
         const string BaseUrl = "https://www.youtube.com/feeds/videos.xml";
 
-        [Get("/")]
-        public Task<YoutubeFeedRootRemote> GetChannelVideos([AliasAs("channelId")] string channelId);
+        [Get("")]
+        public Task<YoutubeFeedRootRemote> GetChannelVideos([AliasAs("channel_id")] string channelId);
     }
 }

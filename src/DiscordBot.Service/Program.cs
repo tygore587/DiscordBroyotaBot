@@ -97,6 +97,7 @@ namespace DiscordBot.Service
             slash.RegisterCommands<NewsSlashModule>(guildId);
             slash.RegisterCommands<WatchTogetherSlashModule>(guildId);
             slash.RegisterCommands<TrainingsSlashModule>(guildId);
+            slash.RegisterCommands<YoutubeSlashModule>(guildId);
 
             slash.SlashCommandErrored += (_, commandArgs) => HandleSlashCommandErrors(logger, commandArgs);
 

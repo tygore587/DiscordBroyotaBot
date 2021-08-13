@@ -13,6 +13,9 @@ using DiscordBot.Data.Trainings.DataSources.Local.SaschaHuber;
 using DiscordBot.Data.Trainings.Repositories;
 using DiscordBot.Data.WatchTogether;
 using DiscordBot.Data.WatchTogether.DataSources;
+using DiscordBot.Data.Youtube;
+using DiscordBot.Data.Youtube.DataSources.Local;
+using DiscordBot.Data.Youtube.DataSources.Remote;
 using DiscordBot.Domain.Dies.UseCases;
 using DiscordBot.Domain.Dragonball.Repositories;
 using DiscordBot.Domain.Dragonball.UseCases;
@@ -24,6 +27,8 @@ using DiscordBot.Domain.Trainings.Repositories;
 using DiscordBot.Domain.Trainings.UseCases;
 using DiscordBot.Domain.WatchTogether.Repositories;
 using DiscordBot.Domain.WatchTogether.UseCases;
+using DiscordBot.Domain.Youtube.Repositories;
+using DiscordBot.Domain.Youtube.UseCases;
 using Microsoft.Extensions.DependencyInjection;
 using Refit;
 
@@ -44,7 +49,8 @@ namespace DiscordBot.Data
                 .AddMemesServices()
                 .AddNewsServices()
                 .AddWatchTogetherServices()
-                .AddTrainingsServices();
+                .AddTrainingsServices()
+                .AddYoutubeLinkServices();
         }
 
         private static IServiceCollection ConfigureRefitClient<T>(this IServiceCollection services, string baseUrl,
@@ -110,6 +116,16 @@ namespace DiscordBot.Data
                 .AddSingleton<ITrainingsRepository, TrainingsRepository>()
                 .AddSingleton<ITrainingsStartProvider, TrainingsStartProvider>()
                 .AddSingleton<GetTodayTraining>();
+        }
+
+        private static IServiceCollection AddYoutubeLinkServices(this IServiceCollection services)
+        {
+            return services
+                .AddSingleton<IYoutubeLocalCacheDataSource, YoutubeLocalCacheDataSource>()
+                .AddSingleton<IYoutubeRemoteDataSource, YoutubeRemoteDataSource>()
+                .AddSingleton<IYoutubeRepository,YoutubeRepository>()
+                .ConfigureRefitClient<IYoutubeRSSApi>(IYoutubeRSSApi.BaseUrl, RefitXmlSettings)
+                .AddSingleton<SearchNewestVideoFromChannel>();
         }
     }
 }

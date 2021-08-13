@@ -7,16 +7,16 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\DiscordBot.Core.Domain\DiscordBot.Core.Domain.csproj"/>
-        <ProjectReference Include="..\DiscordBot.Core\DiscordBot.Core.csproj"/>
+        <ProjectReference Include="..\DiscordBot.Core.Domain\DiscordBot.Core.Domain.csproj" />
+        <ProjectReference Include="..\DiscordBot.Core\DiscordBot.Core.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Serilog" Version="2.10.0"/>
+        <PackageReference Include="Serilog" Version="2.10.0" />
     </ItemGroup>
 
     <ItemGroup>
-        <Folder Include="WatchTogether"/>
+        <Folder Include="WatchTogether" />
     </ItemGroup>
 
 </Project>

@@ -2,11 +2,11 @@
 
 namespace DiscordBot.Data.Youtube.Models
 {
-    [XmlRoot(ElementName = "statistics")]
+    [XmlRoot(ElementName = "statistics", Namespace = "http://search.yahoo.com/mrss/")]
 	public class VideoStatisticsRemote
 	{
 
-		[XmlAttribute(AttributeName = "views")]
-		public int Views { get; set; } = 0;
+		[XmlAttribute(AttributeName = "views", Namespace = "")]
+		public int Views { get; set; }
 	}
 }
