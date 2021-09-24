@@ -94,7 +94,8 @@ namespace DiscordBot.Data
                 .AddSingleton<IWatchTogetherRepository, WatchTogetherRepository>()
                 .AddSingleton<IWatchTogetherRemoteDataSource, WatchTogetherRemoteDataSource>()
                 .ConfigureRefitClient<IWatchTogetherApi>(IWatchTogetherApi.BaseUrl, RefitJsonSettings)
-                .AddSingleton<CreateWatchTogetherRoom>();
+                .AddSingleton<CreateWatchTogetherRoom>()
+                .AddSingleton<AddVideosToWatchTogetherRoom>();
         }
 
         private static IServiceCollection AddDragonballServices(this IServiceCollection services)

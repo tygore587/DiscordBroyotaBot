@@ -2,6 +2,11 @@
 {
     public record CreatedRoom
     (
-        string RoomLink
-    );
+        string RoomId
+    )
+    {
+        private const string WatchTogetherBaseUrl = "https://w2g.tv/rooms";
+
+        public string RoomLink => $"{WatchTogetherBaseUrl}/{RoomId}";
+    }
 }

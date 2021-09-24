@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Linq;
+using System.Threading.Tasks;
 using DiscordBot.Core;
 using DiscordBot.Core.DateTimeProvider;
 using DiscordBot.Core.DateTimes;
@@ -11,6 +12,7 @@ namespace DiscordBot.Domain.Trainings.UseCases
     public class GetTodayTraining : IUseCase<Task<TrainingsResult>, GetTodayTrainingParameter>
     {
         private readonly IDateTimeProvider _dateTimeProvider;
+
         private readonly ITrainingsRepository _trainingsRepository;
 
         private readonly IWatchTogetherRepository _watchTogetherRepository;
@@ -34,7 +36,11 @@ namespace DiscordBot.Domain.Trainings.UseCases
             if (trainingForToday.TrainingsDay.IsRestDay)
                 return new TrainingsResult(dayOfTraining, trainingForToday, null);
 
-            var watchTogetherRoom = await _watchTogetherRepository.CreateWatchTogetherRoom();
+            var watchTogetherRoom = await _watchTogetherRepository.CreateWatchTogetherRoom(trainingForToday.TrainingsDay.WarmUpTraining?.Link);
+
+            var mandatoryTrainingsLinks = trainingForToday.TrainingsDay.MandatoryTrainings.Select(training => training.Link);
+
+            await _watchTogetherRepository.AddVideosToRoom(watchTogetherRoom.RoomId, mandatoryTrainingsLinks);
 
             return new TrainingsResult(dayOfTraining, trainingForToday, watchTogetherRoom);
         }
