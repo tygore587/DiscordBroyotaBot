@@ -6,13 +6,13 @@ namespace DiscordBot.Data.WatchTogether
 {
     internal static class CreatedRoomExtensions
     {
-        public static CreatedRoom ToCreatedRoom(this WatchTogetherRoomRemote watchTogetherRoomRemote, string baseUrl)
+        public static CreatedRoom ToCreatedRoom(this WatchTogetherRoomRemote watchTogetherRoomRemote)
         {
             if (string.IsNullOrWhiteSpace(watchTogetherRoomRemote.StreamKey))
                 throw new ArgumentNullException(nameof(watchTogetherRoomRemote.StreamKey),
                     "Stream key is null or empty.");
 
-            return new CreatedRoom($"{baseUrl}/{watchTogetherRoomRemote.StreamKey}");
+            return new CreatedRoom(watchTogetherRoomRemote.StreamKey);
         }
     }
 }

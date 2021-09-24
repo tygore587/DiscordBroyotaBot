@@ -106,7 +106,7 @@ namespace DiscordBot.Commands.Modules.Slash.Trainings
             }
 
             embedBuilder.WithDescription(
-                "Please use the watch together room to prepare it yourself. WatchTogether doesn't allow something like this at the moment.");
+                "NEW FEATURE! All mandatory trainings are already added to the watch together room.");
 
             embedBuilder.WithImageUrl(imageUrl);
 
