@@ -10,7 +10,7 @@ namespace DiscordBot.Data.WatchTogether.DataSources
 {
     internal class WatchTogetherRemoteDataSource : IWatchTogetherRemoteDataSource
     {
-       
+
         private readonly IWatchTogetherApi _watchTogetherApi;
 
 
@@ -37,7 +37,7 @@ namespace DiscordBot.Data.WatchTogether.DataSources
             return result.ToCreatedRoom();
         }
 
-        public async Task AddVideosToRoom(string roomId, IEnumerable<string> youtubeLinks)
+        public async Task AddVideosToRoom(string roomId, IEnumerable<Video> youtubeLinks)
         {
             if (string.IsNullOrWhiteSpace(EnvironmentVariables.WatchTogetherApiKey))
                 throw new ArgumentNullException(nameof(EnvironmentVariables.WatchTogetherApiKey),
@@ -46,7 +46,7 @@ namespace DiscordBot.Data.WatchTogether.DataSources
             if (string.IsNullOrWhiteSpace(roomId))
                 throw new ArgumentNullException(nameof(roomId), "Room ID must not be null or empty.");
 
-            var videosToAdd = youtubeLinks.Select(link => new WatchTogetherRoomAddVideosUrls(link)).ToList();
+            var videosToAdd = youtubeLinks.ToWatchTogetherRoomAddVideosUrlsList();
 
             var videosToAddRemote = new WatchTogetherRoomAddVideosRemote(EnvironmentVariables.WatchTogetherApiKey, videosToAdd);
 

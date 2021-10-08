@@ -1,4 +1,5 @@
 ﻿using DiscordBot.Core;
+using DiscordBot.Domain.WatchTogether.Entities;
 using DiscordBot.Domain.WatchTogether.Repositories;
 using System;
 using System.Collections.Generic;
@@ -19,9 +20,9 @@ namespace DiscordBot.Domain.WatchTogether.UseCases
 
         public async Task Execute(AddVideosToWatchTogetherRoomParameter parameters)
         {
-            await watchTogetherRepository.AddVideosToRoom(parameters.RoomId, parameters.VideosLinks);
+            await watchTogetherRepository.AddVideosToRoom(parameters.RoomId, parameters.Videos);
         }
     }
 
-    public record AddVideosToWatchTogetherRoomParameter(string RoomId, List<string> VideosLinks);
+    public record AddVideosToWatchTogetherRoomParameter(string RoomId, List<Video> Videos);
 }

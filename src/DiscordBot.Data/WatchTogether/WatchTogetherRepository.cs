@@ -22,7 +22,7 @@ namespace DiscordBot.Data.WatchTogether
             return await _watchTogetherRemoteDataSource.CreateWatchTogetherRoom(videoLink);
         }
 
-        public async Task AddVideosToRoom(string roomId, IEnumerable<string> videoLinks)
+        public async Task AddVideosToRoom(string roomId, IEnumerable<Video> videoLinks)
         {
             var splittedVideoLinks = videoLinks.SplitIntoChunks(50);
 

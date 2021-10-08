@@ -14,9 +14,9 @@ namespace DiscordBot.Data.WatchTogether.Models
         public string WatchTogetherApiKey { get; }
 
         [JsonProperty("add_items")]
-        public List<WatchTogetherRoomAddVideosUrls> VideosToAdd { get; }
+        public List<WatchTogetherRoomAddVideosUrlsRemote> VideosToAdd { get; }
 
-        public WatchTogetherRoomAddVideosRemote(string watchTogetherApiKey, List<WatchTogetherRoomAddVideosUrls> videosToAdd)
+        public WatchTogetherRoomAddVideosRemote(string watchTogetherApiKey, List<WatchTogetherRoomAddVideosUrlsRemote> videosToAdd)
         {
             WatchTogetherApiKey = watchTogetherApiKey;
 

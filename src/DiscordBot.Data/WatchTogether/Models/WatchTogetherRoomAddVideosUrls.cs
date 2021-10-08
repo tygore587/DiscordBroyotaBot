@@ -8,14 +8,22 @@ using System.Threading.Tasks;
 namespace DiscordBot.Data.WatchTogether.Models
 {
     [JsonObject]
-    public class WatchTogetherRoomAddVideosUrls
+    public class WatchTogetherRoomAddVideosUrlsRemote
     {
         [JsonProperty("url")]
         public string Url {  get; }
 
-        public WatchTogetherRoomAddVideosUrls(string url)
+        [JsonProperty("title")]
+        public string? Title { get; }
+
+        [JsonProperty("thumb")]
+        public string? ThumbnailLink { get; }
+
+        public WatchTogetherRoomAddVideosUrlsRemote(string url, string? title, string? thumbnailLink)
         {
             Url = url;
+            Title = title;
+            ThumbnailLink = thumbnailLink;
         }
     }
 }

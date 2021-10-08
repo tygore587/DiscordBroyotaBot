@@ -5,7 +5,9 @@ using DiscordBot.Core.DateTimeProvider;
 using DiscordBot.Core.DateTimes;
 using DiscordBot.Domain.Trainings.Entities;
 using DiscordBot.Domain.Trainings.Repositories;
+using DiscordBot.Domain.WatchTogether.Entities;
 using DiscordBot.Domain.WatchTogether.Repositories;
+using DiscordBot.Domain.Youtube;
 
 namespace DiscordBot.Domain.Trainings.UseCases
 {
@@ -38,9 +40,13 @@ namespace DiscordBot.Domain.Trainings.UseCases
 
             var watchTogetherRoom = await _watchTogetherRepository.CreateWatchTogetherRoom(trainingForToday.TrainingsDay.WarmUpTraining?.Link);
 
-            var mandatoryTrainingsLinks = trainingForToday.TrainingsDay.MandatoryTrainings.Select(training => training.Link);
+            var videos = trainingForToday.TrainingsDay.MandatoryTrainings.Select(training => new Video(
+                training.Link,
+                training.Name,
+                YoutubeHelper.BuildVideoThumbnailLink(training.Link))
+            );
 
-            await _watchTogetherRepository.AddVideosToRoom(watchTogetherRoom.RoomId, mandatoryTrainingsLinks);
+            await _watchTogetherRepository.AddVideosToRoom(watchTogetherRoom.RoomId, videos);
 
             return new TrainingsResult(dayOfTraining, trainingForToday, watchTogetherRoom);
         }
