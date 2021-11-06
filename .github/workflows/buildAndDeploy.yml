@@ -3,7 +3,6 @@ name: Build & Deploy to Dokku
 # Controls when the action will run. 
 on: [push, workflow_dispatch]
 env:
-  VERSION: "1.0"
   DEPLOY_BRANCH: "refs/heads/main"
   
 jobs:
@@ -33,7 +32,7 @@ jobs:
         with:
           push: false
           load: true
-          tags: dokku/${{ secrets.APP_NAME }}:${{ env.VERSION }}
+          tags: dokku/${{ secrets.APP_NAME }}:${{ GITHUB_SHA }}
           file: ./src/DiscordBot.Service/Dockerfile
           context: .
           cache-from: type=local,src=/tmp/.buildx-cache
@@ -41,7 +40,7 @@ jobs:
       
       - name: Save docker image to tar file
         if: ${{ github.ref == env.DEPLOY_BRANCH }}
-        run: docker save dokku/${{ secrets.APP_NAME }}:${{ env.VERSION }} > ${{ secrets.APP_NAME }}.tar
+        run: docker save dokku/${{ secrets.APP_NAME }}:${{ GITHUB_SHA }} > ${{ secrets.APP_NAME }}.tar
         
       - name: Upload artifact
         if: ${{ github.ref == env.DEPLOY_BRANCH }}
@@ -87,4 +86,4 @@ jobs:
           host: ${{ secrets.DOKKU_SSH_HOST }}
           username: ${{ secrets.DOKKU_SSH_USERNAME }}
           key: ${{ secrets.DOKKU_SSH_PRIVATE_KEY }}
-          script: git:from-image ${{ secrets.APP_NAME }} dokku/${{ secrets.APP_NAME }}:${{ env.VERSION }}
+          script: git:from-image ${{ secrets.APP_NAME }} dokku/${{ secrets.APP_NAME }}:${{ GITHUB_SHA }}
