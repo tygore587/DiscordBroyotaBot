@@ -87,4 +87,4 @@ jobs:
           host: ${{ secrets.DOKKU_SSH_HOST }}
           username: ${{ secrets.DOKKU_SSH_USERNAME }}
           key: ${{ secrets.DOKKU_SSH_PRIVATE_KEY }}
-          script: tags:deploy ${{ secrets.APP_NAME }} ${{ env.VERSION }}
+          script: git:from-image ${{ secrets.APP_NAME }} dokku/${{ secrets.APP_NAME }}:${{ env.VERSION }}
