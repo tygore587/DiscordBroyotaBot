@@ -9,7 +9,7 @@ using DSharpPlus.SlashCommands;
 
 namespace DiscordBot.Commands.Modules.Slash
 {
-    public class WatchTogetherSlashModule : SlashCommandModule
+    public class WatchTogetherSlashModule : ApplicationCommandModule
     {
         private static readonly Regex YoutubeLinkRegex =
             new(@"(?:https?:\/\/)?(?:www\.)?youtu\.?be(?:\.com)?\/?.*(?:watch|embed)?(?:.*v=|v\/|\/)([\w\-_]+)\&?");

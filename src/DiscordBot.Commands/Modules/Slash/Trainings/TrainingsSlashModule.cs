@@ -9,7 +9,7 @@ using DSharpPlus.SlashCommands;
 
 namespace DiscordBot.Commands.Modules.Slash.Trainings
 {
-    public class TrainingsSlashModule : SlashCommandModule
+    public class TrainingsSlashModule : ApplicationCommandModule
     {
         private readonly GetTodayTraining _getTodayTraining;
 

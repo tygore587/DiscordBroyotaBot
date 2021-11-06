@@ -12,7 +12,7 @@ using DSharpPlus.SlashCommands;
 
 namespace DiscordBot.Commands.Modules.Slash
 {
-    public class NewsSlashModule : SlashCommandModule
+    public class NewsSlashModule : ApplicationCommandModule
     {
         private readonly IDateTimeProvider _dateTimeProvider;
         private readonly GetTagesschauNews _getTagesschauNews;

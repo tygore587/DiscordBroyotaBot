@@ -7,7 +7,7 @@ using DSharpPlus.SlashCommands;
 
 namespace DiscordBot.Commands.Modules.Slash
 {
-    public class DiceSlashModule : SlashCommandModule
+    public class DiceSlashModule : ApplicationCommandModule
     {
         private readonly ICommandLogger _logger;
         private readonly RollDice _rollDice;

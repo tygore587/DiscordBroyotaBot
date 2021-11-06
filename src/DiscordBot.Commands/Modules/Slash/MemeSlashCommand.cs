@@ -4,7 +4,7 @@ using DSharpPlus.SlashCommands;
 
 namespace DiscordBot.Commands.Modules.Slash
 {
-    public class MemeSlashModule : SlashCommandModule
+    public class MemeSlashModule : ApplicationCommandModule
     {
         [SlashCommand("meme", "this command is obsolete. Use /redditmeme")]
         public async Task OldMemeCommand(InteractionContext context,

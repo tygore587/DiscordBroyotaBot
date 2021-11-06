@@ -9,11 +9,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="DotNetEnv" Version="2.1.1" />
-        <PackageReference Include="Microsoft.Extensions.Hosting" Version="5.0.0" />
-        <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
-        <PackageReference Include="Serilog.Exceptions" Version="7.0.0" />
-        <PackageReference Include="Serilog.Sinks.Console" Version="4.0.1-dev-00874" />
+        <PackageReference Include="DotNetEnv" Version="2.2.0" />
+        <PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.0-rc.2.21480.5" />
+        <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.11.1" />
+        <PackageReference Include="Serilog.Exceptions" Version="7.1.0" />
+        <PackageReference Include="Serilog.Sinks.Console" Version="4.0.1-dev-00879" />
     </ItemGroup>
 
     <ItemGroup>

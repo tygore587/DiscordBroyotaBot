@@ -9,7 +9,7 @@ using DSharpPlus.SlashCommands;
 
 namespace DiscordBot.Commands.Modules.Slash
 {
-    public class RedditMemeSlashModule : SlashCommandModule
+    public class RedditMemeSlashModule : ApplicationCommandModule
     {
         private readonly GetRandomMeme _getRandomMeme;
 

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace DiscordBot.Commands.Modules.Slash
 {
     [SlashCommandGroup("youtube", "Get video from youtube")]
-    public class YoutubeSlashModule : SlashCommandModule
+    public class YoutubeSlashModule : ApplicationCommandModule
     {
         private readonly ICommandLogger _logger;
 

@@ -11,7 +11,7 @@ using DSharpPlus.SlashCommands;
 namespace DiscordBot.Commands.Modules.Slash
 {
     [SlashCommandGroup("dbz", "Holds all dragonball commands.")]
-    public class DragonballGroupModule : SlashCommandModule
+    public class DragonballGroupModule : ApplicationCommandModule
     {
 
         private readonly GetRandomCharacters _getRandomCharacters;
