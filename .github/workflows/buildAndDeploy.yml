@@ -32,7 +32,7 @@ jobs:
         with:
           push: false
           load: true
-          tags: dokku/${{ secrets.APP_NAME }}:${{ GITHUB_SHA }}
+          tags: dokku/${{ secrets.APP_NAME }}:${{ github.sha }}
           file: ./src/DiscordBot.Service/Dockerfile
           context: .
           cache-from: type=local,src=/tmp/.buildx-cache
@@ -40,7 +40,7 @@ jobs:
       
       - name: Save docker image to tar file
         if: ${{ github.ref == env.DEPLOY_BRANCH }}
-        run: docker save dokku/${{ secrets.APP_NAME }}:${{ GITHUB_SHA }} > ${{ secrets.APP_NAME }}.tar
+        run: docker save dokku/${{ secrets.APP_NAME }}:${{ github.sha }} > ${{ secrets.APP_NAME }}.tar
         
       - name: Upload artifact
         if: ${{ github.ref == env.DEPLOY_BRANCH }}
@@ -86,4 +86,12 @@ jobs:
           host: ${{ secrets.DOKKU_SSH_HOST }}
           username: ${{ secrets.DOKKU_SSH_USERNAME }}
           key: ${{ secrets.DOKKU_SSH_PRIVATE_KEY }}
-          script: git:from-image ${{ secrets.APP_NAME }} dokku/${{ secrets.APP_NAME }}:${{ GITHUB_SHA }}
+          script: git:from-image ${{ secrets.APP_NAME }} dokku/${{ secrets.APP_NAME }}:${{ github.sha }}
+          
+      - name: Remove old docker images
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.DOKKU_SSH_HOST }}
+          username: ${{ secrets.DOKKU_SSH_PRIVATE_KEY_DOCKER_USERNAME }}
+          key: ${{ secrets.DOKKU_SSH_PRIVATE_KEY_DOCKER_UPLOAD }}
+          script: docker image prune -a
