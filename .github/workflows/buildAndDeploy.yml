@@ -94,4 +94,4 @@ jobs:
           host: ${{ secrets.DOKKU_SSH_HOST }}
           username: ${{ secrets.DOKKU_SSH_PRIVATE_KEY_DOCKER_USERNAME }}
           key: ${{ secrets.DOKKU_SSH_PRIVATE_KEY_DOCKER_UPLOAD }}
-          script: docker image prune -a
+          script: docker image prune -f -a
