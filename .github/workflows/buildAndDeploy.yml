@@ -88,10 +88,10 @@ jobs:
           key: ${{ secrets.DOKKU_SSH_PRIVATE_KEY }}
           script: git:from-image ${{ secrets.APP_NAME }} dokku/${{ secrets.APP_NAME }}:${{ github.sha }}
           
-      - name: Remove old docker images
+      - name: Run dokku cleanup
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.DOKKU_SSH_HOST }}
-          username: ${{ secrets.DOKKU_SSH_PRIVATE_KEY_DOCKER_USERNAME }}
-          key: ${{ secrets.DOKKU_SSH_PRIVATE_KEY_DOCKER_UPLOAD }}
-          script: docker image prune -f -a
+          username: ${{ secrets.DOKKU_SSH_USERNAME }}
+          key: ${{ secrets.DOKKU_SSH_PRIVATE_KEY }}
+          script: cleanup
