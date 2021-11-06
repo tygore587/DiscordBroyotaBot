@@ -106,7 +106,7 @@ namespace DiscordBot.Commands.Modules.Slash.Trainings
             }
 
             embedBuilder.WithDescription(
-                "NEW FEATURE! All mandatory trainings are already added to the watch together room.");
+                "All mandatory trainings are already added to the watch together room.");
 
             embedBuilder.WithImageUrl(imageUrl);
 
