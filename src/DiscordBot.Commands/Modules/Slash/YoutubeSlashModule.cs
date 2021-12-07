@@ -1,15 +1,15 @@
-﻿using DiscordBot.Commands.Extensions;
+﻿using DisCatSharp.ApplicationCommands;
+using DiscordBot.Commands.Extensions;
 using DiscordBot.Commands.Logging;
 using DiscordBot.Domain.Youtube.Entities;
 using DiscordBot.Domain.Youtube.UseCases;
-using DSharpPlus.SlashCommands;
 using System;
 using System.Threading.Tasks;
 
 namespace DiscordBot.Commands.Modules.Slash
 {
     [SlashCommandGroup("youtube", "Get video from youtube")]
-    public class YoutubeSlashModule : ApplicationCommandModule
+    public class YoutubeSlashModule : ApplicationCommandsModule
     {
         private readonly ICommandLogger _logger;
 

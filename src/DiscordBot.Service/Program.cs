@@ -1,6 +1,7 @@
-﻿using System;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using DisCatSharp;
+using DisCatSharp.ApplicationCommands;
+using DisCatSharp.ApplicationCommands.EventArgs;
+using DisCatSharp.CommandsNext;
 using DiscordBot.Commands;
 using DiscordBot.Commands.Extensions;
 using DiscordBot.Commands.Helper;
@@ -11,12 +12,11 @@ using DiscordBot.Core.Constants;
 using DiscordBot.Core.DateTimeProvider;
 using DiscordBot.Data;
 using DotNetEnv;
-using DSharpPlus;
-using DSharpPlus.CommandsNext;
-using DSharpPlus.SlashCommands;
-using DSharpPlus.SlashCommands.EventArgs;
 using Microsoft.Extensions.DependencyInjection;
 using Serilog;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace DiscordBot.Service
 {
@@ -83,12 +83,9 @@ namespace DiscordBot.Service
                 return discord;
             }
 
-            var slashConfiguration = new SlashCommandsConfiguration
-            {
-                Services = services
-            };
+            var slashConfiguration = new ApplicationCommandsConfiguration(services);
 
-            var slash = discord.UseSlashCommands(slashConfiguration);
+            var slash = discord.UseApplicationCommands(slashConfiguration);
 
             slash.RegisterCommands<DiceSlashModule>(guildId);
             slash.RegisterCommands<DragonballGroupModule>(guildId);
@@ -121,10 +118,9 @@ namespace DiscordBot.Service
 
         private static DiscordClient RegisterChatCommands(this DiscordClient discord, IServiceProvider services)
         {
-            var commandsConfiguration = new CommandsNextConfiguration
+            var commandsConfiguration = new CommandsNextConfiguration(services)
             {
                 StringPrefixes = new[] {CommandPrefix.StandardPrefix},
-                Services = services
             };
 
             var commands = discord.UseCommandsNext(commandsConfiguration);

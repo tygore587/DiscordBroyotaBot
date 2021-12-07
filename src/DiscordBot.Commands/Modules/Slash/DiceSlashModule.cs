@@ -1,13 +1,13 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using DisCatSharp.ApplicationCommands;
 using DiscordBot.Commands.Extensions;
 using DiscordBot.Commands.Logging;
 using DiscordBot.Domain.Dies.UseCases;
-using DSharpPlus.SlashCommands;
+using System;
+using System.Threading.Tasks;
 
 namespace DiscordBot.Commands.Modules.Slash
 {
-    public class DiceSlashModule : ApplicationCommandModule
+    public class DiceSlashModule : ApplicationCommandsModule
     {
         private readonly ICommandLogger _logger;
         private readonly RollDice _rollDice;

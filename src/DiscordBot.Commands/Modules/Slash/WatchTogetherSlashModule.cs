@@ -1,15 +1,15 @@
-﻿using System;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+﻿using DisCatSharp.ApplicationCommands;
 using DiscordBot.Commands.Exceptions;
 using DiscordBot.Commands.Extensions;
 using DiscordBot.Commands.Logging;
 using DiscordBot.Domain.WatchTogether.UseCases;
-using DSharpPlus.SlashCommands;
+using System;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 
 namespace DiscordBot.Commands.Modules.Slash
 {
-    public class WatchTogetherSlashModule : ApplicationCommandModule
+    public class WatchTogetherSlashModule : ApplicationCommandsModule
     {
         private static readonly Regex YoutubeLinkRegex =
             new(@"(?:https?:\/\/)?(?:www\.)?youtu\.?be(?:\.com)?\/?.*(?:watch|embed)?(?:.*v=|v\/|\/)([\w\-_]+)\&?");

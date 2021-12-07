@@ -1,10 +1,10 @@
-﻿using System.Threading.Tasks;
+﻿using DisCatSharp.ApplicationCommands;
 using DiscordBot.Commands.Extensions;
-using DSharpPlus.SlashCommands;
+using System.Threading.Tasks;
 
 namespace DiscordBot.Commands.Modules.Slash
 {
-    public class MemeSlashModule : ApplicationCommandModule
+    public class MemeSlashModule : ApplicationCommandsModule
     {
         [SlashCommand("meme", "this command is obsolete. Use /redditmeme")]
         public async Task OldMemeCommand(InteractionContext context,

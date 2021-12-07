@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using DisCatSharp;
+using DisCatSharp.CommandsNext;
+using DisCatSharp.CommandsNext.Converters;
+using DisCatSharp.CommandsNext.Entities;
+using DisCatSharp.Entities;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using DSharpPlus;
-using DSharpPlus.CommandsNext;
-using DSharpPlus.CommandsNext.Converters;
-using DSharpPlus.CommandsNext.Entities;
-using DSharpPlus.Entities;
 
 // ReSharper disable ClassNeverInstantiated.Global
 

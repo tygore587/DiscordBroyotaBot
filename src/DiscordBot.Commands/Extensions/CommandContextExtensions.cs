@@ -1,5 +1,5 @@
-﻿using System.Threading.Tasks;
-using DSharpPlus.CommandsNext;
+﻿using DisCatSharp.CommandsNext;
+using System.Threading.Tasks;
 
 namespace DiscordBot.Commands.Extensions
 {

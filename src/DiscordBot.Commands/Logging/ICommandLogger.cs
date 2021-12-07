@@ -1,6 +1,6 @@
-﻿using System;
-using DSharpPlus.CommandsNext;
-using DSharpPlus.SlashCommands;
+﻿using DisCatSharp.ApplicationCommands;
+using DisCatSharp.CommandsNext;
+using System;
 
 namespace DiscordBot.Commands.Logging
 {

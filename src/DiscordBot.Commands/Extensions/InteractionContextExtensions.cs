@@ -1,7 +1,7 @@
-﻿using System.Threading.Tasks;
-using DSharpPlus;
-using DSharpPlus.Entities;
-using DSharpPlus.SlashCommands;
+﻿using DisCatSharp;
+using DisCatSharp.ApplicationCommands;
+using DisCatSharp.Entities;
+using System.Threading.Tasks;
 
 namespace DiscordBot.Commands.Extensions
 {

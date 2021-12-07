@@ -1,7 +1,7 @@
-﻿using System.Threading.Tasks;
+﻿using DisCatSharp.CommandsNext;
+using DisCatSharp.CommandsNext.Attributes;
 using DiscordBot.Commands.Extensions;
-using DSharpPlus.CommandsNext;
-using DSharpPlus.CommandsNext.Attributes;
+using System.Threading.Tasks;
 
 // ReSharper disable UnusedMember.Global
 

@@ -1,11 +1,11 @@
-﻿using System;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+﻿using DisCatSharp.CommandsNext;
+using DisCatSharp.CommandsNext.Attributes;
 using DiscordBot.Commands.Exceptions;
 using DiscordBot.Commands.Logging;
 using DiscordBot.Domain.WatchTogether.UseCases;
-using DSharpPlus.CommandsNext;
-using DSharpPlus.CommandsNext.Attributes;
+using System;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 
 // ReSharper disable ClassNeverInstantiated.Global
 

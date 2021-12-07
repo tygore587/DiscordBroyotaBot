@@ -1,17 +1,17 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using DisCatSharp.ApplicationCommands;
+using DisCatSharp.Entities;
 using DiscordBot.Commands.Exceptions;
 using DiscordBot.Commands.Extensions;
 using DiscordBot.Commands.Logging;
 using DiscordBot.Domain.Dragonball.Entities;
 using DiscordBot.Domain.Dragonball.UseCases;
-using DSharpPlus.Entities;
-using DSharpPlus.SlashCommands;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace DiscordBot.Commands.Modules.Slash
 {
     [SlashCommandGroup("dbz", "Holds all dragonball commands.")]
-    public class DragonballGroupModule : ApplicationCommandModule
+    public class DragonballGroupModule : ApplicationCommandsModule
     {
 
         private readonly GetRandomCharacters _getRandomCharacters;

@@ -1,15 +1,15 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using DisCatSharp.ApplicationCommands;
+using DisCatSharp.Entities;
 using DiscordBot.Commands.Extensions;
 using DiscordBot.Commands.Logging;
 using DiscordBot.Domain.Trainings.Entities;
 using DiscordBot.Domain.Trainings.UseCases;
-using DSharpPlus.Entities;
-using DSharpPlus.SlashCommands;
+using System;
+using System.Threading.Tasks;
 
 namespace DiscordBot.Commands.Modules.Slash.Trainings
 {
-    public class TrainingsSlashModule : ApplicationCommandModule
+    public class TrainingsSlashModule : ApplicationCommandsModule
     {
         private readonly GetTodayTraining _getTodayTraining;
 

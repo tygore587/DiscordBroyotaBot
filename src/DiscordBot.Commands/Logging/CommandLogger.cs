@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text.RegularExpressions;
-using DSharpPlus.CommandsNext;
-using DSharpPlus.SlashCommands;
+﻿using DisCatSharp.ApplicationCommands;
+using DisCatSharp.CommandsNext;
 using Serilog;
 using Serilog.Events;
+using System;
+using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace DiscordBot.Commands.Logging
 {

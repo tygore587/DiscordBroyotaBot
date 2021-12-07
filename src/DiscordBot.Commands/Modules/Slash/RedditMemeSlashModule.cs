@@ -1,15 +1,15 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using DisCatSharp.ApplicationCommands;
+using DisCatSharp.Entities;
 using DiscordBot.Commands.Exceptions;
 using DiscordBot.Commands.Extensions;
 using DiscordBot.Commands.Logging;
 using DiscordBot.Domain.Memes.UseCases;
-using DSharpPlus.Entities;
-using DSharpPlus.SlashCommands;
+using System;
+using System.Threading.Tasks;
 
 namespace DiscordBot.Commands.Modules.Slash
 {
-    public class RedditMemeSlashModule : ApplicationCommandModule
+    public class RedditMemeSlashModule : ApplicationCommandsModule
     {
         private readonly GetRandomMeme _getRandomMeme;
 

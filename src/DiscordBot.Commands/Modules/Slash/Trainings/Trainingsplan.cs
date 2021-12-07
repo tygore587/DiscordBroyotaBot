@@ -1,4 +1,4 @@
-﻿using DSharpPlus.SlashCommands;
+﻿using DisCatSharp.ApplicationCommands;
 
 namespace DiscordBot.Commands.Modules.Slash.Trainings
 {

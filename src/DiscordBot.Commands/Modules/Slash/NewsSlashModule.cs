@@ -1,18 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using DisCatSharp.ApplicationCommands;
+using DisCatSharp.Entities;
 using DiscordBot.Commands.Extensions;
 using DiscordBot.Commands.Logging;
 using DiscordBot.Core.DateTimeProvider;
 using DiscordBot.Domain.News.Entities;
 using DiscordBot.Domain.News.UseCases;
-using DSharpPlus.Entities;
-using DSharpPlus.SlashCommands;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace DiscordBot.Commands.Modules.Slash
 {
-    public class NewsSlashModule : ApplicationCommandModule
+    public class NewsSlashModule : ApplicationCommandsModule
     {
         private readonly IDateTimeProvider _dateTimeProvider;
         private readonly GetTagesschauNews _getTagesschauNews;
