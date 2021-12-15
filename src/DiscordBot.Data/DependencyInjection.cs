@@ -1,4 +1,5 @@
 ﻿using System;
+using DiscordBot.Core.DateTimeProvider;
 using DiscordBot.Data.Dragonball;
 using DiscordBot.Data.Dragonball.DataSources;
 using DiscordBot.Data.Dragonball.DataSources.Provider;
@@ -43,6 +44,7 @@ namespace DiscordBot.Data
         public static IServiceCollection AddDomainAndDataServices(this IServiceCollection services)
         {
             return services
+                .AddSingleton<IDateTimeProvider, DateTimeProvider>()
                 .AddSingleton<Random>()
                 .AddDiceServices()
                 .AddDragonballServices()

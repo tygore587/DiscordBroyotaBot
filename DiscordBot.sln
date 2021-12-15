@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30907.101
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31919.166
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiscordBot.Service", "src\DiscordBot.Service\DiscordBot.Service.csproj", "{F4092B88-FB65-4AA1-8EA8-C61DD1C40B6B}"
 EndProject
@@ -17,21 +17,23 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{4A1C52AE-C2B
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{85ACDA05-CA26-4D6D-B53B-502D0D5D505C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiscordBot.Domain", "src\DiscordBot.Domain\DiscordBot.Domain.csproj", "{02854DD3-5493-4559-925F-9023D20066A2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiscordBot.Domain", "src\DiscordBot.Domain\DiscordBot.Domain.csproj", "{02854DD3-5493-4559-925F-9023D20066A2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiscordBot.Core", "src\DiscordBot.Core\DiscordBot.Core.csproj", "{FEE2C2D8-CC06-461F-ADE9-A7997546178B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiscordBot.Core", "src\DiscordBot.Core\DiscordBot.Core.csproj", "{FEE2C2D8-CC06-461F-ADE9-A7997546178B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiscordBot.Domain.Tests.Unit", "test\DiscordBot.Domain.Tests.Unit\DiscordBot.Domain.Tests.Unit.csproj", "{DABD80EC-4BBB-4B1C-914C-67BB237D9AF4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiscordBot.Domain.Tests.Unit", "test\DiscordBot.Domain.Tests.Unit\DiscordBot.Domain.Tests.Unit.csproj", "{DABD80EC-4BBB-4B1C-914C-67BB237D9AF4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiscordBot.Data.Tests.Unit", "test\DiscordBot.Data.Tests.Unit\DiscordBot.Data.Tests.Unit.csproj", "{709382FA-6F40-4AB1-9317-CF3059F5DECD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiscordBot.Data.Tests.Unit", "test\DiscordBot.Data.Tests.Unit\DiscordBot.Data.Tests.Unit.csproj", "{709382FA-6F40-4AB1-9317-CF3059F5DECD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiscordBot.Tests.Core", "test\DiscordBot.Tests.Core\DiscordBot.Tests.Core.csproj", "{C91C469C-BFC7-4909-A58D-7DF91CA1AF8B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiscordBot.Tests.Core", "test\DiscordBot.Tests.Core\DiscordBot.Tests.Core.csproj", "{C91C469C-BFC7-4909-A58D-7DF91CA1AF8B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiscordBot.Commands.Tests.Unit", "test\DiscordBot.Commands.Tests.Unit\DiscordBot.Commands.Tests.Unit.csproj", "{8122CF29-E790-4463-9DC5-5DAB9F1B3B76}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiscordBot.Commands.Tests.Unit", "test\DiscordBot.Commands.Tests.Unit\DiscordBot.Commands.Tests.Unit.csproj", "{8122CF29-E790-4463-9DC5-5DAB9F1B3B76}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiscordBot.Data", "src\DiscordBot.Data\DiscordBot.Data.csproj", "{D259E5BA-10A4-4DD1-92EC-0655630F1F9E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiscordBot.Data", "src\DiscordBot.Data\DiscordBot.Data.csproj", "{D259E5BA-10A4-4DD1-92EC-0655630F1F9E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiscordBot.Core.Data", "src\DiscordBot.Core.Data\DiscordBot.Core.Data.csproj", "{43A41CBF-25CE-40A9-972C-8014769BE907}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiscordBot.Core.Data", "src\DiscordBot.Core.Data\DiscordBot.Core.Data.csproj", "{43A41CBF-25CE-40A9-972C-8014769BE907}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiscordBot.Api", "src\DiscordBot.Api\DiscordBot.Api.csproj", "{46ECDF37-B09F-4AD2-B99E-F673B9A40AC7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -87,6 +89,10 @@ Global
 		{43A41CBF-25CE-40A9-972C-8014769BE907}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{43A41CBF-25CE-40A9-972C-8014769BE907}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{43A41CBF-25CE-40A9-972C-8014769BE907}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46ECDF37-B09F-4AD2-B99E-F673B9A40AC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46ECDF37-B09F-4AD2-B99E-F673B9A40AC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46ECDF37-B09F-4AD2-B99E-F673B9A40AC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46ECDF37-B09F-4AD2-B99E-F673B9A40AC7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
