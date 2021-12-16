@@ -1,11 +1,11 @@
 ﻿using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace DiscordBot.Api.Models.Dies
 {
-    [JsonObject]
     public class RollResult
     {
-        [JsonProperty("eyes")]
+        [JsonPropertyName("eyes")]
         public int Eyes { get; set; }
     }
 }

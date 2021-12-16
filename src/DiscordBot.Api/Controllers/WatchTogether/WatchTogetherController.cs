@@ -18,11 +18,11 @@ namespace DiscordBot.Api.Controllers.WatchTogether
         }
 
         [HttpPost("room")]
-        public async Task<IActionResult> CreateRoom(string? youtubeOrWithLink)
+        public async Task<IActionResult> CreateRoom(string? link)
         {
             try
             {
-                var param = new CreateWatchTogetherRoomParameters(youtubeOrWithLink);
+                var param = new CreateWatchTogetherRoomParameters(link);
 
                 var createdRoom = await createWatchTogetherRoom.Execute(param);
 

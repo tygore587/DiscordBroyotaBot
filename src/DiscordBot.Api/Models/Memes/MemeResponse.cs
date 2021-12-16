@@ -1,20 +1,19 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
 namespace DiscordBot.Api.Models.Memes
 {
-    [JsonObject]
     public class MemeResponse
     {
-        [JsonProperty("postLink")]
+        [JsonPropertyName("postLink")]
         public string PostLink { get; set; } = string.Empty;
 
-        [JsonProperty("title")]
+        [JsonPropertyName("title")]
         public string Title { get; set; } = string.Empty;
 
-        [JsonProperty("url")]
+        [JsonPropertyName("url")]
         public string Url { get; set; } = string.Empty;
 
-        [JsonProperty("nsfw")]
+        [JsonPropertyName("nsfw")]
         public bool Nsfw { get; set; }
 
     }
