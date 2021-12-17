@@ -1,11 +1,11 @@
 ﻿using System;
+using DiscordBot.Api.Models.Tagesschau;
+
 namespace DiscordBot.Api.Controllers.Tagesschau
 {
-	public class TagesschauExtensions
+	public static class TagesschauExtensions
 	{
-		public TagesschauExtensions()
-		{
-		}
+		public static VideoResult ToVideoResult(this VideoSearchResult
 	}
 }
 
