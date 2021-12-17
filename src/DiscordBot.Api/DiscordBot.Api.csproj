@@ -23,12 +23,20 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update=".env">
+    <None Remove="Controllers\Tagesschau\" />
+    <None Remove="Models\Youtube\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="Procfile">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Procfile">
+    <None Update=".env">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Controllers\Tagesschau\" />
+    <Folder Include="Models\Youtube\" />
+  </ItemGroup>
 </Project>
