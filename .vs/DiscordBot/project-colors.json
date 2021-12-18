@@ -1,0 +1,46 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "d259e5ba-10a4-4dd1-92ec-0655630f1f9e": {
+      "ProjectGuid": "d259e5ba-10a4-4dd1-92ec-0655630f1f9e",
+      "DisplayName": "DiscordBot.Data",
+      "ColorIndex": 0
+    },
+    "fcee40b2-0ec6-43ff-b3ff-567a7e2ab9b8": {
+      "ProjectGuid": "fcee40b2-0ec6-43ff-b3ff-567a7e2ab9b8",
+      "DisplayName": "DiscordBot.Commands",
+      "ColorIndex": 1
+    },
+    "02854dd3-5493-4559-925f-9023d20066a2": {
+      "ProjectGuid": "02854dd3-5493-4559-925f-9023d20066a2",
+      "DisplayName": "DiscordBot.Domain",
+      "ColorIndex": 2
+    },
+    "f4092b88-fb65-4aa1-8ea8-c61dd1c40b6b": {
+      "ProjectGuid": "f4092b88-fb65-4aa1-8ea8-c61dd1c40b6b",
+      "DisplayName": "DiscordBot.Service",
+      "ColorIndex": 3
+    },
+    "00bc7ab9-2015-453f-bbf2-fed01335fdfd": {
+      "ProjectGuid": "00bc7ab9-2015-453f-bbf2-fed01335fdfd",
+      "DisplayName": "DiscordBot.Core.Domain",
+      "ColorIndex": 4
+    },
+    "fee2c2d8-cc06-461f-ade9-a7997546178b": {
+      "ProjectGuid": "fee2c2d8-cc06-461f-ade9-a7997546178b",
+      "DisplayName": "DiscordBot.Core",
+      "ColorIndex": 5
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
+    },
+    "46ecdf37-b09f-4ad2-b99e-f673b9a40ac7": {
+      "ProjectGuid": "46ecdf37-b09f-4ad2-b99e-f673b9a40ac7",
+      "DisplayName": "DiscordBot.Api",
+      "ColorIndex": 6
+    }
+  },
+  "NextColorIndex": 7
+}
