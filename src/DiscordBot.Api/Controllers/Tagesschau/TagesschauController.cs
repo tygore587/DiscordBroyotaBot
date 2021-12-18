@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Net.Mime;
 using DiscordBot.Api.Common;
+using DiscordBot.Api.Models.SearchResults;
 using DiscordBot.Domain.Youtube.Entities;
 using DiscordBot.Domain.Youtube.UseCases;
 using Microsoft.AspNetCore.Mvc;
@@ -19,6 +21,8 @@ namespace DiscordBot.Api.Controllers.Tagesschau
         }
 
         [HttpGet("video/today")]
+        [Produces("application/json")]
+        [ProducesResponseType(typeof(TagesschauYoutubeSearchResponse), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetNewestVideo()
         {
             try
@@ -30,16 +34,7 @@ namespace DiscordBot.Api.Controllers.Tagesschau
                 if (videoResult == null)
                     return NotFound("No tagesschau video found.");
 
-
-
-                var message =
-                    videoResult.LatestFoundVideo == null
-                        ? "No video was found."
-                        : videoResult.FoundVideoFromToday
-                            ? $"{videoResult.LatestFoundVideo.Link}"
-                            : $"**No video for today was found.**\nLast video found: {videoResult.LatestFoundVideo.Link}";
-
-                return Ok(randomMeme.ToMemeResponse());
+                return Ok(videoResult.ToTagesschauYoutubeSearchResponse());
 
             }
             catch (Exception ex)
