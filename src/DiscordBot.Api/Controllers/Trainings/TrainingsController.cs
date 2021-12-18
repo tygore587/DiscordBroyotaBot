@@ -31,7 +31,7 @@ namespace DiscordBot.Api.Controllers.Trainings
             }
             catch (Exception ex)
             {
-                return HandleException(ex, "Error while getting random meme.");
+                return HandleException(ex, "Error while getting todays training.");
             }
         }
 

@@ -40,7 +40,7 @@ namespace DiscordBot.Api.Controllers.Tagesschau
             }
             catch (Exception ex)
             {
-                return HandleException(ex, "Error while getting random meme.");
+                return HandleException(ex, "Error while getting todays tagesschau video.");
             }
         }
     }
