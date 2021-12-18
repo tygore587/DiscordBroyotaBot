@@ -1,4 +1,6 @@
 ﻿using DiscordBot.Api.Common;
+using DiscordBot.Api.Models;
+using DiscordBot.Api.Models.Memes;
 using DiscordBot.Domain.Memes.UseCases;
 using Microsoft.AspNetCore.Mvc;
 
@@ -15,6 +17,8 @@ namespace DiscordBot.Api.Controllers.Memes
         }
 
         [HttpGet("random")]
+        [ProducesResponseType(typeof(MemeResponse), StatusCodes.Status200OK)]
+        [Produces(MimeType.ApplicationJson)]
         public async Task<IActionResult> GetRandomMeme([FromQuery] bool includeNSFW)
         {
             try

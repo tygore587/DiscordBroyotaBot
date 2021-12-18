@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace DiscordBot.Api.Models.Dies
 {
-    public class RollResult
+    public class RollResponse
     {
         [JsonPropertyName("eyes")]
         public int Eyes { get; set; }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Net.Mime;
 using DiscordBot.Api.Common;
+using DiscordBot.Api.Models;
 using DiscordBot.Api.Models.SearchResults;
 using DiscordBot.Domain.Youtube.Entities;
 using DiscordBot.Domain.Youtube.UseCases;
@@ -21,7 +22,7 @@ namespace DiscordBot.Api.Controllers.Tagesschau
         }
 
         [HttpGet("video/today")]
-        [Produces("application/json")]
+        [Produces(MimeType.ApplicationJson)]
         [ProducesResponseType(typeof(TagesschauYoutubeSearchResponse), StatusCodes.Status200OK)]
         public async Task<IActionResult> GetNewestVideo()
         {

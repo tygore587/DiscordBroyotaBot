@@ -16,6 +16,7 @@ namespace DiscordBot.Api.Controllers.Dies
         }
 
         [HttpGet("roll/{sides}")]
+        [ProducesResponseType(typeof(RollResponse), StatusCodes.Status200OK)]
         public IActionResult RollDies(int sides)
         {
             try
@@ -24,7 +25,7 @@ namespace DiscordBot.Api.Controllers.Dies
 
                 var eyes = rollDice.Execute(param);
 
-                return Ok(new RollResult { Eyes = eyes });
+                return Ok(new RollResponse { Eyes = eyes });
 
             }
             catch (Exception ex)

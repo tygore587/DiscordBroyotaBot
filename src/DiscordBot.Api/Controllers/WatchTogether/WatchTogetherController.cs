@@ -1,4 +1,5 @@
 ﻿using DiscordBot.Api.Common;
+using DiscordBot.Api.Models.WatchTogether;
 using DiscordBot.Domain.WatchTogether.UseCases;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,6 +19,7 @@ namespace DiscordBot.Api.Controllers.WatchTogether
         }
 
         [HttpPost("room")]
+        [ProducesResponseType(typeof(SharedRoom), StatusCodes.Status200OK)]
         public async Task<IActionResult> CreateRoom(string? link)
         {
             try
