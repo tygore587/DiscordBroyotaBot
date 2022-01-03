@@ -12,11 +12,11 @@ namespace DiscordBot.Api.Common
             this.logger = logger;
         }
 
-        protected IActionResult HandleException(Exception ex, string errorMessage, params object[]? parameter)
+        protected IActionResult HandleException(Exception ex, string errorMessage, string? logDetails = null, params object[]? parameter)
         {
-            logger.LogError(errorMessage, ex, parameter);
+            logger.LogError($"{errorMessage} {logDetails}", ex, parameter);
 
-            return BadRequest(errorMessage);
+            return Problem(errorMessage);
         }
     }
 }

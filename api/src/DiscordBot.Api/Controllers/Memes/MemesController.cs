@@ -32,7 +32,7 @@ namespace DiscordBot.Api.Controllers.Memes
             }
             catch (Exception ex)
             {
-                return HandleException(ex, "Error while getting random meme.");
+                return HandleException(ex, "Error while getting random meme.", "{includeNSWF}", includeNSFW);
             }
         }
     }

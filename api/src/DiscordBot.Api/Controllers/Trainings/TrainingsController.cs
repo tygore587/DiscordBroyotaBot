@@ -31,7 +31,7 @@ namespace DiscordBot.Api.Controllers.Trainings
             }
             catch (Exception ex)
             {
-                return HandleException(ex, "Error while getting todays training.");
+                return HandleException(ex, "Error while getting todays training.", "{day} | {plan}", day, plan); ;
             }
         }
 

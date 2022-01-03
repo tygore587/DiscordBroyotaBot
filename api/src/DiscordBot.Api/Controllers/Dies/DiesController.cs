@@ -30,7 +30,7 @@ namespace DiscordBot.Api.Controllers.Dies
             }
             catch (Exception ex)
             {
-                return HandleException(ex, "Error while rolling the dice.");
+                return HandleException(ex, "Error while rolling the dice.", "{sides}",sides);
             }
         }
     }

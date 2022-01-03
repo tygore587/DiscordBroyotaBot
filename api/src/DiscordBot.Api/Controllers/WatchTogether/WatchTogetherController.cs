@@ -33,7 +33,7 @@ namespace DiscordBot.Api.Controllers.WatchTogether
             }
             catch (Exception ex)
             {
-                return HandleException(ex, "Error while watch together room.");
+                return HandleException(ex, "Error while watch together room.", "{link}", link ?? string.Empty);
             }
         }
     }
