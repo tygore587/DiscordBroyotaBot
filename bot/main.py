@@ -2,14 +2,23 @@
 
 # Press ⌃R to execute it or replace it with your code.
 # Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
+import os
+import time
+
 import requests
 
 
 def print_hi(name):
     # Use a breakpoint in the code line below to debug your script.
     print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
-    response = requests.get("https://example.com")
-    print(response.text)
+    api_url = os.environ.get("API_URL")
+    full_url = f'http://{api_url}'
+    print(f'Full URL is: {full_url}')
+    while True:
+        response = requests.get(full_url)
+        print(response.text)
+        print('wait 5 seconds.')
+        time.sleep(5)
 
 
 # Press the green button in the gutter to run the script.

@@ -14,6 +14,7 @@
     <Content Remove="Models\Youtube\**" />
     <EmbeddedResource Remove="Models\Youtube\**" />
     <None Remove="Models\Youtube\**" />
+    <None Remove="Controllers\Health\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -44,5 +45,6 @@
 
   <ItemGroup>
     <Folder Include="Controllers\Tagesschau\" />
+    <Folder Include="Controllers\Health\" />
   </ItemGroup>
 </Project>
