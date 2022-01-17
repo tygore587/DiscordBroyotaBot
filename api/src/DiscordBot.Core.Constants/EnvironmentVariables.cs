@@ -9,5 +9,7 @@ namespace DiscordBot.Core.Constants
 
         public static readonly string? SlashCommandsGuildId =
             Environment.GetEnvironmentVariable("SLASH_COMMANDS_GUILD_ID");
+
+        public static readonly string? FirebaseProjectId = Environment.GetEnvironmentVariable("FIREBASE_PROJECT_ID");
     }
 }

@@ -2,10 +2,12 @@
 using DiscordBot.Api.Models;
 using DiscordBot.Api.Models.Trainings;
 using DiscordBot.Domain.Trainings.UseCases;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DiscordBot.Api.Controllers.Trainings
 {
+    [Authorize]
     [Route("trainigs")]
     public class TrainingsController : BaseController<TrainingsController>
     {

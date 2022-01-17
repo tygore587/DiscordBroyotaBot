@@ -2,10 +2,12 @@
 using DiscordBot.Api.Models;
 using DiscordBot.Api.Models.Memes;
 using DiscordBot.Domain.Memes.UseCases;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DiscordBot.Api.Controllers.Memes
 {
+    [Authorize]
     [Route("memes")]
     public class MemesController : BaseController<MemesController>
     {

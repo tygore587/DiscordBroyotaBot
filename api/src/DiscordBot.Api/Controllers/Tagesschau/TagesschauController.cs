@@ -5,10 +5,12 @@ using DiscordBot.Api.Models;
 using DiscordBot.Api.Models.SearchResults;
 using DiscordBot.Domain.Youtube.Entities;
 using DiscordBot.Domain.Youtube.UseCases;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DiscordBot.Api.Controllers.Tagesschau
 {
+    [Authorize]
     [Route("tagesschau")]
     public class TagesschauController : BaseController<TagesschauController>
     {

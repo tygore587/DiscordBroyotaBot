@@ -1,10 +1,12 @@
 ﻿using DiscordBot.Api.Common;
 using DiscordBot.Api.Models.Dies;
 using DiscordBot.Domain.Dies.UseCases;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DiscordBot.Api.Controllers.Dies
 {
+    [Authorize]
     [Route("dies")]
     public class DiesController : BaseController<DiesController>
     {

@@ -2,10 +2,12 @@
 using DiscordBot.Api.Models;
 using DiscordBot.Api.Models.Dragonballs;
 using DiscordBot.Domain.Dragonball.UseCases;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DiscordBot.Api.Controllers.Dragonball
 {
+    [Authorize]
     [Route("dragonballs")]
     public class DragonballsController : BaseController<DragonballsController>
     {

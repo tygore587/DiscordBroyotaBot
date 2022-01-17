@@ -1,12 +1,13 @@
 ﻿using DiscordBot.Api.Common;
 using DiscordBot.Api.Models.WatchTogether;
 using DiscordBot.Domain.WatchTogether.UseCases;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DiscordBot.Api.Controllers.WatchTogether
 {
 
-
+    [Authorize]
     [Route("watchTogether")]
     public class WatchTogetherController : BaseController<WatchTogetherController>
     {
