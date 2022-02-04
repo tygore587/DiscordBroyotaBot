@@ -1,5 +1,4 @@
-﻿using System;
-using DiscordBot.Core.DateTimeProvider;
+﻿using DiscordBot.Core.DateTimeProvider;
 using DiscordBot.Data.Dragonball;
 using DiscordBot.Data.Dragonball.DataSources;
 using DiscordBot.Data.Dragonball.DataSources.Provider;
@@ -8,6 +7,8 @@ using DiscordBot.Data.Memes.DataSources;
 using DiscordBot.Data.News;
 using DiscordBot.Data.News.DataSources.Local;
 using DiscordBot.Data.News.DataSources.Remote.Tagesschau;
+using DiscordBot.Data.Pokemons.DataSources;
+using DiscordBot.Data.Pokemons.Repositories;
 using DiscordBot.Data.Trainings.DataSources.Local;
 using DiscordBot.Data.Trainings.DataSources.Local.IgorVoitenko;
 using DiscordBot.Data.Trainings.DataSources.Local.SaschaHuber;
@@ -24,6 +25,8 @@ using DiscordBot.Domain.Memes.Repositories;
 using DiscordBot.Domain.Memes.UseCases;
 using DiscordBot.Domain.News.Repositories;
 using DiscordBot.Domain.News.UseCases;
+using DiscordBot.Domain.Pokemons.Repositories;
+using DiscordBot.Domain.Pokemons.UseCases;
 using DiscordBot.Domain.Trainings.Repositories;
 using DiscordBot.Domain.Trainings.UseCases;
 using DiscordBot.Domain.WatchTogether.Repositories;
@@ -32,6 +35,7 @@ using DiscordBot.Domain.Youtube.Repositories;
 using DiscordBot.Domain.Youtube.UseCases;
 using Microsoft.Extensions.DependencyInjection;
 using Refit;
+using System;
 
 namespace DiscordBot.Data
 {
@@ -52,7 +56,8 @@ namespace DiscordBot.Data
                 .AddNewsServices()
                 .AddWatchTogetherServices()
                 .AddTrainingsServices()
-                .AddYoutubeLinkServices();
+                .AddYoutubeLinkServices()
+                .AddPokemonServices();
         }
 
         private static IServiceCollection ConfigureRefitClient<T>(this IServiceCollection services, string baseUrl,
@@ -126,9 +131,18 @@ namespace DiscordBot.Data
             return services
                 .AddSingleton<IYoutubeLocalCacheDataSource, YoutubeLocalCacheDataSource>()
                 .AddSingleton<IYoutubeRemoteDataSource, YoutubeRemoteDataSource>()
-                .AddSingleton<IYoutubeRepository,YoutubeRepository>()
+                .AddSingleton<IYoutubeRepository, YoutubeRepository>()
                 .ConfigureRefitClient<IYoutubeRSSApi>(IYoutubeRSSApi.BaseUrl, RefitXmlSettings)
                 .AddSingleton<SearchNewestVideoFromChannel>();
+        }
+
+        private static IServiceCollection AddPokemonServices(this IServiceCollection services)
+        {
+            return services
+                .AddSingleton<IPokemonDataProvider, PokemonDataProvider>()
+                .AddSingleton<IPokemonLocalJsonDataSource, PokemonLocalJsonDataSource>()
+                .AddSingleton<IPokemonRepository, PokemonRepository>()
+                .AddSingleton<FindPokemonByName>();
         }
     }
 }

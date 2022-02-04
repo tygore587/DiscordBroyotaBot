@@ -7,6 +7,7 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
+COPY ["nuget.config", "."]
 COPY ["src/DiscordBot.Api/DiscordBot.Api.csproj", "src/DiscordBot.Api/"]
 COPY ["src/DiscordBot.Data/DiscordBot.Data.csproj", "src/DiscordBot.Data/"]
 COPY ["src/DiscordBot.Domain/DiscordBot.Domain.csproj", "src/DiscordBot.Domain/"]

@@ -14,6 +14,7 @@
     <Content Remove="Models\Youtube\**" />
     <EmbeddedResource Remove="Models\Youtube\**" />
     <None Remove="Models\Youtube\**" />
+    <Content Remove="pokemon_german_english_id.json" />
     <None Remove="Controllers\Health\" />
   </ItemGroup>
 
@@ -47,5 +48,11 @@
   <ItemGroup>
     <Folder Include="Controllers\Tagesschau\" />
     <Folder Include="Controllers\Health\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="pokemon_german_english_id.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 </Project>
