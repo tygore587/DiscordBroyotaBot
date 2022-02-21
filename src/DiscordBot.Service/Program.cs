@@ -87,14 +87,14 @@ namespace DiscordBot.Service
 
             var slash = discord.UseApplicationCommands(slashConfiguration);
 
-            slash.RegisterCommands<DiceSlashModule>(guildId);
-            slash.RegisterCommands<DragonballGroupModule>(guildId);
-            slash.RegisterCommands<MemeSlashModule>(guildId);
-            slash.RegisterCommands<RedditMemeSlashModule>(guildId);
-            slash.RegisterCommands<NewsSlashModule>(guildId);
-            slash.RegisterCommands<WatchTogetherSlashModule>(guildId);
-            slash.RegisterCommands<TrainingsSlashModule>(guildId);
-            slash.RegisterCommands<YoutubeSlashModule>(guildId);
+            slash.RegisterGuildCommands<DiceSlashModule>(guildId);
+            slash.RegisterGuildCommands<DragonballGroupModule>(guildId);
+            slash.RegisterGuildCommands<MemeSlashModule>(guildId);
+            slash.RegisterGuildCommands<RedditMemeSlashModule>(guildId);
+            slash.RegisterGuildCommands<NewsSlashModule>(guildId);
+            slash.RegisterGuildCommands<WatchTogetherSlashModule>(guildId);
+            slash.RegisterGuildCommands<TrainingsSlashModule>(guildId);
+            slash.RegisterGuildCommands<YoutubeSlashModule>(guildId);
 
             slash.SlashCommandErrored += (_, commandArgs) => HandleSlashCommandErrors(logger, commandArgs);
 
