@@ -1,5 +1,7 @@
 using DiscordBot.Api;
+using DiscordBot.Api.Secrets;
 using DiscordBot.Core.Constants;
+using DiscordBot.Core.Secrets;
 using DiscordBot.Data;
 using DotNetEnv;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -30,7 +32,13 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddDomainAndDataServices();
 
-builder.Services.ConfigureFirebaseAuth(EnvironmentVariables.FirebaseProjectId);
+var secrets = await GetSecretsFromDoppler();
+
+if (secrets == null)
+    throw new ArgumentNullException(nameof(secrets), "Secrets from doppler were null or empty.");
+
+builder.Services.ConfigureFirebaseAuth(secrets.FirebaseProjectId);
+builder.Services.AddSingleton(secrets);
 
 var app = builder.Build();
 
@@ -58,6 +66,15 @@ static void LoadEnvironmentVariables()
     Env.TraversePath().Load();
 }
 
+static async Task<ApplicationSecrets?> GetSecretsFromDoppler()
+{
+    var dopplerToken = EnvironmentVariables.DopplerToken;
+
+    if (string.IsNullOrWhiteSpace(dopplerToken))
+        throw new ArgumentNullException(nameof(dopplerToken), "Doppler Token was null or empty from environment.");
+
+    return await DopplerSecretClient.FetchSecrets(dopplerToken);
+}
 
 static class ServiceCollectionExtensions
 {
