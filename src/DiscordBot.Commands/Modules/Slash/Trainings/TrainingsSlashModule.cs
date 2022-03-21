@@ -25,7 +25,7 @@ namespace DiscordBot.Commands.Modules.Slash.Trainings
         public async Task GetTodayTraining(
             InteractionContext context,
             [Option("day", "Choose the day you want to print.")]
-            long day = -1,
+            int day = -1,
             [Option("traini", "test")] Trainingsplan plan = Trainingsplan.SaschaHuberPlan1Starter)
         {
             try
