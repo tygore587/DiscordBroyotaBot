@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from datetime import datetime
 
-from src.firebase_api_client import FirebaseApiClient, FirebaseLoginCredentials
+from features.firebase.data.datasources.firebase_api_client import FirebaseApiClient, FirebaseLoginCredentials
 
 
 @dataclass
@@ -12,11 +12,10 @@ class FirebaseTokenInfo:
     display_name: str
 
 
-class FirebaseTokenManager:
+class FirebaseRepository:
+    # TODO: Don't hold token, get token from firebase_api_client or insert firebase api client into all repositories which talkes to my backend
     token_info: FirebaseTokenInfo
 
     def __init__(self, api_client: FirebaseApiClient, creds: FirebaseLoginCredentials):
         self.api_client = api_client
         self.creds = creds
-
-

@@ -22,9 +22,14 @@ class FirebaseApiClient:
     def __init__(self, api_key: str):
         self.api_key = api_key
 
+    # TODO: implement cache to get token (lru_cache). If cache is expired, call login user function to get a new token, make the login_user function private
+    def get_token(self, credentials: FirebaseLoginCredentials) -> FirebaseLoginResult:
+        pass
+
     def login_user(self, credentials: FirebaseLoginCredentials) -> FirebaseLoginResult:
         query = {"key": self.api_key}
-        body = {"email": credentials.email, "password": credentials.password, "returnSecureToken": True}
+        body = {"email": credentials.email,
+                "password": credentials.password, "returnSecureToken": True}
 
         response = requests.post('https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword', data=body,
                                  params=query)
