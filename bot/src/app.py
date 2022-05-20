@@ -19,9 +19,13 @@ def main():
         firebase_credentials = FirebaseLoginCredentials(email=secrets.firebase_login_mail,
                                                         password=secrets.firebase_login_password)
 
-        creds = firebase_api_client.login_user(
+        firebase_api_client.get_token(
             credentials=firebase_credentials)
-        print(creds.id_token)
+
+        creds = firebase_api_client.get_token(
+            credentials=firebase_credentials)
+
+        print(creds)
 
     except HTTPError as err:
         print(err)
