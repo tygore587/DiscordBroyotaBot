@@ -1,29 +1,31 @@
+import asyncio
 from urllib.error import HTTPError
-from core.environment import EnvironmentHelper, EnvironmentVariables
-from features.doppler.data.datasources.doppler_api_client import DopplerApiClient
-from features.firebase.data.datasources.firebase_api_client import FirebaseApiClient, FirebaseLoginCredentials
+
+import httpx
+
+from features.doppler.data.datasources.doppler_api_client_impl import DopplerApiClientImpl
+from features.firebase.data.datasources.firebase_api_client_impl import FirebaseApiClientImpl, FirebaseLoginCredentials
+from src.core.environmentHelper import EnvironmentHelper
+from src.core.environmentVariables import EnvironmentVariables
 
 
-def main():
+async def main():
     try:
         EnvironmentHelper.load_environment()
 
         doppler_secret = EnvironmentVariables.get_doppler_service_token()
 
-        doppler_client = DopplerApiClient()
+        doppler_client = httpx.AsyncClient()
+        doppler_api_client = DopplerApiClientImpl(doppler_client)
 
-        secrets = doppler_client.get_secrets(base64_secret=doppler_secret)
-
-        firebase_api_client = FirebaseApiClient(secrets.firebase_api_key)
+        secrets = await doppler_api_client.get_secrets(base64_secret=doppler_secret)
 
         firebase_credentials = FirebaseLoginCredentials(email=secrets.firebase_login_mail,
                                                         password=secrets.firebase_login_password)
+        firebase_client = httpx.AsyncClient()
+        firebase_api_client = FirebaseApiClientImpl(firebase_client, secrets.firebase_api_key, firebase_credentials)
 
-        firebase_api_client.get_token(
-            credentials=firebase_credentials)
-
-        creds = firebase_api_client.get_token(
-            credentials=firebase_credentials)
+        creds = await firebase_api_client.get_token()
 
         print(creds)
 
@@ -33,4 +35,4 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    asyncio.run(main())

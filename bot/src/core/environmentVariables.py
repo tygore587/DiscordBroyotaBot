@@ -1,7 +1,6 @@
+import os
 from abc import ABC
 from dataclasses import dataclass
-import os
-from dotenv import load_dotenv
 
 
 @dataclass
@@ -13,10 +12,3 @@ class EnvironmentVariables(ABC):
     @staticmethod
     def __get_variable_from_os(name: str) -> str:
         return os.environ[name]
-
-
-class EnvironmentHelper(ABC):
-
-    @staticmethod
-    def load_environment():
-        load_dotenv()
