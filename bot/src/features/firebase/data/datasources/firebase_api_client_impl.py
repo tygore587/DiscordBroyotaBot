@@ -4,7 +4,6 @@ from httpx import AsyncClient
 
 from src.features.firebase.data.datasources.firebase_api_client import FirebaseApiClient
 from src.features.firebase.data.models.firebaseLoginCredentials import FirebaseLoginCredentials
-from src.features.firebase.data.models.tokenCacheKey import TokenCacheKey
 from src.features.firebase.data.models.tokenResult import TokenResult
 
 
@@ -14,31 +13,11 @@ class FirebaseApiClientImpl(FirebaseApiClient):
         super().__init__(client)
         self.api_key = api_key
         self.credentials = credentials
-        self.cache: dict[TokenCacheKey, TokenResult] = dict()
 
-    async def get_token(self) -> str:
-        cache_key = self._get_cache_key(self.credentials)
+    async def get_token(self) -> TokenResult:
+        return await self._login_user(credentials=self.credentials)
 
-        current_token = self.cache.get(cache_key)
-        if not current_token:
-            new_token = await self._login_user(self.credentials)
-            self.cache[cache_key] = new_token
-            return new_token.id_token
-
-        if not current_token.expires_at > datetime.utcnow():
-            return current_token.id_token
-
-        new_token = await self._refresh_token(current_token.refresh_token)
-
-        self.cache[cache_key] = new_token
-
-        return new_token.id_token
-
-    @staticmethod
-    def _get_cache_key(credentials: FirebaseLoginCredentials) -> TokenCacheKey:
-        return TokenCacheKey(credentials.email, credentials.password)
-
-    async def _refresh_token(self, refresh_token) -> TokenResult:
+    async def refresh_token(self, refresh_token: str) -> TokenResult:
         query = {"key": self.api_key}
         body = {
             "grant_type": "refresh_token",

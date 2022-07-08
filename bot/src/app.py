@@ -7,6 +7,8 @@ from features.doppler.data.datasources.doppler_api_client_impl import DopplerApi
 from features.firebase.data.datasources.firebase_api_client_impl import FirebaseApiClientImpl, FirebaseLoginCredentials
 from src.core.environmentHelper import EnvironmentHelper
 from src.core.environmentVariables import EnvironmentVariables
+from src.features.broyota_api.data.datasources.broyota_api_auth_flow import BroyotaApiAuthFlow
+from src.features.broyota_api.data.datasources.broyota_api_client_impl import BroyotaApiClientImpl
 
 
 async def main():
@@ -25,9 +27,12 @@ async def main():
         firebase_client = httpx.AsyncClient()
         firebase_api_client = FirebaseApiClientImpl(firebase_client, secrets.firebase_api_key, firebase_credentials)
 
-        creds = await firebase_api_client.get_token()
+        broyota_api_auth_flow = BroyotaApiAuthFlow(firebase_api_client)
+        broyota_client = httpx.AsyncClient(auth=broyota_api_auth_flow)
+        broyota_api_client = BroyotaApiClientImpl(broyota_client)
 
-        print(creds)
+        await broyota_api_client.get_example()
+        await broyota_api_client.get_example()
 
     except HTTPError as err:
         print(err)
