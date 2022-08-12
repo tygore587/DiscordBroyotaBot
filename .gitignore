@@ -8,6 +8,7 @@
 .idea
 .DS_Store
 .vs
+.vscode
 
 # User-specific files
 *.rsuser
