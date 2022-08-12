@@ -1,9 +1,10 @@
-name: Build & Deploy to Dokku
+name: Build & Deploy Api to Dokku
 
 # Controls when the action will run. 
 on: [push, workflow_dispatch]
 env:
   DEPLOY_BRANCH: "refs/heads/main"
+  APP_NAME: "broyota-bot-py"
   
 jobs:
   conditions:
@@ -32,22 +33,22 @@ jobs:
         with:
           push: false
           load: true
-          tags: dokku/${{ secrets.APP_NAME }}:${{ github.sha }}
-          file: ./api/src/DiscordBot.Api/Dockerfile
-          context: ./api
+          tags: dokku/${{ env.APP_NAME }}:${{ github.sha }}
+          file: ./bot/Dockerfile
+          context: ./bot
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache,mode=max
       
       - name: Save docker image to tar file
         if: ${{ github.ref == env.DEPLOY_BRANCH }}
-        run: docker save dokku/${{ secrets.APP_NAME }}:${{ github.sha }} > ${{ secrets.APP_NAME }}.tar
+        run: docker save dokku/${{ env.APP_NAME }}:${{ github.sha }} > ${{ env.APP_NAME }}.tar
         
       - name: Upload artifact
         if: ${{ github.ref == env.DEPLOY_BRANCH }}
         uses: actions/upload-artifact@v2
         with:
-          name: ${{ secrets.APP_NAME }}
-          path: ./${{ secrets.APP_NAME }}.tar
+          name: ${{ env.APP_NAME }}
+          path: ./${{ env.APP_NAME }}.tar
         
       
   deploy:
@@ -58,7 +59,7 @@ jobs:
       - name: Download artifact
         uses: actions/download-artifact@v2
         with:
-          name: ${{ secrets.APP_NAME }}
+          name: ${{ env.APP_NAME }}
           path: .
           
       - name: Copy docker image to dokku server
@@ -67,7 +68,7 @@ jobs:
           host: ${{ secrets.DOKKU_SSH_HOST }}
           username: ${{ secrets.DOKKU_SSH_PRIVATE_KEY_DOCKER_USERNAME }}
           key: ${{ secrets.DOKKU_SSH_PRIVATE_KEY_DOCKER_UPLOAD }}
-          source: ${{ secrets.APP_NAME }}.tar
+          source: ${{ env.APP_NAME }}.tar
           target: .
       
       - name: Load docker image from tar
@@ -77,8 +78,8 @@ jobs:
           username: ${{ secrets.DOKKU_SSH_PRIVATE_KEY_DOCKER_USERNAME }}
           key: ${{ secrets.DOKKU_SSH_PRIVATE_KEY_DOCKER_UPLOAD }}
           script: |
-            docker load -i ${{ secrets.APP_NAME }}.tar
-            rm ${{ secrets.APP_NAME }}.tar
+            docker load -i ${{ env.APP_NAME }}.tar
+            rm ${{ env.APP_NAME }}.tar
 
       - name: Deploy to dokku
         uses: appleboy/ssh-action@master
@@ -86,7 +87,7 @@ jobs:
           host: ${{ secrets.DOKKU_SSH_HOST }}
           username: ${{ secrets.DOKKU_SSH_USERNAME }}
           key: ${{ secrets.DOKKU_SSH_PRIVATE_KEY }}
-          script: git:from-image ${{ secrets.APP_NAME }} dokku/${{ secrets.APP_NAME }}:${{ github.sha }}
+          script: git:from-image ${{ env.APP_NAME }} dokku/${{ env.APP_NAME }}:${{ github.sha }}
           
       - name: Run dokku cleanup
         uses: appleboy/ssh-action@master
