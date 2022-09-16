@@ -1,14 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="DisCatSharp" Version="9.8.4" />
-    <PackageReference Include="DisCatSharp.ApplicationCommands" Version="9.8.4" />
-    <PackageReference Include="DisCatSharp.CommandsNext" Version="9.8.4" />
+    <PackageReference Include="DisCatSharp" Version="10.1.0" />
+    <PackageReference Include="DisCatSharp.ApplicationCommands" Version="10.1.0" />
+    <PackageReference Include="DisCatSharp.CommandsNext" Version="10.1.0" />
   </ItemGroup>
 
   <ItemGroup>

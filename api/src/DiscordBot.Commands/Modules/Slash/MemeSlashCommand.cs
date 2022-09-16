@@ -1,4 +1,6 @@
 ﻿using DisCatSharp.ApplicationCommands;
+using DisCatSharp.ApplicationCommands.Attributes;
+using DisCatSharp.ApplicationCommands.Context;
 using DiscordBot.Commands.Extensions;
 using System.Threading.Tasks;
 

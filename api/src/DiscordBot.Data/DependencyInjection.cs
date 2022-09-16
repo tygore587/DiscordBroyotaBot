@@ -36,6 +36,7 @@ using DiscordBot.Domain.Youtube.UseCases;
 using Microsoft.Extensions.DependencyInjection;
 using Refit;
 using System;
+using System.Xml.Serialization;
 
 namespace DiscordBot.Data
 {
