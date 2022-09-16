@@ -13,32 +13,11 @@ LoadEnvironmentVariables();
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Host.UseSerilog((hostingContext, loggerConfiguration) =>
-{
-    loggerConfiguration.ConfigureLogging();
-});
+builder.ConfigureLogging();
 
-// Add services to the container.
+builder.ConfigureControllers();
 
-builder.Services.AddControllers().AddJsonOptions(options =>
-{
-    options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
-});
-
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-
-builder.Services.AddSwaggerGen();
-
-builder.Services.AddDomainAndDataServices();
-
-var secrets = await GetSecretsFromDoppler();
-
-if (secrets == null)
-    throw new ArgumentNullException(nameof(secrets), "Secrets from doppler were null or empty.");
-
-builder.Services.ConfigureFirebaseAuth(secrets.FirebaseProjectId);
-builder.Services.AddSingleton(secrets);
+await builder.ConfigureServices();
 
 var app = builder.Build();
 
@@ -50,6 +29,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseRouting();
 
 app.UseAuthentication();
 
@@ -66,15 +47,7 @@ static void LoadEnvironmentVariables()
     Env.TraversePath().Load();
 }
 
-static async Task<ApplicationSecrets?> GetSecretsFromDoppler()
-{
-    var dopplerToken = EnvironmentVariables.DopplerToken;
 
-    if (string.IsNullOrWhiteSpace(dopplerToken))
-        throw new ArgumentNullException(nameof(dopplerToken), "Doppler Token was null or empty from environment.");
-
-    return await DopplerSecretClient.FetchSecrets(dopplerToken);
-}
 
 static class ServiceCollectionExtensions
 {
@@ -98,5 +71,54 @@ static class ServiceCollectionExtensions
            });
 
         return services;
+    }
+}
+
+static class WebApplicationBuilderExtensions
+{
+    public static void ConfigureLogging(this WebApplicationBuilder builder)
+    {
+        builder.Host.UseSerilog((hostingContext, loggerConfiguration) =>
+        {
+            loggerConfiguration.ConfigureLogging();
+        });
+    }
+
+    public static void ConfigureControllers(this WebApplicationBuilder builder)
+    {
+        // Add services to the container.
+
+        builder.Services.AddControllers().AddJsonOptions(options =>
+        {
+            options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+        });
+    }
+
+    public static async Task ConfigureServices(this WebApplicationBuilder builder)
+    {
+        // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+        builder.Services.AddEndpointsApiExplorer();
+
+        builder.Services.AddSwaggerGen();
+
+        builder.Services.AddDomainAndDataServices();
+
+        var secrets = await GetSecretsFromDoppler();
+
+        if (secrets == null)
+            throw new ArgumentNullException(nameof(secrets), "Secrets from doppler were null or empty.");
+
+        builder.Services.ConfigureFirebaseAuth(secrets.FirebaseProjectId);
+        builder.Services.AddSingleton(secrets);
+
+        static async Task<ApplicationSecrets?> GetSecretsFromDoppler()
+        {
+            var dopplerToken = EnvironmentVariables.DopplerToken;
+
+            if (string.IsNullOrWhiteSpace(dopplerToken))
+                throw new ArgumentNullException(nameof(dopplerToken), "Doppler Token was null or empty from environment.");
+
+            return await DopplerSecretClient.FetchSecrets(dopplerToken);
+        }
     }
 }
