@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  api:
+    build:
+      dockerfile: ./DiscordBot.Api/Dockerfile
+      context: .
+    ports:
+      - "8080:80"
+      - "8081:443"
+    environment:
+      - DOPPLER_TOKEN=${DOPPLER_TOKEN_API}
