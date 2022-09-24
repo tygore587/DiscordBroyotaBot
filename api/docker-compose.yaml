@@ -3,10 +3,11 @@ version: '3'
 services:
   api:
     build:
-      dockerfile: ./DiscordBot.Api/Dockerfile
+      dockerfile: ./src/DiscordBot.Api/Dockerfile
       context: .
     ports:
       - "8080:80"
-      - "8081:443"
+    env_file:
+      - ./src/DiscordBot.Api/.env
     environment:
-      - DOPPLER_TOKEN=${DOPPLER_TOKEN_API}
+      - ASPNETCORE_ENVIRONMENT=Development
