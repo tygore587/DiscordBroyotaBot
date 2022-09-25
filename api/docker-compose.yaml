@@ -3,7 +3,7 @@ version: '3'
 services:
   api:
     build:
-      dockerfile: ./src/DiscordBot.Api/Dockerfile
+      dockerfile: ./Dockerfile
       context: .
     ports:
       - "8080:80"
