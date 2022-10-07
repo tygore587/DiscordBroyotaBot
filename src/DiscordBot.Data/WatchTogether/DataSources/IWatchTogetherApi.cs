@@ -10,7 +10,7 @@ namespace DiscordBot.Data.WatchTogether.DataSources
 {
     internal interface IWatchTogetherApi
     {
-        const string BaseUrl = "https://w2g.tv/";
+        const string BaseUrl = "https://api.w2g.tv/";
 
         [Post("/rooms/create.json")]
         Task<WatchTogetherRoomRemote> CreateRoom([Body] WatchTogetherRoomCreationRequestRemote roomCreationRequest);
