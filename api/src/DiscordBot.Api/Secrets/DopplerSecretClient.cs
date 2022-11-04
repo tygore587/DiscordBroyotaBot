@@ -22,7 +22,7 @@ namespace DiscordBot.Api.Secrets
 
             return dopplerSecrets == null 
                 ? null
-                : new ApplicationSecrets(dopplerSecrets.FirebaseProjectId, dopplerSecrets.WatchTogetherApiKey);
+                : new ApplicationSecrets(dopplerSecrets.ApiKey, dopplerSecrets.WatchTogetherApiKey);
         }
     }
 }

@@ -6,5 +6,5 @@ using System.Threading.Tasks;
 
 namespace DiscordBot.Core.Secrets
 {
-    public record ApplicationSecrets(string FirebaseProjectId, string WatchTogetherApiKey);
+    public record ApplicationSecrets(string ApiKey, string WatchTogetherApiKey);
 }

@@ -1,4 +1,5 @@
 using DiscordBot.Api;
+using DiscordBot.Api.Middlewares;
 using DiscordBot.Api.Secrets;
 using DiscordBot.Core.Constants;
 using DiscordBot.Core.Secrets;
@@ -30,6 +31,8 @@ if (app.Environment.IsDevelopment())
 
 app.UseRouting();
 
+app.ConfigureApiKeyMiddleware();
+
 app.UseAuthentication();
 
 app.UseAuthorization();
@@ -45,32 +48,6 @@ static void LoadEnvironmentVariables()
     Env.TraversePath().Load();
 }
 
-
-
-static class ServiceCollectionExtensions
-{
-    public static IServiceCollection ConfigureFirebaseAuth(this IServiceCollection services, string? projectId)
-    {
-        if (projectId == null)
-            throw new ArgumentNullException(nameof(projectId), "Firebase Project ID can't be null or empty.");
-
-        services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-           .AddJwtBearer(options =>
-           {
-               options.Authority = $"https://securetoken.google.com/{projectId}";
-               options.TokenValidationParameters = new TokenValidationParameters
-               {
-                   ValidateIssuer = true,
-                   ValidIssuer = $"https://securetoken.google.com/{projectId}",
-                   ValidateAudience = true,
-                   ValidAudience = projectId,
-                   ValidateLifetime = true
-               };
-           });
-
-        return services;
-    }
-}
 
 static class WebApplicationBuilderExtensions
 {
@@ -106,7 +83,7 @@ static class WebApplicationBuilderExtensions
         if (secrets == null)
             throw new ArgumentNullException(nameof(secrets), "Secrets from doppler were null or empty.");
 
-        builder.Services.ConfigureFirebaseAuth(secrets.FirebaseProjectId);
+        
         builder.Services.AddSingleton(secrets);
 
         static async Task<ApplicationSecrets?> GetSecretsFromDoppler()
@@ -118,5 +95,13 @@ static class WebApplicationBuilderExtensions
 
             return await DopplerSecretClient.FetchSecrets(dopplerToken);
         }
+    }
+}
+
+static class ApplicationBuilderExtensions
+{
+    public static IApplicationBuilder ConfigureApiKeyMiddleware(this IApplicationBuilder webApplication)
+    {
+        return webApplication.UseMiddleware<ApiKeyMiddleware>();
     }
 }
