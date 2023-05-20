@@ -52,7 +52,7 @@ jobs:
           cache-to: type=local,dest=/tmp/.buildx-cache,mode=max
 
       - name: Deploy to caprover
-        if: ${{ sucess() && steps.build_vars.outputs.deploy_branch == github.ref }}
+        if: ${{ success() && steps.build_vars.outputs.deploy_branch == github.ref }}
         uses: caprover/deploy-from-github@v1.1.2
         with:
           server: ${{ secrets.CAPROVER_HOST }}
