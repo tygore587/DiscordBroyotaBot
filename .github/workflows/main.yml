@@ -50,7 +50,6 @@ jobs:
           cache-to: type=local,dest=/tmp/.buildx-cache,mode=max
 
       - name: Deploy to caprover
-        environment: production
         if: ${{ steps.build_vars.deployBranch == github.ref }}
         uses: caprover/deploy-from-github@v1.1.2
         with:
