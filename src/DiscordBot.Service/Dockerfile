@@ -22,6 +22,8 @@ FROM build AS publish
 RUN dotnet publish "DiscordBot.Service.csproj" -c Release -o /app/publish
 
 FROM base AS final
+LABEL org.opencontainers.image.source=https://github.com/tygore587/DiscordBroyotaBot
+
 WORKDIR /app
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "DiscordBot.Service.dll"]
