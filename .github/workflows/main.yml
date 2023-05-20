@@ -9,7 +9,6 @@ on:
 env:
   DEPLOY_BRANCH: "refs/heads/main"
   DOCKER_REGISTRY: ghcr.io
-  CAPROVER_APP: broyota-bot
 
 jobs:
   main:
@@ -51,12 +50,11 @@ jobs:
           cache-to: type=local,dest=/tmp/.buildx-cache,mode=max
 
       - name: Deploy to caprover
+        environment: production
         if: ${{ steps.build_vars.deployBranch == github.ref }}
         uses: caprover/deploy-from-github@v1.1.2
         with:
-          # todo: Add caprover server to secrets
           server: ${{ secrets.CAPROVER_HOST }}
-          app: ${{ env.CAPROVER_APP }}
-          # todo: add caprover token to secrets
+          app: ${{ secrets.CAPROVER_APP_NAME }}
           token: '${{ secrets.CAPROVER_APP_TOKEN }}'
           image: '${{ env.FULL_IMAGE_NAME }}'
