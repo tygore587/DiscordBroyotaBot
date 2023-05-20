@@ -23,6 +23,9 @@ jobs:
           echo "FULL_IMAGE_NAME=$IMAGE_NAME_WITH_REGISTRY:latest" >> $GITHUB_ENV
           echo "deployBranch=$DEPLOYBANCH" >> $GITHUB_OUTPUT
 
+      - name: Check output
+        run: echo ${{ steps.build_vars.deployBranch }}
+
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2.1.0
 
