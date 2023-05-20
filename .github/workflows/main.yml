@@ -19,7 +19,7 @@ jobs:
       - name: Set build variables
         id: build_vars
         run: |
-          export IMAGE_NAME_WITH_REGISTRY=$DOCKER_REGISTRY/${{ github.actor }}/${{ env.CAPROVER_APP }}
+          export IMAGE_NAME_WITH_REGISTRY=$DOCKER_REGISTRY/${{ github.actor }}/${{ secrets.CAPROVER_APP_NAME }}
           echo "FULL_IMAGE_NAME=$IMAGE_NAME_WITH_REGISTRY:latest" >> $GITHUB_ENV
           echo "deployBranch=$DEPLOYBANCH" >> $GITHUB_OUTPUT
 
