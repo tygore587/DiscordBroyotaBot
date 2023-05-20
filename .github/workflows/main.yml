@@ -24,7 +24,7 @@ jobs:
           echo "deployBranch=$DEPLOYBANCH" >> $GITHUB_OUTPUT
 
       - name: Check output
-        run: echo ${{ steps.build_vars.outputs.deployBranch }}
+        run: echo ${{join(steps.run_tests.outputs.*, '\n')}}
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2.1.0
