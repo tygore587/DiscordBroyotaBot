@@ -7,6 +7,7 @@ using DiscordBot.Data.News;
 using DiscordBot.Data.News.DataSources.Local;
 using DiscordBot.Data.News.DataSources.Remote.Tagesschau;
 using DiscordBot.Domain.News.Entities;
+using DiscordBot.Domain.News.Repositories;
 using FluentAssertions;
 using NSubstitute;
 using Xunit;
@@ -17,7 +18,7 @@ namespace DiscordBot.Data.Tests.Unit.News
     {
         private readonly INewsLocalCacheDataSource _newsLocalCacheDataSource;
 
-        private readonly NewsRepository _sut;
+        private readonly INewsRepository _sut;
         private readonly ITagesschauRemoteDataSource _tagesschauRemoteDataSource;
 
         public NewsRepositoryTests()
@@ -35,7 +36,7 @@ namespace DiscordBot.Data.Tests.Unit.News
 
             var expectedNews = fixture.CreateMany<NewsEntity>(10).ToList();
 
-            _newsLocalCacheDataSource.Get(Arg.Any<string>()).Returns(Task.FromResult<List<NewsEntity>>(null));
+            _newsLocalCacheDataSource.Get(Arg.Any<string>()).Returns(Task.FromResult<List<NewsEntity>?>(null));
 
             _tagesschauRemoteDataSource.GetTagesschauNews(Arg.Any<CancellationToken>())
                 .Returns(Task.FromResult(expectedNews));
@@ -54,7 +55,7 @@ namespace DiscordBot.Data.Tests.Unit.News
 
             var expectedNews = fixture.CreateMany<NewsEntity>(10).ToList();
 
-            _newsLocalCacheDataSource.Get(Arg.Any<string>()).Returns(Task.FromResult(expectedNews));
+            _newsLocalCacheDataSource.Get(Arg.Any<string>()).Returns(Task.FromResult<List<NewsEntity>?>(expectedNews));
 
             var actualNews = await _sut.GetTagesschauNews();
 

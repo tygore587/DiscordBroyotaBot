@@ -11,7 +11,7 @@ namespace DiscordBot.Data.Tests.Unit.Dragonball.DataSources
     {
         private readonly IDragonballCharacterPropertyProvider _characterPropertyProvider;
 
-        private readonly DragonballCharacterPropertiesLocalDataSource _sut;
+        private readonly IDragonballCharacterPropertiesLocalDataSource _sut;
 
         public DragonballCharacterPropertiesLocalDataSourceTests()
         {

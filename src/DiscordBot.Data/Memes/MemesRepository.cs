@@ -1,13 +1,9 @@
-﻿using System;
-using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
-using DiscordBot.Data;
-using DiscordBot.Data.Memes.DataSources;
+﻿using DiscordBot.Data.Memes.DataSources;
 using DiscordBot.Domain.Memes.Entities;
 using DiscordBot.Domain.Memes.Repositories;
 using Serilog;
-
-[assembly: InternalsVisibleTo(TestConstants.AssemblyName)]
+using System;
+using System.Threading.Tasks;
 
 namespace DiscordBot.Data.Memes
 {

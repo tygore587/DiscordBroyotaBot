@@ -18,14 +18,7 @@
 
     <ItemGroup>
         <ProjectReference Include="..\DiscordBot.Commands\DiscordBot.Commands.csproj" />
-        <ProjectReference Include="..\DiscordBot.Core.Constants\DiscordBot.Core.Constants.csproj" />
         <ProjectReference Include="..\DiscordBot.Data\DiscordBot.Data.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
-        <None Update="Procfile">
-            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-        </None>
     </ItemGroup>
 
 </Project>

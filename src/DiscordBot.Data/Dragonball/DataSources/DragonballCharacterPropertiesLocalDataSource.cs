@@ -1,10 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using DiscordBot.Data.Dragonball.DataSources.Provider;
+using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
-using DiscordBot.Data;
-using DiscordBot.Data.Dragonball.DataSources.Provider;
-
-[assembly: InternalsVisibleTo(TestConstants.AssemblyName)]
 
 namespace DiscordBot.Data.Dragonball.DataSources
 {

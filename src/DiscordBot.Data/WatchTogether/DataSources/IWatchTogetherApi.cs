@@ -1,10 +1,6 @@
-﻿using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
-using DiscordBot.Data;
-using DiscordBot.Data.WatchTogether.Models;
+﻿using DiscordBot.Data.WatchTogether.Models;
 using Refit;
-
-[assembly: InternalsVisibleTo(TestConstants.AssemblyName)]
+using System.Threading.Tasks;
 
 namespace DiscordBot.Data.WatchTogether.DataSources
 {

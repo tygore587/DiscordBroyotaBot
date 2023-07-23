@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using DiscordBot.Data.Dragonball;
 using DiscordBot.Data.Dragonball.DataSources;
+using DiscordBot.Domain.Dragonball.Repositories;
 using FluentAssertions;
 using NSubstitute;
 using Xunit;
@@ -11,7 +12,7 @@ namespace DiscordBot.Data.Tests.Unit.Dragonball
     {
         private readonly IDragonballCharacterPropertiesLocalDataSource _dragonballCharacterPropertiesLocalDataSource;
 
-        private readonly DragonballRepository _sut;
+        private readonly IDragonballRepository _sut;
 
         public DragonballRepositoryTests()
         {
