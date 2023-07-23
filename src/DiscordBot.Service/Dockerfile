@@ -5,6 +5,7 @@ WORKDIR /app
 
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
+COPY ["Directory.Build.props", "."]
 COPY ["src/DiscordBot.Service/DiscordBot.Service.csproj", "src/DiscordBot.Service/"]
 COPY ["src/DiscordBot.Commands/DiscordBot.Commands.csproj", "src/DiscordBot.Commands/"]
 COPY ["src/DiscordBot.Core/DiscordBot.Core.csproj", "src/DiscordBot.Core/"]
