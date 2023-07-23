@@ -1,8 +1,8 @@
-﻿using System;
-using System.Threading.Tasks;
-using DiscordBot.Core;
+﻿using DiscordBot.Core.Domain;
 using DiscordBot.Domain.Memes.Entities;
 using DiscordBot.Domain.Memes.Repositories;
+using System;
+using System.Threading.Tasks;
 
 namespace DiscordBot.Domain.Memes.UseCases
 {

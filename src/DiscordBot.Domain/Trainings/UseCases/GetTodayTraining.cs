@@ -1,13 +1,13 @@
-﻿using System.Linq;
-using System.Threading.Tasks;
-using DiscordBot.Core;
-using DiscordBot.Core.DateTimeProvider;
+﻿using DiscordBot.Core.DateTimeProvider;
 using DiscordBot.Core.DateTimes;
+using DiscordBot.Core.Domain;
 using DiscordBot.Domain.Trainings.Entities;
 using DiscordBot.Domain.Trainings.Repositories;
 using DiscordBot.Domain.WatchTogether.Entities;
 using DiscordBot.Domain.WatchTogether.Repositories;
 using DiscordBot.Domain.Youtube;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace DiscordBot.Domain.Trainings.UseCases
 {

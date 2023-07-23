@@ -1,10 +1,7 @@
-﻿using DiscordBot.Core;
+﻿using DiscordBot.Core.Domain;
 using DiscordBot.Domain.WatchTogether.Entities;
 using DiscordBot.Domain.WatchTogether.Repositories;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace DiscordBot.Domain.WatchTogether.UseCases

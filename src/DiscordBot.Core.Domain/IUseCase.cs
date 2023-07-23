@@ -1,4 +1,4 @@
-﻿namespace DiscordBot.Core
+﻿namespace DiscordBot.Core.Domain
 {
     public interface IUseCase<out TResult, in TParameters>
     {

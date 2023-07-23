@@ -1,10 +1,10 @@
-﻿using System;
+﻿using DiscordBot.Core.Domain;
+using DiscordBot.Domain.News.Entities;
+using DiscordBot.Domain.News.Repositories;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using DiscordBot.Core;
-using DiscordBot.Domain.News.Entities;
-using DiscordBot.Domain.News.Repositories;
 
 namespace DiscordBot.Domain.News.UseCases
 {

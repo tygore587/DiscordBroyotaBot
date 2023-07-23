@@ -1,5 +1,5 @@
 ﻿using System;
-using DiscordBot.Core;
+using DiscordBot.Core.Domain;
 
 namespace DiscordBot.Domain.Dies.UseCases
 {

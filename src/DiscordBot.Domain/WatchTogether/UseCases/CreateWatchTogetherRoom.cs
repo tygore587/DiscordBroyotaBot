@@ -1,7 +1,7 @@
-﻿using System.Threading.Tasks;
-using DiscordBot.Core;
+﻿using DiscordBot.Core.Domain;
 using DiscordBot.Domain.WatchTogether.Entities;
 using DiscordBot.Domain.WatchTogether.Repositories;
+using System.Threading.Tasks;
 
 namespace DiscordBot.Domain.WatchTogether.UseCases
 {

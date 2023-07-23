@@ -1,11 +1,9 @@
-﻿using DiscordBot.Core;
-using DiscordBot.Core.DateTimeProvider;
+﻿using DiscordBot.Core.DateTimeProvider;
+using DiscordBot.Core.Domain;
 using DiscordBot.Domain.Youtube.Entities;
 using DiscordBot.Domain.Youtube.Repositories;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace DiscordBot.Domain.Youtube.UseCases

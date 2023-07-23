@@ -23,7 +23,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiscordBot.Data", "src\Disc
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiscordBot.Core.Data", "src\DiscordBot.Core.Data\DiscordBot.Core.Data.csproj", "{43A41CBF-25CE-40A9-972C-8014769BE907}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiscordBot.Tests", "test\DiscordBot.Tests\DiscordBot.Tests.csproj", "{A302BA3E-3C7A-4C87-A1E5-EFC1A53CF6BE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DiscordBot.Tests", "test\DiscordBot.Tests\DiscordBot.Tests.csproj", "{A302BA3E-3C7A-4C87-A1E5-EFC1A53CF6BE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

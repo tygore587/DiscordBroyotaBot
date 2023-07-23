@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using DiscordBot.Core;
+﻿using DiscordBot.Core.Domain;
 using DiscordBot.Domain.Dragonball.Entities;
 using DiscordBot.Domain.Dragonball.Repositories;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace DiscordBot.Domain.Dragonball.UseCases
 {
