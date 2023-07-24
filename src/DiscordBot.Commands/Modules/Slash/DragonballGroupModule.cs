@@ -76,7 +76,7 @@ namespace DiscordBot.Commands.Modules.Slash
                 if (withColor)
                     text += $"\nColor: {color}";
 
-                embedBuilder.AddField(name, text);
+                embedBuilder.AddField(new(name, text));
             });
 
             return embedBuilder.Build();

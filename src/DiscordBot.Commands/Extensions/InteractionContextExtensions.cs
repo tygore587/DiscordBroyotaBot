@@ -31,7 +31,7 @@ namespace DiscordBot.Commands.Extensions
 
         public static Task RespondWithError(this InteractionContext context, string errorMessage)
         {
-            var response = new DiscordInteractionResponseBuilder().WithContent(errorMessage).AsEphemeral(true);
+            var response = new DiscordInteractionResponseBuilder().WithContent(errorMessage).AsEphemeral();
 
             return context.CreateResponseAsync(InteractionResponseType.ChannelMessageWithSource, response);
         }

@@ -110,25 +110,28 @@ namespace DiscordBot.Commands.Modules.Slash.Trainings
             embedBuilder.WithDescription(
                 "All mandatory trainings are already added to the watch together room.");
 
-            embedBuilder.WithImageUrl(imageUrl);
+            if (!string.IsNullOrWhiteSpace(imageUrl))
+                embedBuilder.WithImageUrl(imageUrl);
 
-            embedBuilder.AddField("WatchTogether Room", watchTogetherRoom?.RoomLink);
+            var link = watchTogetherRoom?.RoomLink is null ? "No room created" : watchTogetherRoom.RoomLink;
+
+            embedBuilder.AddField(new("WatchTogether Room", link));
 
             var warmUp = training.WarmUpTraining;
 
             if (warmUp != null)
-                embedBuilder.AddField(warmUp.Name, warmUp.Link);
+                embedBuilder.AddField(new(warmUp.Name, warmUp.Link));
 
             training.MandatoryTrainings.ForEach(mandatoryTraining =>
-                embedBuilder.AddField(mandatoryTraining.Name, mandatoryTraining.Link));
+                embedBuilder.AddField(new(mandatoryTraining.Name, mandatoryTraining.Link)));
 
             training.OptionsTrainings.ForEach(optionalTraining =>
-                embedBuilder.AddField($"{optionalTraining.Name} (optional)", optionalTraining.Link));
+                embedBuilder.AddField(new($"{optionalTraining.Name} (optional)", optionalTraining.Link)));
 
             var coolDownTraining = training.CoolDownTraining;
 
             if (coolDownTraining != null)
-                embedBuilder.AddField(coolDownTraining.Name, coolDownTraining.Link);
+                embedBuilder.AddField(new(coolDownTraining.Name, coolDownTraining.Link));
 
             return embedBuilder.Build();
         }

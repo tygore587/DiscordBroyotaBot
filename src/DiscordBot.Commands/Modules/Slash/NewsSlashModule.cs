@@ -81,8 +81,8 @@ namespace DiscordBot.Commands.Modules.Slash
 
             embed.WithThumbnail("https://www.appgefahren.de/wp-content/uploads/2016/12/tagesschau-icon.jpg");
 
-            news.ForEach(item => embed.AddField(item.Title,
-                $"{item.Description}\n[{item.PublicationDate:dd.MM.yyyy HH:mm}]({item.Link})"));
+            news.ForEach(item => embed.AddField(new(item.Title,
+                $"{item.Description}\n[{item.PublicationDate:dd.MM.yyyy HH:mm}]({item.Link})")));
 
             return embed.Build();
         }

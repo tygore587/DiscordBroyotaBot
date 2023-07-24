@@ -38,9 +38,9 @@ namespace DiscordBot.Commands.Helper
 
             var aliases = command.Aliases;
             if ((aliases != null ? aliases.Any() ? 1 : 0 : 0) != 0)
-                EmbedBuilder.AddField("Aliases",
+                EmbedBuilder.AddField(new("Aliases",
                     string.Join(", ",
-                        command.Aliases.Select(Formatter.InlineCode)));
+                        command.Aliases.Select(Formatter.InlineCode))));
 
             var overloads = command.Overloads;
             if ((overloads != null ? overloads.Any() ? 1 : 0 : 0) == 0)
@@ -65,7 +65,7 @@ namespace DiscordBot.Commands.Helper
                 stringBuilder.Append('\n');
             }
 
-            EmbedBuilder.AddField("Arguments", stringBuilder.ToString().Trim());
+            EmbedBuilder.AddField(new("Arguments", stringBuilder.ToString().Trim()));
 
             return this;
         }
@@ -73,16 +73,19 @@ namespace DiscordBot.Commands.Helper
         public override BaseHelpFormatter WithSubcommands(
             IEnumerable<Command> subcommands)
         {
-            EmbedBuilder.AddField(Command != (Command?) null ? "Subcommands" : "Commands",
+            string commandFieldName = Command is null ? "Commands" : "Subcommands";
+
+            EmbedBuilder.AddField(new(
+                commandFieldName,
                 string.Join("\n\n",
-                    subcommands.Select(x => $"{Formatter.InlineCode(x.Name)}: {x.Description}")));
+                    subcommands.Select(x => $"{Formatter.InlineCode(x.Name)}: {x.Description}"))));
 
             return this;
         }
 
         public override CommandHelpMessage Build()
         {
-            if (Command == null)
+            if (Command is null)
                 EmbedBuilder.WithDescription(
                     "Listing all top-level commands and groups.\n Specify a command with **!help <command>** to see more information.");
             return new CommandHelpMessage(embed: EmbedBuilder.Build());

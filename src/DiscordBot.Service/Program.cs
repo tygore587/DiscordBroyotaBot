@@ -2,6 +2,7 @@
 using DisCatSharp.ApplicationCommands;
 using DisCatSharp.ApplicationCommands.EventArgs;
 using DisCatSharp.CommandsNext;
+using DisCatSharp.Enums;
 using DiscordBot.Commands;
 using DiscordBot.Commands.Extensions;
 using DiscordBot.Commands.Helper;
