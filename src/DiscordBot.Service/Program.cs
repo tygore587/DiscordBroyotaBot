@@ -120,7 +120,7 @@ namespace DiscordBot.Service
         {
             var commandsConfiguration = new CommandsNextConfiguration(services)
             {
-                StringPrefixes = new[] {CommandPrefix.StandardPrefix},
+                StringPrefixes = new() {CommandPrefix.StandardPrefix},
             };
 
             var commands = discord.UseCommandsNext(commandsConfiguration);
