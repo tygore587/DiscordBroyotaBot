@@ -5,7 +5,6 @@ using DisCatSharp.CommandsNext;
 using DiscordBot.Commands;
 using DiscordBot.Commands.Extensions;
 using DiscordBot.Commands.Helper;
-using DiscordBot.Commands.Modules.Chat;
 using DiscordBot.Commands.Modules.Slash;
 using DiscordBot.Commands.Modules.Slash.Trainings;
 using DiscordBot.Core.Constants;
@@ -124,12 +123,6 @@ namespace DiscordBot.Service
             };
 
             var commands = discord.UseCommandsNext(commandsConfiguration);
-
-            commands.RegisterCommands<DragonballCharacterChatModule>();
-            commands.RegisterCommands<DiceChatModule>();
-            commands.RegisterCommands<MemeChatModule>();
-            commands.RegisterCommands<WatchTogetherChatModule>();
-            commands.RegisterCommands<NewsChatModule>();
 
             commands.SetHelpFormatter<CustomHelpFormatter>();
 
