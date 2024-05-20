@@ -66,20 +66,28 @@ namespace DiscordBot.Service
 
         private static DiscordClient RegisterSlashCommands(this DiscordClient discord, IServiceProvider services)
         {
-            discord.RegisterSlashCommands(services, EnvironmentVariables.SlashCommandsGuildId);
-
-            return discord.RegisterSlashCommands(services, EnvironmentVariables.SlashCommandsGuildId2);
-        }
-
-        private static DiscordClient RegisterSlashCommands(this DiscordClient discord, IServiceProvider services, string guildId)
-        {
             var logger = services.GetService<ILogger>();
 
+            var slashConfiguration = new ApplicationCommandsConfiguration(services);
+
+            var slash = discord.UseApplicationCommands(slashConfiguration);
+
+            slash.RegisterSlashCommands(logger, EnvironmentVariables.SlashCommandsGuildId);
+
+            slash.RegisterSlashCommands(logger, EnvironmentVariables.SlashCommandsGuildId2);
+
+            slash.SlashCommandErrored += (_, commandArgs) => HandleSlashCommandErrors(logger, commandArgs);
+
+            return discord;
+        }
+
+        private static ApplicationCommandsExtension RegisterSlashCommands(this ApplicationCommandsExtension slash, ILogger? logger, string guildId)
+        {
             if (string.IsNullOrWhiteSpace(guildId))
             {
                 logger?.Warning(
                     "guildId was not set: Do not register slash commands");
-                return discord;
+                return slash;
             }
 
             if (!ulong.TryParse(EnvironmentVariables.SlashCommandsGuildId, out var guildIdNumber))
@@ -87,12 +95,8 @@ namespace DiscordBot.Service
                 logger?.Warning(
                     "Unable to parse guild ID to ulong. Guild ID: {SlashCommandsGuildId}",
                     EnvironmentVariables.SlashCommandsGuildId);
-                return discord;
+                return slash;
             }
-
-            var slashConfiguration = new ApplicationCommandsConfiguration(services);
-
-            var slash = discord.UseApplicationCommands(slashConfiguration);
 
             slash.RegisterGuildCommands<DiceSlashModule>(guildIdNumber);
             slash.RegisterGuildCommands<DragonballGroupModule>(guildIdNumber);
@@ -103,11 +107,11 @@ namespace DiscordBot.Service
             slash.RegisterGuildCommands<TrainingsSlashModule>(guildIdNumber);
             slash.RegisterGuildCommands<YoutubeSlashModule>(guildIdNumber);
 
-            slash.SlashCommandErrored += (_, commandArgs) => HandleSlashCommandErrors(logger, commandArgs);
+            
 
             logger?.Information("Registered slash commands. Guild: {GuildId}", guildId);
 
-            return discord;
+            return slash;
         }
 
         private static Task HandleSlashCommandErrors(ILogger? logger, SlashCommandErrorEventArgs eventArgs)
