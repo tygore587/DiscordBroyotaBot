@@ -81,49 +81,11 @@ namespace DiscordBot.Service
             slash.RegisterGlobalCommands<TrainingsSlashModule>();
             slash.RegisterGlobalCommands<YoutubeSlashModule>();
 
-
-            //slash.RegisterSlashCommands(logger, EnvironmentVariables.SlashCommandsGuildId);
-
-            //slash.RegisterSlashCommands(logger, EnvironmentVariables.SlashCommandsGuildId2);
-
             slash.SlashCommandErrored += (_, commandArgs) => HandleSlashCommandErrors(logger, commandArgs);
 
             return discord;
         }
-
-        private static ApplicationCommandsExtension RegisterSlashCommands(this ApplicationCommandsExtension slash, ILogger? logger, string guildId)
-        {
-            if (string.IsNullOrWhiteSpace(guildId))
-            {
-                logger?.Warning(
-                    "guildId was not set: Do not register slash commands");
-                return slash;
-            }
-
-            if (!ulong.TryParse(EnvironmentVariables.SlashCommandsGuildId, out var guildIdNumber))
-            {
-                logger?.Warning(
-                    "Unable to parse guild ID to ulong. Guild ID: {SlashCommandsGuildId}",
-                    EnvironmentVariables.SlashCommandsGuildId);
-                return slash;
-            }
-
-            slash.RegisterGuildCommands<DiceSlashModule>(guildIdNumber);
-            slash.RegisterGuildCommands<DragonballGroupModule>(guildIdNumber);
-            slash.RegisterGuildCommands<MemeSlashModule>(guildIdNumber);
-            slash.RegisterGuildCommands<RedditMemeSlashModule>(guildIdNumber);
-            slash.RegisterGuildCommands<NewsSlashModule>(guildIdNumber);
-            slash.RegisterGuildCommands<WatchTogetherSlashModule>(guildIdNumber);
-            slash.RegisterGuildCommands<TrainingsSlashModule>(guildIdNumber);
-            slash.RegisterGuildCommands<YoutubeSlashModule>(guildIdNumber);
-
-            
-
-            logger?.Information("Registered slash commands. Guild: {GuildId}", guildId);
-
-            return slash;
-        }
-
+        
         private static Task HandleSlashCommandErrors(ILogger? logger, SlashCommandErrorEventArgs eventArgs)
         {
             var exception = eventArgs.Exception;
