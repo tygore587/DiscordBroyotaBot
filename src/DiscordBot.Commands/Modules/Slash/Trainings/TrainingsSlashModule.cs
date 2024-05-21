@@ -113,9 +113,17 @@ namespace DiscordBot.Commands.Modules.Slash.Trainings
             if (!string.IsNullOrWhiteSpace(imageUrl))
                 embedBuilder.WithImageUrl(imageUrl);
 
-            var link = watchTogetherRoom?.RoomLink is null ? "No room created" : watchTogetherRoom.RoomLink;
+            var link = watchTogetherRoom?.RoomLink is null 
+                ? "No room created" 
+                : $"[Join room]({watchTogetherRoom.RoomLink})";
 
             embedBuilder.AddField(new("WatchTogether Room", link));
+
+            var youtubePlaylistLink = !string.IsNullOrWhiteSpace(trainingsResult.TrainingsDay.YoutubePlaylistUrl)
+                ? trainingsResult.TrainingsDay.YoutubePlaylistUrl
+                : "Videos from another plattform. No Youtube playlist created.";
+
+            embedBuilder.AddField(new("Youtube Playlist", $"[Watch playlist]({youtubePlaylistLink})"));
 
             var warmUp = training.WarmUpTraining;
 
